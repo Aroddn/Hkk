@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: Fenyoormano
+  m_EditorClassIdentifier: 
+  characterAsset: {fileID: 0}
+  rarity: 0
+  color: 6
+  releaseYear: 2017
+  Description: "Felt\xE1mad(vagyis kij\xE1tszhatod a gy\u0171jt\u0151b\xF6l is).
+    Nem \xE1ldozhatod fel."
+  CardImage: {fileID: 21300000, guid: ca8a2dae9edadf54aa2f18d7268b0729, type: 3}
+  ManaCost: 1
+  MaxHealth: 1
+  Attack: 3
+  AttacksForOneTurn: 1
+  Taunt: 0
+  Flying: 1
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  Targets: 0

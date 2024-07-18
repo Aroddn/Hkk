@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: Smaragdsorenyupegazus
+  m_EditorClassIdentifier: 
+  characterAsset: {fileID: 0}
+  rarity: 0
+  color: 6
+  releaseYear: 2017
+  Description: "K\xE9zb\u0151l kij\xE1tsz\xE1sakor keress el\u0151 1 lapot az ellenf\xE9l
+    paklij\xE1b\xF3l, \xE9s mutasd meg! Ha a k\xF6r v\xE9g\xE9n a kezedben van a
+    kikeresett lap, akkor keverd vissza az ellenf\xE9l paklij\xE1ba!"
+  CardImage: {fileID: 21300000, guid: 8f2389463adb9e74cb69546fe3cafc19, type: 3}
+  ManaCost: 1
+  MaxHealth: 2
+  Attack: 2
+  AttacksForOneTurn: 1
+  Taunt: 0
+  Flying: 1
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  Targets: 0

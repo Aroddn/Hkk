@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: Langtenger
+  m_EditorClassIdentifier: 
+  characterAsset: {fileID: 0}
+  rarity: 0
+  color: 1
+  releaseYear: 2017
+  Description: "K\xF6lts\xE9g\xE9b\u0151l \"3 VP\"-t helyettes\xEDthetsz egy \"T\xFCzes\"
+    lap Semmibe dob\xE1s\xE1val a kezedb\u0151l. Az ellenf\xE9l minden l\xE9nye sebz\u0151dik
+    5-\xF6t. Ah\xE1gy l\xE9ny a gy\u0171jt\u0151be ker\xFCl, annyit gy\xF3gyulsz,
+    ellenfeled pedig ugyanannyig sebz\u0151dik."
+  CardImage: {fileID: 21300000, guid: c5a8af2f7e9074542aa2166064191526, type: 3}
+  ManaCost: 4
+  MaxHealth: 0
+  Attack: 0
+  AttacksForOneTurn: 1
+  Taunt: 0
+  Flying: 0
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  Targets: 0
