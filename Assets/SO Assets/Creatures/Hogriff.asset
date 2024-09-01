@@ -17,7 +17,7 @@ MonoBehaviour:
   releaseYear: 2016
   Description: "Minden Raia l\xE9nyeg \"1 VP\"-vel olcs\xF3bb(de legal\xE1bb \"1
     VP\"), \xE9s kapnak +1/+1-et."
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: a879afcc420f7dd458ebd96f24771351, type: 3}
   ManaCost: 2
   MaxHealth: 1
   Attack: 2
