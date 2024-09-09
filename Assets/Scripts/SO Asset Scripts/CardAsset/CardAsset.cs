@@ -8,7 +8,6 @@ using System;
 public class CardAsset : ScriptableObject 
 {
     [Header("General info")]
-    //public CharacterAsset characterAsset;
     public Rarity rarity;
     public Color color;
     public int releaseYear;
@@ -18,8 +17,6 @@ public class CardAsset : ScriptableObject
     public string Description;
 	public Sprite CardImage;
     public int ManaCost;
-
-
 
     [Header("Creature Info")]
     public int MaxHealth;
@@ -32,8 +29,6 @@ public class CardAsset : ScriptableObject
     public Type type;
     public SubType subType;
 
-    
-
     [Header("SpellInfo")]
     public string SpellScriptName;
     public int specialSpellAmount;
@@ -41,7 +36,6 @@ public class CardAsset : ScriptableObject
     public TargetingOptions Targets;
 
 }
-
 public enum TargetingOptions
 {
     NoTarget,

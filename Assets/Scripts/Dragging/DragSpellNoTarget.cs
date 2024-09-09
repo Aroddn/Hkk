@@ -48,9 +48,9 @@ public class DragSpellNoTarget: DraggingActions{
 
     protected override bool DragSuccessful()
     {
-        //bool TableNotFull = (TurnManager.Instance.whoseTurn.table.CreaturesOnTable.Count < 8);
+        bool TableNotFull = (TurnManager.Instance.whoseTurn.table.CreaturesOnTable.Count < 5);
 
-        return TableVisual.CursorOverSomeTable; //&& TableNotFull;
+        return TableVisual.CursorOverSomeTable && TableNotFull; //&& TableNotFull;
     }
 
 

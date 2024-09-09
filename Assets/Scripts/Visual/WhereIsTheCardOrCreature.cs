@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-// an enum to store the info about where this object is
+//Enum to know where this object is
 public enum VisualStates
 {
     Transition,
@@ -50,6 +50,7 @@ public class WhereIsTheCardOrCreature : MonoBehaviour {
             state = value;
             switch (state)
             {
+                //show preview if card is you lower player's hand, lower player's table or top player's table
                 case VisualStates.LowHand:
                     hover.ThisPreviewEnabled = true;
                     break;
@@ -57,6 +58,7 @@ public class WhereIsTheCardOrCreature : MonoBehaviour {
                 case VisualStates.TopTable:
                     hover.ThisPreviewEnabled = true;
                     break;
+                    //dont show preview if card is in transition, being dragged, or in top players hand
                 case VisualStates.Transition:
                     hover.ThisPreviewEnabled = false;
                     break;

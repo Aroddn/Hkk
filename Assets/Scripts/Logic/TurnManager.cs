@@ -64,8 +64,8 @@ public class TurnManager : MonoBehaviour {
         {
             p.ManaThisTurn = 0;
             p.ManaLeft = 0;
-            p.LoadCharacterInfoFromAsset();
-            p.TransmitInfoAboutPlayerToVisual();
+            //p.LoadCharacterInfoFromAsset();
+            //p.TransmitInfoAboutPlayerToVisual();
             p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
             // move both portraits to the center
             //p.PArea.Portrait.transform.position = p.PArea.handVisual.OtherCardDrawSourceTransform.position;
@@ -80,12 +80,12 @@ public class TurnManager : MonoBehaviour {
                 // determine who starts the game.
                 int rnd = Random.Range(0,2);  // 2 is exclusive boundary
                 // Debug.Log(Player.Players.Length);
-                Player whoGoesFirst = Player.Players[rnd];
+                Player whoGoesFirst = Player.Players[1];//rnd
                 // Debug.Log(whoGoesFirst);
                 Player whoGoesSecond = whoGoesFirst.otherPlayer;
                 // Debug.Log(whoGoesSecond);
          
-                // draw 4 cards for first player and 5 for second player
+                // draw 5 cards for first player and 5 for second player
                 int initDraw = 5;
                 for (int i = 0; i < initDraw; i++)
                 {            
@@ -95,9 +95,9 @@ public class TurnManager : MonoBehaviour {
                     whoGoesFirst.DrawACard(true);
                 }
                 // add one more card to second player`s hand
-                whoGoesSecond.DrawACard(true);
-                //new GivePlayerACoinCommand(null, whoGoesSecond).AddToQueue();
-                whoGoesSecond.DrawACoin();
+                //whoGoesSecond.DrawACard(true);
+                //new GivePlayerACoinCommand(null, whoGoesSecond).AddToQueue(); we dont do coins here
+                //whoGoesSecond.DrawACoin();
                 new StartATurnCommand(whoGoesFirst).AddToQueue();
             });
     }

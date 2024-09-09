@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//prolly wont need it
 public class UpdateManaCrystalsCommand : Command {
 
     private Player p;

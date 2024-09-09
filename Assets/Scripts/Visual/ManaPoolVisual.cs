@@ -17,7 +17,7 @@ public class ManaPoolVisual : MonoBehaviour {
         set
         {
             totalCrystals = value;
-            ProgressText.text = string.Format("{0}/{1}", availableCrystals.ToString(), totalCrystals.ToString());
+            ProgressText.text = string.Format("{0}/{1}",  totalCrystals.ToString(), availableCrystals.ToString());
         }
     }
 
@@ -34,7 +34,7 @@ public class ManaPoolVisual : MonoBehaviour {
                 availableCrystals = 0;
             else
                 availableCrystals = value;
-            ProgressText.text = string.Format("{0}/{1}", availableCrystals.ToString(), totalCrystals.ToString());
+            ProgressText.text = string.Format("{0}/{1}", totalCrystals.ToString(), availableCrystals.ToString());
         }
     }
 

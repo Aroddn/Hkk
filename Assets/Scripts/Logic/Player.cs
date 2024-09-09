@@ -12,6 +12,7 @@ public class Player : MonoBehaviour, ICharacter
     public Hand hand;
     public Table table;
 
+    private int TurnCounter;
     private int bonusManaThisTurn = 0;
     public bool usedHeroPowerThisTurn = false;
 
@@ -27,8 +28,8 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             manaThisTurn = value;
-            //PArea.ManaBar.TotalCrystals = manaThisTurn;
-            new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
+            PArea.ManaBar.TotalCrystals = manaThisTurn;
+            //new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
         }
     }
 
@@ -40,8 +41,8 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             manaLeft = value;
-            //PArea.ManaBar.AvailableCrystals = manaLeft;
-            new UpdateManaCrystalsCommand(this, ManaThisTurn, manaLeft).AddToQueue();
+            PArea.ManaBar.TotalCrystals = manaLeft;
+            //new UpdateManaCrystalsCommand(this, ManaThisTurn, manaLeft).AddToQueue();
             //Debug.Log(ManaLeft);
             if (TurnManager.Instance.whoseTurn == this)
                 HighlightPlayableCards();
@@ -90,8 +91,10 @@ public class Player : MonoBehaviour, ICharacter
         // add one mana crystal to the pool;
         Debug.Log("In ONTURNSTART for "+ gameObject.name);
         usedHeroPowerThisTurn = false;
-        ManaThisTurn++;
-        ManaLeft = ManaThisTurn;
+        TurnCounter++;
+        ManaLeft += TurnCounter;
+        Debug.Log(ManaLeft);
+
         foreach (CreatureLogic cl in table.CreaturesOnTable)
             cl.OnTurnStart();
         //PArea.HeroPower.WasUsedThisTurn = false;

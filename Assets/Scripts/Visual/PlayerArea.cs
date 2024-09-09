@@ -21,6 +21,4 @@ public class PlayerArea : MonoBehaviour
         get;
         set;
     }      
-
-
 }
