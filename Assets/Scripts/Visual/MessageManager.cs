@@ -31,18 +31,19 @@ public class MessageManager : MonoBehaviour
 
         MessagePanel.SetActive(false);
         //TODO
-        //Command.CommandExecutionComplete();
+        Command.CommandExecutionComplete();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyUp(KeyCode.Y))
-    //    {
-    //        ShowMessage("Your Turn", 3f);
-    //    }
-    //    if (Input.GetKeyUp(KeyCode.E))
-    //    {
-    //        ShowMessage("Enemy Turn", 3f);
-    //    }
-    //}
+    //for test
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Y))
+        {
+            ShowMessage("Your Turn", 3f);
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            ShowMessage("Enemy Turn", 3f);
+        }
+    }
 }

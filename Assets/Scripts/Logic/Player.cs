@@ -28,8 +28,8 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             manaThisTurn = value;
-            PArea.ManaBar.TotalCrystals = manaThisTurn;
-            //new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
+            //PArea.ManaBar.TotalCrystals = manaThisTurn;
+            new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
         }
     }
 
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, ICharacter
         {
             manaLeft = value;
             PArea.ManaBar.TotalCrystals = manaLeft;
-            //new UpdateManaCrystalsCommand(this, ManaThisTurn, manaLeft).AddToQueue();
+            new UpdateManaCrystalsCommand(this, ManaThisTurn, manaLeft).AddToQueue();
             //Debug.Log(ManaLeft);
             if (TurnManager.Instance.whoseTurn == this)
                 HighlightPlayableCards();
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour, ICharacter
     public virtual void OnTurnStart()
     {
         // add one mana crystal to the pool;
-        Debug.Log("In ONTURNSTART for "+ gameObject.name);
+        //Debug.Log("In ONTURNSTART for "+ gameObject.name);
         usedHeroPowerThisTurn = false;
         TurnCounter++;
         ManaLeft += TurnCounter;
@@ -123,17 +123,15 @@ public class Player : MonoBehaviour, ICharacter
         {
             if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length)
             {
-                // 1) save index to place a visual card into visual hand
-                int indexToPlaceACard = hand.CardsInHand.Count;
-                // 2) logic: add card to hand
+                // 1) logic: add card to hand
                 CardLogic newCard = new CardLogic(deck.cards[0]);
                 newCard.owner = this;
-                hand.CardsInHand.Add(newCard);
+                hand.CardsInHand.Insert(0, newCard);
                 // Debug.Log(hand.CardsInHand.Count);
-                // 3) logic: remove the card from the deck
+                // 2) logic: remove the card from the deck
                 deck.cards.RemoveAt(0);
-                // 4) create a command
-                new DrawACardCommand(hand.CardsInHand[indexToPlaceACard], this, indexToPlaceACard, fast, fromDeck: true).AddToQueue(); 
+                // 2) create a command
+                new DrawACardCommand(hand.CardsInHand[0], this, fast, fromDeck: true).AddToQueue();
             }
         }
         else
@@ -143,18 +141,19 @@ public class Player : MonoBehaviour, ICharacter
        
     }
 
-    public void DrawACoin()
+
+    public void GetACardNotFromDeck(CardAsset cardAsset)
     {
         if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length)
         {
             // 1) logic: add card to hand
-            //CardLogic newCard = new CardLogic(GlobalSettings.Instance.CoinCard);
-            //newCard.owner = this;
-            //hand.CardsInHand.Add(newCard);
-            //// 2) send message to the visual Deck
-            //new DrawACardCommand(hand.CardsInHand[hand.CardsInHand.Count - 1], this, hand.CardsInHand.Count - 1, fast: true, fromDeck: false).AddToQueue(); 
+            CardLogic newCard = new CardLogic(cardAsset);
+            newCard.owner = this;
+            hand.CardsInHand.Insert(0, newCard);
+            // 2) send message to the visual Deck
+            new DrawACardCommand(hand.CardsInHand[0], this, fast: true, fromDeck: false).AddToQueue();
         }
-        // no removal from deck because the coin was not in the deck
+        // no removal from deck because the card was not in the deck
     }
 
     public void PlayASpellFromHand(int SpellCardUniqueID, int TargetUniqueID)
@@ -203,10 +202,8 @@ public class Player : MonoBehaviour, ICharacter
 
     public void PlayACreatureFromHand(CardLogic playedCard, int tablePos)
     {
-        Debug.Log(ManaLeft);
-        Debug.Log(playedCard.CurrentManaCost);
+
         ManaLeft -= playedCard.CurrentManaCost;
-        Debug.Log("Mana Left after played a creature: " + ManaLeft);
         // create a new creature object and add it to Table
         CreatureLogic newCreature = new CreatureLogic(this, playedCard.ca);
         table.CreaturesOnTable.Insert(tablePos, newCreature);

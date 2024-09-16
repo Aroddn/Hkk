@@ -50,7 +50,7 @@ public class TurnManager : MonoBehaviour {
 
     void Start()
     {
-        //OnGameStart();
+        OnGameStart();
     }
 
     public void OnGameStart()
@@ -64,9 +64,11 @@ public class TurnManager : MonoBehaviour {
         {
             p.ManaThisTurn = 0;
             p.ManaLeft = 0;
+            p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
+
+            //portrait things
             //p.LoadCharacterInfoFromAsset();
             //p.TransmitInfoAboutPlayerToVisual();
-            p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
             // move both portraits to the center
             //p.PArea.Portrait.transform.position = p.PArea.handVisual.OtherCardDrawSourceTransform.position;
         }
@@ -79,11 +81,11 @@ public class TurnManager : MonoBehaviour {
             {
                 // determine who starts the game.
                 int rnd = Random.Range(0,2);  // 2 is exclusive boundary
-                // Debug.Log(Player.Players.Length);
-                Player whoGoesFirst = Player.Players[1];//rnd
-                // Debug.Log(whoGoesFirst);
+                 //Debug.Log(Player.Players.Length);
+                Player whoGoesFirst = Player.Players[rnd];//rnd
+                 //Debug.Log(whoGoesFirst);
                 Player whoGoesSecond = whoGoesFirst.otherPlayer;
-                // Debug.Log(whoGoesSecond);
+                 //Debug.Log(whoGoesSecond);
          
                 // draw 5 cards for first player and 5 for second player
                 int initDraw = 5;
@@ -94,11 +96,14 @@ public class TurnManager : MonoBehaviour {
                     // first player draws a card
                     whoGoesFirst.DrawACard(true);
                 }
+
                 // add one more card to second player`s hand
                 //whoGoesSecond.DrawACard(true);
                 //new GivePlayerACoinCommand(null, whoGoesSecond).AddToQueue(); we dont do coins here
                 //whoGoesSecond.DrawACoin();
+
                 new StartATurnCommand(whoGoesFirst).AddToQueue();
+                //Command.CommandExecutionComplete(); stupid fix
             });
     }
 

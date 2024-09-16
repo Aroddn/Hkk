@@ -30,6 +30,8 @@ public class Command
             playingQueue = false;
         if (TurnManager.Instance.whoseTurn != null)
             TurnManager.Instance.whoseTurn.HighlightPlayableCards();
+        //Debug.Log(CommandQueue.Count);
+        //Debug.Log(TurnManager.Instance.whoseTurn);
     }
 
     public static void PlayFirstCommandFromQueue()

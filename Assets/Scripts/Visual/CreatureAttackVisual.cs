@@ -30,17 +30,17 @@ public class CreatureAttackVisual : MonoBehaviour
                     DamageEffect.CreateDamageEffect(target.transform.position, damageTakenByTarget);
                 if(damageTakenByAttacker>0)
                     DamageEffect.CreateDamageEffect(transform.position, damageTakenByAttacker);
-                
-                //if (targetUniqueID == GlobalSettings.Instance.LowPlayer.PlayerID || targetUniqueID == GlobalSettings.Instance.TopPlayer.PlayerID)
-                //{
-                //    // target is a player
-                //    target.GetComponent<PlayerPortraitVisual>().HealthText.text = targetHealthAfter.ToString();
-                //}
-                //else
-                //    target.GetComponent<OneCreatureManager>().HealthText.text = targetHealthAfter.ToString();
 
-                //w.SetTableSortingOrder();
-                //w.VisualState = tempState;
+                if (targetUniqueID == GlobalSettings.Instance.LowPlayer.PlayerID || targetUniqueID == GlobalSettings.Instance.TopPlayer.PlayerID)
+                {
+                    // target is a player
+                    //target.GetComponent<PlayerPortraitVisual>().HealthText.text = targetHealthAfter.ToString();
+                }
+                else
+                    target.GetComponent<OneCreatureManager>().HealthText.text = targetHealthAfter.ToString();
+
+                w.SetTableSortingOrder();
+                w.VisualState = tempState;
 
                 manager.HealthText.text = attackerHealthAfter.ToString();
                 Sequence s = DOTween.Sequence();
