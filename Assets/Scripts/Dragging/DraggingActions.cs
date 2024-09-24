@@ -19,8 +19,7 @@ public abstract class DraggingActions : MonoBehaviour {
 
     protected virtual Player playerOwner
     {
-        get
-        {
+        get{
 
             if (tag.Contains("Low"))
                 return GlobalSettings.Instance.LowPlayer;

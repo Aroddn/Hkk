@@ -11,6 +11,8 @@ public enum VisualStates
     LowTable,
     TopTable,
     Dragging
+    //LowTableGuard,
+    //TopTableGuard
 }
 
 public class WhereIsTheCardOrCreature : MonoBehaviour {

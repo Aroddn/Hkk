@@ -6,35 +6,35 @@ using TMPro;
 [ExecuteInEditMode]
 public class ManaPoolVisual : MonoBehaviour {
 
-    public int currentMana;
-    public int maxMana = 20;
+    public int start;
+    public int max = 20;
     
-    private int totalCrystals;
-    public int TotalCrystals
+    private int maxMana = 20;
+    private int currentMana;
+    public int MaxMana
     {
-        get{ return totalCrystals; }
+        get{ return maxMana; }
 
         set
         {
-            totalCrystals = value;
-            ProgressText.text = string.Format("{0}/{1}",  totalCrystals.ToString(), availableCrystals.ToString());
+            maxMana = value;
+            ProgressText.text = string.Format("{0}/{1}", currentMana.ToString(), maxMana.ToString());
         }
     }
 
-    private int availableCrystals = 20;
-    public int AvailableCrystals
+    public int CurrentMana
     {
-        get{ return availableCrystals; }
+        get{ return currentMana; }
 
         set
         {
-            if(value > totalCrystals)
-                availableCrystals = totalCrystals;
+            if(value > maxMana)
+                currentMana = maxMana;
             else if (value < 0)
-                availableCrystals = 0;
+                currentMana = 0;
             else
-                availableCrystals = value;
-            ProgressText.text = string.Format("{0}/{1}", totalCrystals.ToString(), availableCrystals.ToString());
+                currentMana = value;
+            ProgressText.text = string.Format("{0}/{1}", currentMana.ToString(), maxMana.ToString());
         }
     }
 
@@ -44,8 +44,8 @@ public class ManaPoolVisual : MonoBehaviour {
     {
         if (Application.isEditor && !Application.isPlaying)
         {
-            AvailableCrystals = currentMana;
-            TotalCrystals = maxMana;
+            CurrentMana = start;
+            MaxMana = max;
         }
     }
 

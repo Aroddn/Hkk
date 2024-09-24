@@ -10,10 +10,13 @@ public class PlayerArea : MonoBehaviour
     public PlayerDeckVisual PDeck;
     public ManaPoolVisual ManaBar;
     public HandVisual handVisual;
+    public TableVisual tableVisual;
+    public BoneVisual Bones;
+
+    //dont need prolly
     //public PlayerPortraitVisual Portrait;
     //public HeroPowerButton HeroPower;
     //public EndTurnButton EndTurnButton;
-    public TableVisual tableVisual;
     //public Transform PortraitPosition;
 
     public bool AllowedToControlThisPlayer

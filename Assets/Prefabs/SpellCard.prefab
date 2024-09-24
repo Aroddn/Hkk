@@ -274,18 +274,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardAsset: {fileID: 11400000, guid: 4b847671ca852144badb3356da6aded6, type: 2}
   PreviewManager: {fileID: 0}
-  NameText: {fileID: 0}
   ManaCostText: {fileID: 3703255104871061322}
-  DescriptionText: {fileID: 0}
   HealthText: {fileID: 0}
   AttackText: {fileID: 0}
-  CardTopRibbonImage: {fileID: 0}
-  CardLowRibbonImage: {fileID: 0}
   CardGraphicImage: {fileID: 3996638150127529909}
-  CardBodyImage: {fileID: 3996638150127529909}
-  CardFaceFrameImage: {fileID: 0}
   CardFaceGlowImage: {fileID: 5945314081224072564}
-  CardBackGlowImage: {fileID: 1917139940253048777}
 --- !u!114 &3027871991336349832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +363,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1593178787
+  m_SortingLayerID: 1031035395
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3650206852867269561
@@ -1311,7 +1304,7 @@ MonoBehaviour:
   CardFront: {fileID: 6920573888581257670}
   CardBack: {fileID: 600692679066453511}
   targetFacePoint: {fileID: 4123241005872295649}
-  col: {fileID: 0}
+  col: {fileID: 9039962544164651217}
 --- !u!65 &9039962544164651217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1347,18 +1340,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardAsset: {fileID: 11400000, guid: 4b847671ca852144badb3356da6aded6, type: 2}
   PreviewManager: {fileID: 70603168117247394}
-  NameText: {fileID: 0}
   ManaCostText: {fileID: 7305917769771940472}
-  DescriptionText: {fileID: 0}
   HealthText: {fileID: 0}
   AttackText: {fileID: 0}
-  CardTopRibbonImage: {fileID: 0}
-  CardLowRibbonImage: {fileID: 0}
   CardGraphicImage: {fileID: 1760999408663785860}
-  CardBodyImage: {fileID: 0}
-  CardFaceFrameImage: {fileID: 0}
   CardFaceGlowImage: {fileID: 5629331620357904558}
-  CardBackGlowImage: {fileID: 5629331620357904558}
 --- !u!114 &4581358488032071947
 MonoBehaviour:
   m_ObjectHideFlags: 0

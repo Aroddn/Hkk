@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Abekemegszakitasa
   m_EditorClassIdentifier: 
-  characterAsset: {fileID: 0}
   rarity: 0
   color: 1
   releaseYear: 2017
@@ -26,6 +25,9 @@ MonoBehaviour:
   Flying: 0
   CreatureScriptName: 
   specialCreatureAmount: 0
-  SpellScriptName: 
-  specialSpellAmount: 0
-  Targets: 2
+  type: 0
+  subType: 0
+  SpellScriptName: GiveManaBonus
+  specialSpellAmount: 1
+  playSpeed: 0
+  Targets: 0

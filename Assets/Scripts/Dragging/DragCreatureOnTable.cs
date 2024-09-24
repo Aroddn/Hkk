@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using System.Xml;
 
 public class DragCreatureOnTable : DraggingActions {
 
@@ -15,8 +16,11 @@ public class DragCreatureOnTable : DraggingActions {
         get
         {
             // TODO : include full field check
-            return true;
-            //return base.CanDrag && manager.CanBePlayedNow;
+            //return true;
+            //Debug.Log(base.CanDrag);
+            //Debug.Log(manager.CanBePlayedNow);
+
+            return base.CanDrag && manager.CanBePlayedNow;
         }
     }
 
@@ -42,13 +46,13 @@ public class DragCreatureOnTable : DraggingActions {
 
     public override void OnEndDrag()
     {
-
+        
         //1) Check if we are holding a card over the table
         if (DragSuccessful())
         {
             // determine table position
             int tablePos = playerOwner.PArea.tableVisual.TablePosForNewCreature(Camera.main.ScreenToWorldPoint(
-                new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)).x);
+               new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)).x);
             // Debug.Log("Table Pos for new Creature: " + tablePos.ToString());
             // play this card
             playerOwner.PlayACreatureFromHand(GetComponent<IDHolder>().UniqueID, tablePos);

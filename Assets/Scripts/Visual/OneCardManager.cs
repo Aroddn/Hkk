@@ -9,22 +9,22 @@ public class OneCardManager : MonoBehaviour {
     public CardAsset cardAsset;
     public OneCardManager PreviewManager;
     [Header("Text Component References")]
-    public TMP_Text NameText;
+    //public TMP_Text NameText;
     public TMP_Text ManaCostText;
-    public TMP_Text DescriptionText;
+    //public TMP_Text DescriptionText;
     public TMP_Text HealthText;
     public TMP_Text AttackText;
     //[Header ("GameObject References")]
     //public GameObject HealthIcon;
     //public GameObject AttackIcon;
     [Header("Image References")]
-    public Image CardTopRibbonImage;
-    public Image CardLowRibbonImage;
+    //public Image CardTopRibbonImage;
+    //public Image CardLowRibbonImage;
     public Image CardGraphicImage;
-    public Image CardBodyImage;
-    public Image CardFaceFrameImage;
+    //public Image CardBodyImage;
+    //public Image CardFaceFrameImage;
     public Image CardFaceGlowImage;
-    public Image CardBackGlowImage;
+    //Fpublic Image CardBackGlowImage;
 
     void Awake()
     {
@@ -44,7 +44,7 @@ public class OneCardManager : MonoBehaviour {
         {
             canBePlayedNow = value;
 
-            //CardFaceGlowImage.enabled = value;
+            CardFaceGlowImage.enabled = value;
         }
     }
 

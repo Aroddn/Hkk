@@ -55,7 +55,7 @@ public class DraggableTestWithActions : MonoBehaviour {
         if (dragging)
         {
             dragging = false;
-            HoverPreview.PreviewsAllowed |= true;
+            HoverPreview.PreviewsAllowed = true;
             da.OnEndDrag();
         }
     }   

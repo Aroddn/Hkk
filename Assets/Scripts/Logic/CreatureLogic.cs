@@ -76,8 +76,8 @@ public class CreatureLogic: ICharacter
         // AttacksLeftThisTurn is now equal to 0
         if (ca.Flying)
             AttacksLeftThisTurn = attacksForOneTurn;
-            this.owner = owner;
-            UniqueCreatureID = IDFactory.GetUniqueID();
+        this.owner = owner;
+        UniqueCreatureID = IDFactory.GetUniqueID();
         if (ca.CreatureScriptName!= null && ca.CreatureScriptName!= "")
         {
             effect = System.Activator.CreateInstance(System.Type.GetType(ca.CreatureScriptName), new System.Object[]{owner, this, ca.specialCreatureAmount}) as CreatureEffect;

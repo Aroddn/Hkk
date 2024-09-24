@@ -11,8 +11,6 @@ public class CardLogic: IIdentifiable
 
     public CardAsset ca;
     public GameObject VisualRepresentation;
-
-    private int baseManaCost;
     public SpellEffect effect;
 
     // STATIC (for managing IDs)
@@ -44,9 +42,8 @@ public class CardLogic: IIdentifiable
     {
         this.ca = ca;
         UniqueCardID = IDFactory.GetUniqueID();
-        //UniqueCardID = IDFactory.GetUniqueID();
-        baseManaCost = ca.ManaCost;
         ResetManaCost();
+
         if (ca.SpellScriptName!= null && ca.SpellScriptName!= "")
         {
             effect = System.Activator.CreateInstance(System.Type.GetType(ca.SpellScriptName)) as SpellEffect;
@@ -56,9 +53,6 @@ public class CardLogic: IIdentifiable
 
     public void ResetManaCost()
     {
-        CurrentManaCost = baseManaCost;
+        CurrentManaCost = ca.ManaCost;
     }
-
-    
-
 }

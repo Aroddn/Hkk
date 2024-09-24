@@ -256,7 +256,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1593178787
+  m_SortingLayerID: -764776437
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &585525193389339532
@@ -427,6 +427,7 @@ MonoBehaviour:
   PreviewManager: {fileID: 6843757913731554398}
   HealthText: {fileID: 2835603626832057510}
   AttackText: {fileID: 3308763198190313432}
+  ManaCostText: {fileID: 1903170235973197587}
   CreatureGraphicImage: {fileID: 50754145379420186}
   CreatureGlowImage: {fileID: 9153210882114361156}
 --- !u!114 &7857768158411375371
@@ -1729,15 +1730,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8718059256783908753}
   - component: {fileID: 6843757913731554398}
-  - component: {fileID: 1043537249260327008}
-  - component: {fileID: 9018459456593226959}
   m_Layer: 0
   m_Name: CreatureCardPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8718059256783908753
 Transform:
   m_ObjectHideFlags: 0
@@ -1770,43 +1769,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardAsset: {fileID: 11400000, guid: 94447b0e9fe8acb4b8eb69773214d0f9, type: 2}
   PreviewManager: {fileID: 0}
-  NameText: {fileID: 0}
   ManaCostText: {fileID: 8709707313282246040}
-  DescriptionText: {fileID: 0}
   HealthText: {fileID: 6081665472590919332}
   AttackText: {fileID: 3960415769631101161}
-  CardTopRibbonImage: {fileID: 0}
-  CardLowRibbonImage: {fileID: 0}
   CardGraphicImage: {fileID: 2167018671764975219}
-  CardBodyImage: {fileID: 2167018671764975219}
-  CardFaceFrameImage: {fileID: 0}
   CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 8946550783555920880}
---- !u!114 &1043537249260327008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5645110719719544100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 377928ac4f9752b4881363590614b62a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UsePointerDisplacement: 1
---- !u!114 &9018459456593226959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5645110719719544100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94392e7645ed99a45982ebcada5d9fe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6108887059431700456
 GameObject:
   m_ObjectHideFlags: 0

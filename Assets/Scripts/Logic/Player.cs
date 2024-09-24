@@ -3,11 +3,15 @@ using System.Collections;
 
 public class Player : MonoBehaviour, ICharacter
 {
+    // PUBLIC FIELDS
+    // int ID that we get from ID factory
     public int PlayerID;
     public CharacterAsset charAsset;
     public PlayerArea PArea;
     public SpellEffect HeroPowerEffect;
 
+
+    // REFERENCES TO LOGICAL STUFF THAT BELONGS TO THIS PLAYER
     public Deck deck;
     public Hand hand;
     public Table table;
@@ -16,24 +20,26 @@ public class Player : MonoBehaviour, ICharacter
     private int bonusManaThisTurn = 0;
     public bool usedHeroPowerThisTurn = false;
 
+
     public int ID
     {
         get { return PlayerID; }
     }
 
-    private int manaThisTurn;
+    private int manaThisTurn;//maxmana
     public int ManaThisTurn
     {
         get{ return manaThisTurn;}
         set
         {
             manaThisTurn = value;
-            //PArea.ManaBar.TotalCrystals = manaThisTurn;
+            //PArea.ManaBar.CurrentMana = manaThisTurn;
             new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
         }
     }
 
-    private int manaLeft;
+    private int manaLeft;//currentMana
+
     public int ManaLeft
     {
         get
@@ -41,7 +47,7 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             manaLeft = value;
-            PArea.ManaBar.TotalCrystals = manaLeft;
+            //PArea.ManaBar.CurrentMana = manaLeft;
             new UpdateManaCrystalsCommand(this, ManaThisTurn, manaLeft).AddToQueue();
             //Debug.Log(ManaLeft);
             if (TurnManager.Instance.whoseTurn == this)
@@ -83,17 +89,17 @@ public class Player : MonoBehaviour, ICharacter
     void Awake()
     {
         Players = GameObject.FindObjectsOfType<Player>();
-        //PlayerID = IDFactory.GetUniqueID();
+        PlayerID = IDFactory.GetUniqueID();
     }
 
     public virtual void OnTurnStart()
     {
-        // add one mana crystal to the pool;
-        //Debug.Log("In ONTURNSTART for "+ gameObject.name);
         usedHeroPowerThisTurn = false;
         TurnCounter++;
         ManaLeft += TurnCounter;
-        Debug.Log(ManaLeft);
+        ManaThisTurn += TurnCounter;
+        //ManaLeft = 20;
+        ManaThisTurn = 20;
 
         foreach (CreatureLogic cl in table.CreaturesOnTable)
             cl.OnTurnStart();
@@ -198,11 +204,11 @@ public class Player : MonoBehaviour, ICharacter
     public void PlayACreatureFromHand(int UniqueID, int tablePos)
     {
         PlayACreatureFromHand(CardLogic.CardsCreatedThisGame[UniqueID], tablePos);
+
     }
 
     public void PlayACreatureFromHand(CardLogic playedCard, int tablePos)
     {
-
         ManaLeft -= playedCard.CurrentManaCost;
         // create a new creature object and add it to Table
         CreatureLogic newCreature = new CreatureLogic(this, playedCard.ca);
@@ -220,6 +226,7 @@ public class Player : MonoBehaviour, ICharacter
         {
             DrawACard();
         }
+
     }
 
     public void Die()

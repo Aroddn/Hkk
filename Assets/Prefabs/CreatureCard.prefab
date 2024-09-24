@@ -1117,7 +1117,7 @@ MonoBehaviour:
   CardFront: {fileID: 4499523014467961441}
   CardBack: {fileID: 812064122848305394}
   targetFacePoint: {fileID: 6949371774978944217}
-  col: {fileID: 0}
+  col: {fileID: 9089720560695314057}
 --- !u!65 &9089720560695314057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1153,18 +1153,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardAsset: {fileID: 11400000, guid: 94447b0e9fe8acb4b8eb69773214d0f9, type: 2}
   PreviewManager: {fileID: 7173064229323234813}
-  NameText: {fileID: 0}
   ManaCostText: {fileID: 6387194436695295746}
-  DescriptionText: {fileID: 0}
   HealthText: {fileID: 5448122964108269686}
   AttackText: {fileID: 4868052961854172639}
-  CardTopRibbonImage: {fileID: 0}
-  CardLowRibbonImage: {fileID: 0}
   CardGraphicImage: {fileID: 8693964997748367889}
-  CardBodyImage: {fileID: 0}
-  CardFaceFrameImage: {fileID: 0}
-  CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 0}
+  CardFaceGlowImage: {fileID: 7185787415419708589}
 --- !u!114 &3546480038210733152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1688,7 +1681,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1593178787
+  m_SortingLayerID: 1031035395
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2283490491850300177
@@ -1923,7 +1916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3395995292760220808
 Transform:
   m_ObjectHideFlags: 0
@@ -1956,18 +1949,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardAsset: {fileID: 11400000, guid: 94447b0e9fe8acb4b8eb69773214d0f9, type: 2}
   PreviewManager: {fileID: 0}
-  NameText: {fileID: 0}
   ManaCostText: {fileID: 4768265265894092331}
-  DescriptionText: {fileID: 0}
   HealthText: {fileID: 7750854474497617749}
   AttackText: {fileID: 1410999729495973828}
-  CardTopRibbonImage: {fileID: 0}
-  CardLowRibbonImage: {fileID: 0}
   CardGraphicImage: {fileID: 7167208934327048853}
-  CardBodyImage: {fileID: 7167208934327048853}
-  CardFaceFrameImage: {fileID: 0}
   CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 1440369939364776397}
 --- !u!114 &6028833399738940817
 MonoBehaviour:
   m_ObjectHideFlags: 0

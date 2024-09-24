@@ -41,17 +41,18 @@ public class BetterCardRotation : MonoBehaviour {
         //Debug.Log("TotalHits: " + hits.Length); 
         if (passedThroughColliderOnCard!= showingBack)
         {
-            // something changed
+            //Debug.Log("something changed");
             showingBack = passedThroughColliderOnCard;
             if (showingBack)
             {
-                // show the back side
+
+                //Debug.Log("show the back side");
                 CardFront.gameObject.SetActive(false);
                 CardBack.gameObject.SetActive(true);
             }
             else
             {
-                // show the front side
+                //Debug.Log("show the front side");
                 CardFront.gameObject.SetActive(true);
                 CardBack.gameObject.SetActive(false);
             }

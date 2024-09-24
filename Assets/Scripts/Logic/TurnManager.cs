@@ -2,6 +2,16 @@
 using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Collections.Generic;
+using TMPro;
+
+public enum PlayerAction
+{
+    PlayerLowAction,
+    Player2TopAction,
+    Pass,
+    TurnChange
+}
 
 // this class will take care of switching turns and counting down time until the turn expires
 public class TurnManager : MonoBehaviour {
@@ -13,6 +23,8 @@ public class TurnManager : MonoBehaviour {
 
     // for Singleton Pattern
     public static TurnManager Instance;
+
+    public static List<PlayerAction> playerAction = new List<PlayerAction>();
 
     private Player _whoseTurn;
     public Player whoseTurn
@@ -65,10 +77,10 @@ public class TurnManager : MonoBehaviour {
             p.ManaThisTurn = 0;
             p.ManaLeft = 0;
             p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
+            p.TransmitInfoAboutPlayerToVisual();
 
             //portrait things
             //p.LoadCharacterInfoFromAsset();
-            //p.TransmitInfoAboutPlayerToVisual();
             // move both portraits to the center
             //p.PArea.Portrait.transform.position = p.PArea.handVisual.OtherCardDrawSourceTransform.position;
         }
@@ -103,7 +115,6 @@ public class TurnManager : MonoBehaviour {
                 //whoGoesSecond.DrawACoin();
 
                 new StartATurnCommand(whoGoesFirst).AddToQueue();
-                //Command.CommandExecutionComplete(); stupid fix
             });
     }
 
@@ -111,6 +122,13 @@ public class TurnManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space))
             EndTurn();
+
+        if (Input.GetKeyDown(KeyCode.F))
+            whoseTurn.DrawACard(true);
+
+        if (Input.GetKeyDown(KeyCode.M))
+            whoseTurn.ManaLeft--;
+
     }
 
 
@@ -119,8 +137,6 @@ public class TurnManager : MonoBehaviour {
         timer.StopTimer();
         timer.StartTimer();
     }
-
-
 
     public void EndTurn()
     {
@@ -132,10 +148,50 @@ public class TurnManager : MonoBehaviour {
         new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
     }
 
+    public void Pass()
+    {
+        playerAction.Add(PlayerAction.Pass);
+        PlayerAction last = playerAction[playerAction.Count - 1];
+
+           if (playerAction.Count > 1)
+            {
+                PlayerAction secondLast = playerAction[playerAction.Count - 2];
+                //Turnchange
+                if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
+                {
+                    playerAction.Add(PlayerAction.TurnChange);
+                    EndTurn();
+                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
+                }
+                else
+                {
+
+                    if (secondLast == PlayerAction.TurnChange)
+                    {
+                        //give other player control
+                    }
+                    else
+                    {
+                        
+                    }
+
+                }
+           }
+           else
+           {
+                if (last == PlayerAction.Pass)
+                {
+                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End turn";
+                }
+
+            }
+    }
+
     public void StopTheTimer()
     {
         timer.StopTimer();
     }
 
-}
 
+    
+}

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System;
 
 
-
 public class CardAsset : ScriptableObject 
 {
     [Header("General info")]

@@ -10,6 +10,7 @@ public class OneCreatureManager : MonoBehaviour
     [Header("Text Component References")]
     public TMP_Text HealthText;
     public TMP_Text AttackText;
+    public TMP_Text ManaCostText;
     [Header("Image References")]
     public Image CreatureGraphicImage;
     public Image CreatureGlowImage;
@@ -43,6 +44,7 @@ public class OneCreatureManager : MonoBehaviour
 
         AttackText.text = cardAsset.Attack.ToString();
         HealthText.text = cardAsset.MaxHealth.ToString();
+        ManaCostText.text = cardAsset.ManaCost.ToString();
 
         if (PreviewManager != null)
         {
