@@ -8,7 +8,7 @@ using TMPro;
 public enum PlayerAction
 {
     PlayerLowAction,
-    Player2TopAction,
+    PlayerTopAction,
     Pass,
     TurnChange
 }
@@ -74,15 +74,16 @@ public class TurnManager : MonoBehaviour {
 
         foreach (Player p in Player.Players)
         {
-            p.ManaThisTurn = 0;
+            p.ManaThisTurn = 20;
             p.ManaLeft = 0;
+            //p.Bone
             p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
             p.TransmitInfoAboutPlayerToVisual();
 
             //portrait things
-            //p.LoadCharacterInfoFromAsset();
+            p.LoadCharacterInfoFromAsset();
             // move both portraits to the center
-            //p.PArea.Portrait.transform.position = p.PArea.handVisual.OtherCardDrawSourceTransform.position;
+            p.PArea.Portrait.transform.position = p.PArea.handVisual.OtherCardDrawSourceTransform.position;
         }
 
         Sequence s = DOTween.Sequence();
@@ -146,6 +147,11 @@ public class TurnManager : MonoBehaviour {
         whoseTurn.OnTurnEnd();
 
         new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
+    }
+
+    public void GiveControlToOtherPlay()
+    {
+
     }
 
     public void Pass()

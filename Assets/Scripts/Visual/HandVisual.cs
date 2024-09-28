@@ -112,12 +112,12 @@ public class HandVisual : MonoBehaviour
             card = CreateACardAtPosition(c, OtherCardDrawSourceTransform.position, new Vector3(0f, -179f, 0f));
 
         // save this as visual representation in CardLogic
-        // Player ownerPlayer = GlobalSettings.Instance.Players[owner];
+         Player ownerPlayer = GlobalSettings.Instance.Players[owner];
         //Debug.Log(ownerPlayer);
         //Debug.Log(ownerPlayer.hand);
         //Debug.Log("CArdsInHand.Count: "+ ownerPlayer.hand.CardsInHand.Count);
         ////Debug.Log("Attempted placeInHand: " +placeInHand);
-        // ownerPlayer.hand.CardsInHand[0].VisualRepresentation = card;
+         ownerPlayer.hand.CardsInHand[0].VisualRepresentation = card;
         //Debug.Log(ownerPlayer.hand);
         // Set a tag to reflect where this card is
 

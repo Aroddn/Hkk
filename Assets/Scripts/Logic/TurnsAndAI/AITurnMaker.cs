@@ -75,14 +75,14 @@ public class AITurnMaker: TurnMaker {
 
     bool UseHeroPower()
     {
-        if (p.ManaLeft >= 2 && !p.usedHeroPowerThisTurn)
-        {
-            // use HP
-            p.UseHeroPower();
-            InsertDelay(1.5f);
-            //Debug.Log("AI used hero power");
-            return true;
-        }
+        //if (p.ManaLeft >= 2 && !p.usedHeroPowerThisTurn)
+        //{
+        //    // use HP
+        //    p.UseHeroPower();
+        //    InsertDelay(1.5f);
+        //    //Debug.Log("AI used hero power");
+        //    return true;
+        //}
         return false;
     }
 

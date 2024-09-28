@@ -7,9 +7,9 @@ using TMPro;
 public class ManaPoolVisual : MonoBehaviour {
 
     public int start;
-    public int max = 20;
+    public int max;
     
-    private int maxMana = 20;
+    private int maxMana;
     private int currentMana;
     public int MaxMana
     {

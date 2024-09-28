@@ -10,8 +10,8 @@ public class PlayerPortraitVisual : MonoBehaviour {
     //public Text NameText;
     public Text HealthText;
     [Header("Image References")]
-    public Image HeroPowerIconImage;
-    public Image HeroPowerBackgroundImage;
+    //public Image HeroPowerIconImage;
+    //public Image HeroPowerBackgroundImage;
     public Image PortraitImage;
     public Image PortraitBackgroundImage;
 
@@ -24,12 +24,12 @@ public class PlayerPortraitVisual : MonoBehaviour {
 	public void ApplyLookFromAsset()
     {
         HealthText.text = charAsset.MaxHealth.ToString();
-        HeroPowerIconImage.sprite = charAsset.HeroPowerIconImage;
-        HeroPowerBackgroundImage.sprite = charAsset.HeroPowerBGImage;
+        //HeroPowerIconImage.sprite = charAsset.HeroPowerIconImage;
+        //HeroPowerBackgroundImage.sprite = charAsset.HeroPowerBGImage;
         PortraitImage.sprite = charAsset.AvatarImage;
         PortraitBackgroundImage.sprite = charAsset.AvatarBGImage;
 
-        HeroPowerBackgroundImage.color = charAsset.HeroPowerBGTint;
+        //HeroPowerBackgroundImage.color = charAsset.HeroPowerBGTint;
         PortraitBackgroundImage.color = charAsset.AvatarBGTint;
 
     }

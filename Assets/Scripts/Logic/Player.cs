@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, ICharacter
 
     private int TurnCounter;
     private int bonusManaThisTurn = 0;
-    public bool usedHeroPowerThisTurn = false;
+    //public bool usedHeroPowerThisTurn = false;
 
 
     public int ID
@@ -35,6 +35,20 @@ public class Player : MonoBehaviour, ICharacter
             manaThisTurn = value;
             //PArea.ManaBar.CurrentMana = manaThisTurn;
             new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
+        }
+    }
+
+    private int totalBones;
+
+
+    public int TotalBones
+    {
+        get { return totalBones; }
+        set
+        {
+            totalBones = value;
+            new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
+            //new UpdateBonesCommand(this, totalBones).AddToQueue();
         }
     }
 
@@ -94,7 +108,7 @@ public class Player : MonoBehaviour, ICharacter
 
     public virtual void OnTurnStart()
     {
-        usedHeroPowerThisTurn = false;
+        //usedHeroPowerThisTurn = false;
         TurnCounter++;
         ManaLeft += TurnCounter;
         ManaThisTurn += TurnCounter;
@@ -264,10 +278,10 @@ public class Player : MonoBehaviour, ICharacter
     // START GAME METHODS
     public void LoadCharacterInfoFromAsset()
     {
-        //Health = charAsset.MaxHealth;
+        Health = charAsset.MaxHealth;
         // change the visuals for portrait, hero power, etc...
-        //PArea.Portrait.charAsset = charAsset;
-        //PArea.Portrait.ApplyLookFromAsset();
+        PArea.Portrait.charAsset = charAsset;
+        PArea.Portrait.ApplyLookFromAsset();
         // TODO: insert the code to attach hero power script here. 
         //if (charAsset.HeroPowerName != null && charAsset.HeroPowerName != "")
         //{
@@ -297,7 +311,7 @@ public class Player : MonoBehaviour, ICharacter
     public void UseHeroPower()
     {
         ManaLeft -= 2;
-        usedHeroPowerThisTurn = true;
+        //usedHeroPowerThisTurn = true;
         HeroPowerEffect.ActivateEffect();
     }
 }
