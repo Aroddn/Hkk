@@ -10,28 +10,37 @@ public class CardAsset : ScriptableObject
     public Rarity rarity;
     public Color color;
     public int releaseYear;
+    public bool mental;
+    public bool defense;
+    public bool fire;
+    public bool anchor;
 
     //public bool reaction
     [TextArea(2,3)]
     public string Description;
-	public Sprite CardImage;
+    [TextArea(2, 3)]
+    public string FlavorText;
+    public Sprite CardImage;
     public int ManaCost;
 
     [Header("Creature Info")]
     public int MaxHealth;
     public int Attack;
     public int AttacksForOneTurn = 1;
-    public bool Taunt;
+    public int Bone;
     public bool Flying;
+    public bool Hand;
     public string CreatureScriptName;
     public int specialCreatureAmount;
     public Type type;
     public SubType subType;
+    
 
     [Header("SpellInfo")]
     public string SpellScriptName;
     public int specialSpellAmount;
     public PlaySpeed playSpeed;
+    public SubType spellSubType;
     public TargetingOptions Targets;
 
 }
@@ -72,7 +81,7 @@ public enum PlaySpeed
 {
     INSTANT,
     GENERAL,
-    PISHOGUE,
+    GLAMOUR,
     REACTION
 }
 
@@ -95,7 +104,9 @@ public enum SubType
     SNAKE,
     GRIFF,
     ELF,
-    MUTANT
+    MUTANT,
+    REACTION,
+    VISION
 }
 
 public enum Special

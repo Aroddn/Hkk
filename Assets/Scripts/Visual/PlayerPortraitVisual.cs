@@ -24,13 +24,15 @@ public class PlayerPortraitVisual : MonoBehaviour {
 	public void ApplyLookFromAsset()
     {
         HealthText.text = charAsset.MaxHealth.ToString();
-        //HeroPowerIconImage.sprite = charAsset.HeroPowerIconImage;
-        //HeroPowerBackgroundImage.sprite = charAsset.HeroPowerBGImage;
         PortraitImage.sprite = charAsset.AvatarImage;
         PortraitBackgroundImage.sprite = charAsset.AvatarBGImage;
-
-        //HeroPowerBackgroundImage.color = charAsset.HeroPowerBGTint;
         PortraitBackgroundImage.color = charAsset.AvatarBGTint;
+
+        //hero power
+        //HeroPowerBackgroundImage.color = charAsset.HeroPowerBGTint;
+        //HeroPowerIconImage.sprite = charAsset.HeroPowerIconImage;
+        //HeroPowerBackgroundImage.sprite = charAsset.HeroPowerBGImage;
+
 
     }
 

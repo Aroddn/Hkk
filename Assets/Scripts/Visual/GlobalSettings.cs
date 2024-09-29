@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEditor;
+using System;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class GlobalSettings: MonoBehaviour 
 {
@@ -13,10 +16,10 @@ public class GlobalSettings: MonoBehaviour
     public Color32 CardRibbonsStandardColor;
     public Color32 CardGlowColor;
     [Header("Numbers and Values")]
-    public float CardPreviewTime = 1f;//1f
-    public float CardTransitionTime= 0.5f;//1f
+    public float CardPreviewTime = 1f;
+    public float CardTransitionTime= 1f;
     public float CardPreviewTimeFast = 0.2f;
-    public float CardTransitionTimeFast = 0.5f;//0.5f
+    public float CardTransitionTimeFast = 0.5f;
     [Header("Prefabs and Assets")]
     public GameObject NoTargetSpellCardPrefab;
     public GameObject TargetedSpellCardPrefab;
@@ -32,7 +35,6 @@ public class GlobalSettings: MonoBehaviour
 
     public Dictionary<AreaPosition, Player> Players = new Dictionary<AreaPosition, Player>();
 
-
     // SINGLETON
     public static GlobalSettings Instance;
 
@@ -41,6 +43,33 @@ public class GlobalSettings: MonoBehaviour
         Players.Add(AreaPosition.Top, TopPlayer);
         Players.Add(AreaPosition.Low, LowPlayer);
         Instance = this;
+
+        List<CardAsset> deck = new List<CardAsset>();
+
+        string[] angels = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Angels" });
+        string[] beasts = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/FireMagic" });
+        string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Beasts" });
+
+        foreach (string angel in angels)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(angel);
+            CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
+            deck.Add(card);
+            
+        }
+        Players[AreaPosition.Low].deck.cards = deck;
+
+        deck.Clear();
+
+        foreach (string f in fire)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(f);
+            CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
+            deck.Add(card);
+
+        }
+
+        Players[AreaPosition.Top].deck.cards = deck;
     }
 
     public bool CanControlThisPlayer(AreaPosition owner)

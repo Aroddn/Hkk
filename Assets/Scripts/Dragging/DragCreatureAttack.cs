@@ -92,6 +92,8 @@ public class DragCreatureAttack : DraggingActions {
 
         foreach (RaycastHit h in hits)
         {
+            Debug.Log("this.tag: "+this.tag);
+            Debug.Log("h.transform.tag: " + h.transform.tag);
             if ((h.transform.tag == "TopPlayer" && this.tag == "LowCreature") ||
                 (h.transform.tag == "LowPlayer" && this.tag == "TopCreature"))
             {
@@ -109,15 +111,17 @@ public class DragCreatureAttack : DraggingActions {
 
         bool targetValid = false;
 
+        Debug.Log(Target);
+
         if (Target != null)
         {
             int targetID = Target.GetComponent<IDHolder>().UniqueID;
-            Debug.Log("Target ID: " + targetID);
+            //Debug.Log("Target ID: " + targetID);
             if (targetID == GlobalSettings.Instance.LowPlayer.PlayerID || targetID == GlobalSettings.Instance.TopPlayer.PlayerID)
             {
                 // attack character
-                Debug.Log("Attacking " + Target);
-                Debug.Log("TargetID: " + targetID);
+                //Debug.Log("Attacking " + Target);
+                //Debug.Log("TargetID: " + targetID);
                 CreatureLogic.CreaturesCreatedThisGame[GetComponentInParent<IDHolder>().UniqueID].GoFace();
                 targetValid = true;
             }
@@ -134,7 +138,10 @@ public class DragCreatureAttack : DraggingActions {
         if (!targetValid)
         {
             // not a valid target, return
-            whereIsThisCreature.VisualState = VisualStates.LowTable;
+            if (tag.Contains("Low"))
+                whereIsThisCreature.VisualState = VisualStates.LowTable;
+            else
+                whereIsThisCreature.VisualState = VisualStates.TopTable;
             whereIsThisCreature.SetTableSortingOrder();
         }
 

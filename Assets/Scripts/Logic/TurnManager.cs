@@ -26,6 +26,18 @@ public class TurnManager : MonoBehaviour {
 
     public static List<PlayerAction> playerAction = new List<PlayerAction>();
 
+
+    private Player _whoseAction;
+
+    public Player WhoseAction
+    {
+        get
+        {
+            return _whoseTurn;
+        }
+        set { }
+    }
+
     private Player _whoseTurn;
     public Player whoseTurn
     {
@@ -87,8 +99,8 @@ public class TurnManager : MonoBehaviour {
         }
 
         Sequence s = DOTween.Sequence();
-        //s.Append(Player.Players[0].PArea.Portrait.transform.DOMove(Player.Players[0].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
-        //s.Insert(0f, Player.Players[1].PArea.Portrait.transform.DOMove(Player.Players[1].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
+        s.Append(Player.Players[0].PArea.Portrait.transform.DOMove(Player.Players[0].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
+        s.Insert(0f, Player.Players[1].PArea.Portrait.transform.DOMove(Player.Players[1].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
         s.PrependInterval(3f);
         s.OnComplete(() =>
             {
@@ -110,11 +122,6 @@ public class TurnManager : MonoBehaviour {
                     whoGoesFirst.DrawACard(true);
                 }
 
-                // add one more card to second player`s hand
-                //whoGoesSecond.DrawACard(true);
-                //new GivePlayerACoinCommand(null, whoGoesSecond).AddToQueue(); we dont do coins here
-                //whoGoesSecond.DrawACoin();
-
                 new StartATurnCommand(whoGoesFirst).AddToQueue();
             });
     }
@@ -130,13 +137,6 @@ public class TurnManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.M))
             whoseTurn.ManaLeft--;
 
-    }
-
-
-    public void EndTurnTest()
-    {
-        timer.StopTimer();
-        timer.StartTimer();
     }
 
     public void EndTurn()
@@ -159,38 +159,37 @@ public class TurnManager : MonoBehaviour {
         playerAction.Add(PlayerAction.Pass);
         PlayerAction last = playerAction[playerAction.Count - 1];
 
-           if (playerAction.Count > 1)
+        if (playerAction.Count > 1)
+        {
+            PlayerAction secondLast = playerAction[playerAction.Count - 2];
+
+            //whoseTurn changes
+            if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
             {
-                PlayerAction secondLast = playerAction[playerAction.Count - 2];
-                //Turnchange
-                if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
-                {
-                    playerAction.Add(PlayerAction.TurnChange);
-                    EndTurn();
-                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
-                }
-                else
-                {
+                playerAction.Add(PlayerAction.TurnChange);
+                EndTurn();
+                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
+            }
+            else
+            {
 
-                    if (secondLast == PlayerAction.TurnChange)
-                    {
-                        //give other player control
-                    }
-                    else
-                    {
-                        
-                    }
-
-                }
-           }
-           else
-           {
-                if (last == PlayerAction.Pass)
+                if (last == PlayerAction.Pass && secondLast == PlayerAction.TurnChange) 
                 {
-                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End turn";
+                    //give other player control
+                    //so whoseAction changes
+                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
                 }
 
             }
+        }
+        else
+        {
+            if(last == PlayerAction.Pass) {
+
+                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
+            }
+        }
+        
     }
 
     public void StopTheTimer()

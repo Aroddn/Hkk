@@ -108,17 +108,14 @@ public class Player : MonoBehaviour, ICharacter
 
     public virtual void OnTurnStart()
     {
-        //usedHeroPowerThisTurn = false;
         TurnCounter++;
         ManaLeft += TurnCounter;
-        ManaThisTurn += TurnCounter;
+        //ManaThisTurn += TurnCounter;
         //ManaLeft = 20;
-        ManaThisTurn = 20;
+        //ManaThisTurn = 20;
 
         foreach (CreatureLogic cl in table.CreaturesOnTable)
             cl.OnTurnStart();
-        //PArea.HeroPower.WasUsedThisTurn = false;
-
     }
 
     public void GetBonusMana(int amount)
@@ -295,7 +292,7 @@ public class Player : MonoBehaviour, ICharacter
 
     public void TransmitInfoAboutPlayerToVisual()
     {
-        //PArea.Portrait.GetComponent<IDHolder>().UniqueID = PlayerID;
+        PArea.Portrait.gameObject.AddComponent<IDHolder>().UniqueID = PlayerID;
         if (GetComponent<TurnMaker>() is AITurnMaker)
         {
             // turn off turn making for this character

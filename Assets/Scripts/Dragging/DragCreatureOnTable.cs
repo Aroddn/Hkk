@@ -51,7 +51,6 @@ public class DragCreatureOnTable : DraggingActions {
         if (DragSuccessful())
         {
             // determine table position
-            Debug.Log(playerOwner.ID);
             int tablePos = playerOwner.PArea.tableVisual.TablePosForNewCreature(Camera.main.ScreenToWorldPoint(
                new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)).x);
             // Debug.Log("Table Pos for new Creature: " + tablePos.ToString());

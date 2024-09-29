@@ -13,11 +13,14 @@ public class PlayerArea : MonoBehaviour
     public TableVisual tableVisual;
     public BoneVisual Bones;
 
-    //dont need prolly
+    //portrait
     public PlayerPortraitVisual Portrait;
+    public Transform PortraitPosition;
+    public Transform InitialPortraitPosition;
+
+    //dont need prolly
     //public HeroPowerButton HeroPower;
     //public EndTurnButton EndTurnButton;
-    public Transform PortraitPosition;
 
     public bool AllowedToControlThisPlayer
     {
