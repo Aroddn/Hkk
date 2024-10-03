@@ -47,8 +47,7 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             totalBones = value;
-            new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
-            //new UpdateBonesCommand(this, totalBones).AddToQueue();
+            new UpdateBonesCommand(this, totalBones).AddToQueue();
         }
     }
 
@@ -231,14 +230,6 @@ public class Player : MonoBehaviour, ICharacter
         HighlightPlayableCards();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            DrawACard();
-        }
-
-    }
 
     public void Die()
     {
@@ -253,7 +244,8 @@ public class Player : MonoBehaviour, ICharacter
     // METHODS TO SHOW GLOW HIGHLIGHTS
     public void HighlightPlayableCards(bool removeAllHighlights = false)
     {
-        //Debug.Log("HighlightPlayable remove: "+ removeAllHighlights);
+        //TODO if enemies turn highlight those that can be used with your acition but on enemies turn
+
         foreach (CardLogic cl in hand.CardsInHand)
         {
             GameObject g = IDHolder.GetGameObjectWithID(cl.UniqueCardID);
@@ -268,26 +260,15 @@ public class Player : MonoBehaviour, ICharacter
                 g.GetComponent<OneCreatureManager>().CanAttackNow = (crl.AttacksLeftThisTurn > 0) && !removeAllHighlights;
         }
             
-        // highlight hero power
-        //PArea.HeroPower.Highlighted = (!usedHeroPowerThisTurn) && (ManaLeft > 1) && !removeAllHighlights;
+
     }
 
     // START GAME METHODS
     public void LoadCharacterInfoFromAsset()
     {
         Health = charAsset.MaxHealth;
-        // change the visuals for portrait, hero power, etc...
         PArea.Portrait.charAsset = charAsset;
         PArea.Portrait.ApplyLookFromAsset();
-        // TODO: insert the code to attach hero power script here. 
-        //if (charAsset.HeroPowerName != null && charAsset.HeroPowerName != "")
-        //{
-        //    HeroPowerEffect = System.Activator.CreateInstance(System.Type.GetType(charAsset.HeroPowerName)) as SpellEffect;
-        //}
-        //else
-        //{
-        //    Debug.LogWarning("Check hero powr name for character " + charAsset.ClassName);
-        //}
     }
 
     public void TransmitInfoAboutPlayerToVisual()
@@ -305,10 +286,10 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
-    public void UseHeroPower()
+
+    //TODO what is this?
+    public void Die(bool sacrifice)
     {
-        ManaLeft -= 2;
-        //usedHeroPowerThisTurn = true;
-        HeroPowerEffect.ActivateEffect();
+        throw new System.NotImplementedException();
     }
 }

@@ -2,11 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class OneCreatureManager : MonoBehaviour 
+public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
 {
     public CardAsset cardAsset;
     public OneCardManager PreviewManager;
+    public CreatureLogic creatureLogic;
     [Header("Text Component References")]
     public TMP_Text HealthText;
     public TMP_Text AttackText;
@@ -14,6 +16,8 @@ public class OneCreatureManager : MonoBehaviour
     [Header("Image References")]
     public Image CreatureGraphicImage;
     public Image CreatureGlowImage;
+    [Header("UI References")]
+    public GameObject rightClickMenu;
 
     void Awake()
     {
@@ -34,6 +38,27 @@ public class OneCreatureManager : MonoBehaviour
             canAttackNow = value;
 
             CreatureGlowImage.enabled = value;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            // Toggle the right-click menu
+            if (rightClickMenu != null)
+            {
+                rightClickMenu.SetActive(!rightClickMenu.activeSelf);  
+            }
+        }
+    }
+
+    // Sacrifice the card (call this from the Sacrifice button)
+    public void Sacrifice()
+    {
+        if (creatureLogic != null)
+        {
+            CreatureLogic.CreaturesCreatedThisGame[GetComponentInParent<IDHolder>().UniqueID].Die(true);
         }
     }
 

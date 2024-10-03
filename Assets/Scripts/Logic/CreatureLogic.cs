@@ -12,7 +12,7 @@ public class CreatureLogic: ICharacter
     public int UniqueCreatureID;
     public int ID
     {
-        get{ return UniqueCreatureID; }
+        get { return UniqueCreatureID; }
     }
     public bool Frozen = false;
 
@@ -35,7 +35,7 @@ public class CreatureLogic: ICharacter
             if (value > MaxHealth)
                 health = baseHealth;
             else if (value <= 0)
-                Die();
+                Die(false);
             else
                 health = value;
         }
@@ -91,9 +91,15 @@ public class CreatureLogic: ICharacter
         AttacksLeftThisTurn = attacksForOneTurn;
     }
 
-    public void Die()
-    {   
+    public void Die(bool sacrifice)
+    {
         owner.table.CreaturesOnTable.Remove(this);
+
+        //except from sacrificeing
+        if(!sacrifice)
+        {
+            owner.otherPlayer.TotalBones++;
+        }
 
         new CreatureDieCommand(UniqueCreatureID, owner).AddToQueue();
     }

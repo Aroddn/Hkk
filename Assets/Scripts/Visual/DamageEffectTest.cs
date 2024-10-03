@@ -11,9 +11,11 @@ public class DamageEffectTest : MonoBehaviour {
         Instance = this;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-            DamageEffect.CreateDamageEffect(transform.position, Random.Range(1, 7));
-    }
+
+    //for test
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.A))
+    //        DamageEffect.CreateDamageEffect(transform.position, Random.Range(1, 7));
+    //}
 }

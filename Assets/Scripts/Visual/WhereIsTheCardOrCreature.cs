@@ -10,9 +10,9 @@ public enum VisualStates
     TopHand,
     LowTable,
     TopTable,
-    Dragging
-    //LowTableGuard,
-    //TopTableGuard
+    Dragging,
+    LowTableGuard,
+    TopTableGuard
 }
 
 public class WhereIsTheCardOrCreature : MonoBehaviour {

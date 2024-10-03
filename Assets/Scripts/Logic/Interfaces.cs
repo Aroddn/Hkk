@@ -4,7 +4,7 @@ using System.Collections;
 public interface ICharacter: IIdentifiable
 {	
     int Health { get;    set;}
-    void Die();
+    void Die(bool sacrifice);
 }
 
 public interface IIdentifiable

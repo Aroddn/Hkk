@@ -38,7 +38,6 @@ public class DragCreatureAttack : DraggingActions {
             // we can drag this card if 
             // a) we can control this our player (this is checked in base.canDrag)
             // b) creature "CanAttackNow" - this info comes from logic part of our code into each creature`s manager script
-            //return true;
 
             return base.CanDrag && manager.CanAttackNow;
         }
@@ -91,9 +90,7 @@ public class DragCreatureAttack : DraggingActions {
             maxDistance: 30f) ;
 
         foreach (RaycastHit h in hits)
-        {
-            Debug.Log("this.tag: "+this.tag);
-            Debug.Log("h.transform.tag: " + h.transform.tag);
+        { 
             if ((h.transform.tag == "TopPlayer" && this.tag == "LowCreature") ||
                 (h.transform.tag == "LowPlayer" && this.tag == "TopCreature"))
             {
@@ -116,12 +113,9 @@ public class DragCreatureAttack : DraggingActions {
         if (Target != null)
         {
             int targetID = Target.GetComponent<IDHolder>().UniqueID;
-            //Debug.Log("Target ID: " + targetID);
             if (targetID == GlobalSettings.Instance.LowPlayer.PlayerID || targetID == GlobalSettings.Instance.TopPlayer.PlayerID)
             {
                 // attack character
-                //Debug.Log("Attacking " + Target);
-                //Debug.Log("TargetID: " + targetID);
                 CreatureLogic.CreaturesCreatedThisGame[GetComponentInParent<IDHolder>().UniqueID].GoFace();
                 targetValid = true;
             }
@@ -130,7 +124,6 @@ public class DragCreatureAttack : DraggingActions {
                 // if targeted creature is still alive, attack creature
                 targetValid = true;
                 CreatureLogic.CreaturesCreatedThisGame[GetComponentInParent<IDHolder>().UniqueID].AttackCreatureWithID(targetID);
-                //Debug.Log("Attacking " + Target);
             }
 
         }

@@ -35,7 +35,7 @@ public class TurnManager : MonoBehaviour {
         {
             return _whoseTurn;
         }
-        set { }
+        set { _whoseAction = value; }
     }
 
     private Player _whoseTurn;
@@ -79,8 +79,6 @@ public class TurnManager : MonoBehaviour {
 
     public void OnGameStart()
     {
-        //Debug.Log("In TurnManager.OnGameStart()");
-
         CardLogic.CardsCreatedThisGame.Clear();
         CreatureLogic.CreaturesCreatedThisGame.Clear();
 
@@ -88,7 +86,7 @@ public class TurnManager : MonoBehaviour {
         {
             p.ManaThisTurn = 20;
             p.ManaLeft = 0;
-            //p.Bone
+            p.TotalBones = 0;
             p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
             p.TransmitInfoAboutPlayerToVisual();
 
@@ -110,7 +108,9 @@ public class TurnManager : MonoBehaviour {
                 Player whoGoesFirst = Player.Players[rnd];//rnd
                  //Debug.Log(whoGoesFirst);
                 Player whoGoesSecond = whoGoesFirst.otherPlayer;
-                 //Debug.Log(whoGoesSecond);
+                //Debug.Log(whoGoesSecond);
+
+                WhoseAction = whoGoesFirst;
          
                 // draw 5 cards for first player and 5 for second player
                 int initDraw = 5;
@@ -126,6 +126,7 @@ public class TurnManager : MonoBehaviour {
             });
     }
 
+    // TEXT COMMANDS
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -136,6 +137,10 @@ public class TurnManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.M))
             whoseTurn.ManaLeft--;
+
+        if (Input.GetKeyDown(KeyCode.D))
+            whoseTurn.DrawACard(); 
+        
 
     }
 
@@ -151,7 +156,8 @@ public class TurnManager : MonoBehaviour {
 
     public void GiveControlToOtherPlay()
     {
-
+        //TODO
+        WhoseAction = WhoseAction.otherPlayer;//not fully good
     }
 
     public void Pass()
@@ -191,12 +197,9 @@ public class TurnManager : MonoBehaviour {
         }
         
     }
-
     public void StopTheTimer()
     {
         timer.StopTimer();
     }
 
-
-    
 }
