@@ -33,9 +33,12 @@ public class TurnManager : MonoBehaviour {
     {
         get
         {
-            return _whoseTurn;
+            return _whoseAction;
         }
-        set { _whoseAction = value; }
+        set { 
+            _whoseAction = value;
+            GlobalSettings.Instance.EnableEndTurnButtonOnStart(_whoseAction);
+        }
     }
 
     private Player _whoseTurn;
@@ -109,11 +112,9 @@ public class TurnManager : MonoBehaviour {
                  //Debug.Log(whoGoesFirst);
                 Player whoGoesSecond = whoGoesFirst.otherPlayer;
                 //Debug.Log(whoGoesSecond);
-
-                WhoseAction = whoGoesFirst;
          
                 // draw 5 cards for first player and 5 for second player
-                int initDraw = 5;
+                int initDraw = 4;
                 for (int i = 0; i < initDraw; i++)
                 {            
                     // second player draws a card
@@ -121,6 +122,8 @@ public class TurnManager : MonoBehaviour {
                     // first player draws a card
                     whoGoesFirst.DrawACard(true);
                 }
+
+                whoGoesSecond.DrawACard(true);
 
                 new StartATurnCommand(whoGoesFirst).AddToQueue();
             });
@@ -154,49 +157,75 @@ public class TurnManager : MonoBehaviour {
         new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
     }
 
-    public void GiveControlToOtherPlay()
+    public void GiveControlToOtherPlayer()
     {
         //TODO
-        WhoseAction = WhoseAction.otherPlayer;//not fully good
+        Debug.Log(WhoseAction);
+        WhoseAction = WhoseAction.otherPlayer;
+        //whosturn doesnt change
+        //whoseTurn = whoseTurn.otherPlayer;
+        Debug.Log(whoseTurn);
+        Debug.Log(WhoseAction);
+
+        timer.StartTimer();
+
+        GlobalSettings.Instance.EnableEndTurnButtonOnStart(WhoseAction);
+
+        //TurnMaker tm = WhoseAction.GetComponent<TurnMaker>();
+        //// player`s method OnTurnStart() will be called in tm.OnTurnStart();
+        //tm.OnTurnStart();
+        //if (tm is PlayerTurnMaker)
+        //{
+        //    WhoseAction.HighlightPlayableCards();
+        //}
+
+        WhoseAction.HighlightPlayableCards();
+        // remove highlights for opponent.
+        WhoseAction.otherPlayer.HighlightPlayableCards(true);
+
+        
     }
 
-    public void Pass()
-    {
-        playerAction.Add(PlayerAction.Pass);
-        PlayerAction last = playerAction[playerAction.Count - 1];
-
-        if (playerAction.Count > 1)
+        public void Pass()
         {
-            PlayerAction secondLast = playerAction[playerAction.Count - 2];
+            playerAction.Add(PlayerAction.Pass);
+            PlayerAction last = playerAction[playerAction.Count - 1];
 
-            //whoseTurn changes
-            if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
+            if (playerAction.Count > 1)
             {
-                playerAction.Add(PlayerAction.TurnChange);
-                EndTurn();
-                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
+                PlayerAction secondLast = playerAction[playerAction.Count - 2];
+
+                //whoseTurn changes
+                if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
+                {
+                    playerAction.Add(PlayerAction.TurnChange);
+                    EndTurn();
+                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
+                }
+                else
+                {
+
+                    if (last == PlayerAction.Pass && secondLast == PlayerAction.TurnChange ||
+                        last == PlayerAction.Pass && secondLast == PlayerAction.PlayerLowAction ||
+                        last == PlayerAction.Pass && secondLast == PlayerAction.PlayerTopAction)
+                    {
+                        //give other player control
+                        //so whoseAction changes
+                        GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
+                    }
+                }
             }
             else
             {
+                if (last == PlayerAction.Pass) {
 
-                if (last == PlayerAction.Pass && secondLast == PlayerAction.TurnChange) 
-                {
-                    //give other player control
-                    //so whoseAction changes
                     GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
                 }
-
             }
-        }
-        else
-        {
-            if(last == PlayerAction.Pass) {
 
-                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
-            }
+
         }
-        
-    }
+
     public void StopTheTimer()
     {
         timer.StopTimer();

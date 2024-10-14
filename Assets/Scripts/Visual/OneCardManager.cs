@@ -45,6 +45,7 @@ public class OneCardManager : MonoBehaviour {
             canBePlayedNow = value;
 
             CardFaceGlowImage.enabled = value;
+            //PreviewManager.CardFaceGlowImage.enabled = value;
         }
     }
 

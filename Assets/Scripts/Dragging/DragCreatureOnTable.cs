@@ -64,6 +64,7 @@ public class DragCreatureOnTable : DraggingActions {
             {
                 TurnManager.playerAction.Add(PlayerAction.PlayerTopAction);
             }
+            TurnManager.Instance.GiveControlToOtherPlayer();
             
         }
         else

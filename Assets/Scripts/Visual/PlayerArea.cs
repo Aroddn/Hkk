@@ -22,9 +22,5 @@ public class PlayerArea : MonoBehaviour
     //public HeroPowerButton HeroPower;
     //public EndTurnButton EndTurnButton;
 
-    public bool AllowedToControlThisPlayer
-    {
-        get;
-        set;
-    }      
+    public bool AllowedToControlThisPlayer{get;  set;}      
 }
