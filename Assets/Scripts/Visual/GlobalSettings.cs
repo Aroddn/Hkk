@@ -76,6 +76,7 @@ public class GlobalSettings: MonoBehaviour
     {
         //bool PlayersTurn = (TurnManager.Instance.whoseTurn == Players[owner]);
         bool PlayersTurn = (TurnManager.Instance.WhoseAction == Players[owner]);
+        //Debug.Log(TurnManager.Instance.WhoseAction);
         bool NotDrawingAnyCards = !Command.CardDrawPending();
         return Players[owner].PArea.AllowedToControlThisPlayer && Players[owner].PArea.ControlsON && PlayersTurn && NotDrawingAnyCards;
     }
@@ -90,7 +91,6 @@ public class GlobalSettings: MonoBehaviour
 
     public void EnableEndTurnButtonOnStart(Player P)
     {
-
         if (P == LowPlayer && CanControlThisPlayer(AreaPosition.Low) ||
             P == TopPlayer && CanControlThisPlayer(AreaPosition.Top))
             EndTurnButton.interactable = true;

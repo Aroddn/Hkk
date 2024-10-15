@@ -109,9 +109,6 @@ public class Player : MonoBehaviour, ICharacter
     {
         TurnCounter++;
         ManaLeft += TurnCounter;
-        //ManaThisTurn += TurnCounter;
-        //ManaLeft = 20;
-        //ManaThisTurn = 20;
 
         foreach (CreatureLogic cl in table.CreaturesOnTable)
             cl.OnTurnStart();

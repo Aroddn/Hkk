@@ -17,7 +17,10 @@ MonoBehaviour:
   releaseYear: 2016
   mental: 0
   defense: 0
-  Description: "Megsz\xFCntet\xE9s: 14 \xC9P. "
+  fire: 0
+  anchor: 0
+  Description: "Megsz\xFCntet\xE9s: 14 \xC9P. S, ha sikeresen kij\xE1tszol a kezedb\u0151l
+    egy Raia lapot, kapsz 1 Kisebb angyal lapot akt\xEDvan a tartal\xE9kodba."
   FlavorText: 
   CardImage: {fileID: 21300000, guid: f96dcf0be5cd7a8478396277ebe3c11a, type: 3}
   ManaCost: 0

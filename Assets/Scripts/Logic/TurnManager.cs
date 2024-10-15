@@ -36,8 +36,7 @@ public class TurnManager : MonoBehaviour {
             return _whoseAction;
         }
         set { 
-            _whoseAction = value;
-            GlobalSettings.Instance.EnableEndTurnButtonOnStart(_whoseAction);
+            _whoseAction = value;   
         }
     }
 
@@ -160,30 +159,14 @@ public class TurnManager : MonoBehaviour {
     public void GiveControlToOtherPlayer()
     {
         //TODO
-        Debug.Log(WhoseAction);
+        Debug.Log("WhoseAction: "+WhoseAction);
         WhoseAction = WhoseAction.otherPlayer;
-        //whosturn doesnt change
-        //whoseTurn = whoseTurn.otherPlayer;
-        Debug.Log(whoseTurn);
-        Debug.Log(WhoseAction);
-
-        timer.StartTimer();
-
         GlobalSettings.Instance.EnableEndTurnButtonOnStart(WhoseAction);
-
-        //TurnMaker tm = WhoseAction.GetComponent<TurnMaker>();
-        //// player`s method OnTurnStart() will be called in tm.OnTurnStart();
-        //tm.OnTurnStart();
-        //if (tm is PlayerTurnMaker)
-        //{
-        //    WhoseAction.HighlightPlayableCards();
-        //}
-
         WhoseAction.HighlightPlayableCards();
-        // remove highlights for opponent.
         WhoseAction.otherPlayer.HighlightPlayableCards(true);
 
-        
+        Debug.Log("whoseTurn: " + whoseTurn);
+        Debug.Log("WhoseAction: " + WhoseAction);
     }
 
         public void Pass()
