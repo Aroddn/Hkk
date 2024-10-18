@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using System;
 
-public class Deck : MonoBehaviour {
+public class GraveYard : MonoBehaviour {
 
     public List<CardAsset> cards;
 
-
     void Awake()
-    {
-        cards.Shuffle();
+    {    
+        
     }
 	
 }

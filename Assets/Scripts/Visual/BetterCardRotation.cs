@@ -6,7 +6,8 @@ using System.Collections;
 /// </summary>
 
 [ExecuteInEditMode]
-public class BetterCardRotation : MonoBehaviour {
+public class BetterCardRotation : MonoBehaviour
+{
 
     // parent game object for all the card face graphics
     public RectTransform CardFront;
@@ -23,15 +24,16 @@ public class BetterCardRotation : MonoBehaviour {
     // if this is true, our players currently see the card Back
     private bool showingBack = false;
 
-	// Update is called once per frame
-	void Update () 
+    // Update is called once per frame
+    void Update()
     {
         // Raycast from Camera to a target point on the face of the card
         // If it passes through the card`s collider, we should show the back of the card
+
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(origin: Camera.main.transform.position, 
-                                  direction: (-Camera.main.transform.position + targetFacePoint.position).normalized, 
-            maxDistance: (-Camera.main.transform.position + targetFacePoint.position).magnitude) ;
+        hits = Physics.RaycastAll(origin: Camera.main.transform.position,
+                                  direction: (-Camera.main.transform.position + targetFacePoint.position).normalized,
+            maxDistance: (-Camera.main.transform.position + targetFacePoint.position).magnitude);
         bool passedThroughColliderOnCard = false;
         foreach (RaycastHit h in hits)
         {
@@ -39,19 +41,20 @@ public class BetterCardRotation : MonoBehaviour {
                 passedThroughColliderOnCard = true;
         }
         //Debug.Log("TotalHits: " + hits.Length); 
-        if (passedThroughColliderOnCard!= showingBack)
+        if (passedThroughColliderOnCard != showingBack)
         {
-            //Debug.Log("something changed");
+            // something changed
             showingBack = passedThroughColliderOnCard;
             if (showingBack)
             {
-
+                // show the back side
                 //Debug.Log("show the back side");
                 CardFront.gameObject.SetActive(false);
                 CardBack.gameObject.SetActive(true);
             }
             else
             {
+                // show the front side
                 //Debug.Log("show the front side");
                 CardFront.gameObject.SetActive(true);
                 CardBack.gameObject.SetActive(false);
@@ -59,5 +62,22 @@ public class BetterCardRotation : MonoBehaviour {
 
         }
 
-	}
+    }
+    void OnDrawGizmos()
+    {
+        if (targetFacePoint != null && Camera.main != null)
+        {
+            Gizmos.color = UnityEngine.Color.green;
+            Vector3 origin = Camera.main.transform.position;
+            Vector3 direction = (targetFacePoint.position - origin).normalized;
+            float maxDistance = (targetFacePoint.position - origin).magnitude;
+
+            // Draw the raycast line
+            Gizmos.DrawLine(origin, origin + direction * maxDistance);
+
+            // Draw a sphere at the end of the raycast to visualize the target point
+            Gizmos.color = UnityEngine.Color.red;
+            Gizmos.DrawSphere(targetFacePoint.position, 0.05f);
+        }
+    }
 }

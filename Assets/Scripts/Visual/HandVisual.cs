@@ -19,8 +19,6 @@ public class HandVisual : MonoBehaviour
     // PRIVATE : a list of all card visual representations as GameObjects
     private List<GameObject> CardsInHand = new List<GameObject>();
 
-    public GameObject LastDealtCard{ get; set;}
-
     public void PlayASpellFromHand(int CardID)
     {
         GameObject card = IDHolder.GetGameObjectWithID(CardID);
@@ -84,8 +82,9 @@ public class HandVisual : MonoBehaviour
             posX = (slots.Children[0].transform.localPosition.x - slots.Children[CardsInHand.Count - 1].transform.localPosition.x) / 2f;
         else
             posX = 0f;
-            
-        slots.gameObject.transform.DOLocalMoveX(posX, 0.3f);  
+
+        // tween Slots GameObject to new position in 0.3 seconds
+        slots.gameObject.transform.DOLocalMoveX(posX, 0.3f);
     }
 
 
@@ -106,50 +105,35 @@ public class HandVisual : MonoBehaviour
     {
         GameObject card;
         if (fromDeck)
-            card = CreateACardAtPosition(c, DeckTransform.position, new Vector3(0f, -179f, 0f));//DeckTransform.position
-
+            card = CreateACardAtPosition(c, DeckTransform.position, new Vector3(0f, -179f, 0f));
         else
             card = CreateACardAtPosition(c, OtherCardDrawSourceTransform.position, new Vector3(0f, -179f, 0f));
 
-        // save this as visual representation in CardLogic
-         Player ownerPlayer = GlobalSettings.Instance.Players[owner];
-        //Debug.Log(ownerPlayer);
-        //Debug.Log(ownerPlayer.hand);
-        //Debug.Log("CArdsInHand.Count: "+ ownerPlayer.hand.CardsInHand.Count);
-        ////Debug.Log("Attempted placeInHand: " +placeInHand);
-         ownerPlayer.hand.CardsInHand[0].VisualRepresentation = card;
-        //Debug.Log(ownerPlayer.hand);
         // Set a tag to reflect where this card is
-
         foreach (Transform t in card.GetComponentsInChildren<Transform>())
-            t.tag = owner.ToString()+"Card";
+            t.tag = owner.ToString() + "Card";
         // pass this card to HandVisual class
         AddCard(card);
-        // let the card know about its place in hand.
+
+        // Bring card to front while it travels from draw spot to hand
         WhereIsTheCardOrCreature w = card.GetComponent<WhereIsTheCardOrCreature>();
         w.BringToFront();
-
         w.Slot = 0;
-        
         w.VisualState = VisualStates.Transition;
+
         // pass a unique ID to this card.
         IDHolder id = card.AddComponent<IDHolder>();
         id.UniqueID = UniqueID;
 
-        // save this card to change its state to "Hand" when it arrives to the hand.
-        //LastDealtCard = card;
-
         // move card to the hand;
         Sequence s = DOTween.Sequence();
         if (!fast)
-        {
-            //Debug.Log("Not fast!!!");
-            //Debug.Log(GlobalSettings.Instance.CardTransitionTime);
+        {         
+
             s.Append(card.transform.DOMove(DrawPreviewSpot.position, GlobalSettings.Instance.CardTransitionTime));
             if (TakeCardsOpenly)
-                s.Insert(0f, card.transform.DORotate(Vector3.zero, GlobalSettings.Instance.CardTransitionTime));
-            else
-                s.Insert(0f, card.transform.DORotate(new Vector3(0f, 179f, 0f), GlobalSettings.Instance.CardTransitionTime));
+                s.Insert(0.5f, card.transform.DORotate(Vector3.zero, GlobalSettings.Instance.CardTransitionTime));
+            
             s.AppendInterval(GlobalSettings.Instance.CardPreviewTime);
             // displace the card so that we can select it in the scene easier.
             s.Append(card.transform.DOLocalMove(slots.Children[0].transform.localPosition, GlobalSettings.Instance.CardTransitionTime));
@@ -160,6 +144,7 @@ public class HandVisual : MonoBehaviour
             s.Append(card.transform.DOLocalMove(slots.Children[0].transform.localPosition, GlobalSettings.Instance.CardTransitionTimeFast));
             if (TakeCardsOpenly)
                 s.Insert(0f, card.transform.DORotate(Vector3.zero, GlobalSettings.Instance.CardTransitionTimeFast));
+
         }
 
         s.OnComplete(()=>ChangeLastCardStatusToInHand(card, w));
@@ -180,7 +165,7 @@ public class HandVisual : MonoBehaviour
     GameObject CreateACardAtPosition(CardAsset c, Vector3 position, Vector3 eulerAngles)
     {
         // Instantiate a card depending on its type
-        GameObject card = null;
+        GameObject card;
         if (c.MaxHealth > 0)
         {
             // this card is a creature card
@@ -208,5 +193,8 @@ public class HandVisual : MonoBehaviour
 
         return card;
     }
+
+    // PLAYING SPELLS
+
 
 }

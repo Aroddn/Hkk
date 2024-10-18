@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using System;
 using Unity.Collections.LowLevel.Unsafe;
+using System.Linq;
 
 public class GlobalSettings: MonoBehaviour 
 {
@@ -45,31 +46,32 @@ public class GlobalSettings: MonoBehaviour
         Instance = this;
 
         List<CardAsset> deck = new List<CardAsset>();
+        List<CardAsset> deck2 = new List<CardAsset>();
 
         string[] angels = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Angels" });
-        string[] beasts = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/FireMagic" });
-        string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Beasts" });
+        string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/FireMagic" });
+        string[] beasts = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Beasts" });
 
         foreach (string angel in angels)
         {
             string path = AssetDatabase.GUIDToAssetPath(angel);
             CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
-            deck.Add(card);
-            
-        }
-        Players[AreaPosition.Low].deck.cards = deck;
+            deck.AddRange(Enumerable.Repeat(card, 3));
 
-        deck.Clear();
+        }
+        //deck.Shuffle();
+        Players[AreaPosition.Top].deck.cards = deck;
 
         foreach (string f in fire)
         {
             string path = AssetDatabase.GUIDToAssetPath(f);
             CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
-            deck.Add(card);
+            deck2.AddRange(Enumerable.Repeat(card, 3));
 
         }
+        deck2.Shuffle();
 
-        Players[AreaPosition.Top].deck.cards = deck;
+        Players[AreaPosition.Low].deck.cards = deck2;
     }
 
     public bool CanControlThisPlayer(AreaPosition owner)

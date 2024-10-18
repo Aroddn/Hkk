@@ -16,7 +16,7 @@ public class CardAsset : ScriptableObject
     public bool anchor;
 
     //public bool reaction
-    [TextArea(2,3)]
+    [TextArea(2, 3)]
     public string Description;
     [TextArea(2, 3)]
     public string FlavorText;
@@ -34,7 +34,7 @@ public class CardAsset : ScriptableObject
     public int specialCreatureAmount;
     public Type type;
     public SubType subType;
-    
+
 
     [Header("SpellInfo")]
     public string SpellScriptName;
@@ -42,7 +42,6 @@ public class CardAsset : ScriptableObject
     public PlaySpeed playSpeed;
     public SubType spellSubType;
     public TargetingOptions Targets;
-
 }
 public enum TargetingOptions
 {

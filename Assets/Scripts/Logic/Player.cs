@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour, ICharacter
 {
@@ -16,10 +17,14 @@ public class Player : MonoBehaviour, ICharacter
     public Hand hand;
     public Table table;
 
+    public GraveYard graveYard;
+    public Void voiid;
+
     private int TurnCounter;
     private int bonusManaThisTurn = 0;
     //public bool usedHeroPowerThisTurn = false;
 
+    
 
     public int ID
     {
@@ -224,7 +229,19 @@ public class Player : MonoBehaviour, ICharacter
         new PlayACreatureCommand(playedCard, this, tablePos, newCreature.UniqueCreatureID).AddToQueue();
         // remove this card from hand
         hand.CardsInHand.Remove(playedCard);
-        HighlightPlayableCards();
+
+        if (ID == 2)
+        {
+            TurnManager.playerAction.Add(PlayerAction.PlayerLowAction);
+        }
+        else
+        {
+            TurnManager.playerAction.Add(PlayerAction.PlayerTopAction);
+        }
+
+        TurnManager.Instance.GiveControlToOtherPlayer();
+
+        //HighlightPlayableCards();
     }
 
 

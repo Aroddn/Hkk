@@ -35,8 +35,8 @@ MonoBehaviour:
   specialCreatureAmount: 0
   type: 0
   subType: 0
-  SpellScriptName: 
+  SpellScriptName: DealDamageToTarget
   specialSpellAmount: 3
   playSpeed: 0
   spellSubType: 12
-  Targets: 0
+  Targets: 4

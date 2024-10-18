@@ -12,6 +12,19 @@ public class DragSpellOnTarget : DraggingActions {
     private Transform triangle;
     private SpriteRenderer triangleSR;
     private GameObject Target;
+    private OneCardManager manager;
+
+    public override bool CanDrag
+    {
+        get
+        {
+            // TEST LINE: this is just to test playing creatures before the game is complete 
+            // return true;
+
+            // TODO : include full field check
+            return base.CanDrag && manager.CanBePlayedNow;
+        }
+    }
 
     void Awake()
     {
@@ -21,6 +34,7 @@ public class DragSpellOnTarget : DraggingActions {
         triangle = transform.Find("Triangle");
         triangleSR = triangle.GetComponent<SpriteRenderer>();
 
+        manager = GetComponentInParent<OneCardManager>();
         whereIsThisCard = GetComponentInParent<WhereIsTheCardOrCreature>();
     }
 

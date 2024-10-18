@@ -6,10 +6,23 @@ public class DragSpellNoTarget: DraggingActions{
 
     private int savedHandSlot;
     private WhereIsTheCardOrCreature whereIsCard;
+    private OneCardManager manager;
 
+    public override bool CanDrag
+    {
+        get
+        {
+            // TEST LINE: this is just to test playing creatures before the game is complete 
+            // return true;
+
+            // TODO : include full field check
+            return base.CanDrag && manager.CanBePlayedNow;
+        }
+    }
     void Awake()
     {
         whereIsCard = GetComponent<WhereIsTheCardOrCreature>();
+        manager = GetComponent<OneCardManager>();
     }
 
     public override void OnStartDrag()
@@ -51,9 +64,9 @@ public class DragSpellNoTarget: DraggingActions{
 
     protected override bool DragSuccessful()
     {
-        bool TableNotFull = (TurnManager.Instance.whoseTurn.table.CreaturesOnTable.Count < 5);
+        //bool TableNotFull = (TurnManager.Instance.whoseTurn.table.CreaturesOnTable.Count < 5);
 
-        return TableVisual.CursorOverSomeTable && TableNotFull; //&& TableNotFull;
+        return TableVisual.CursorOverSomeTable; //&& TableNotFull;
     }
 
 

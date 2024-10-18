@@ -17,6 +17,8 @@ MonoBehaviour:
   releaseYear: 2016
   mental: 0
   defense: 0
+  fire: 0
+  anchor: 0
   Description: "H\xFAzz 1 lapot! C\xE9lpont l\xE9ny vagy j\xE1t\xE9kos gy\xF3gyul
     6-ot"
   FlavorText: "A hit adjon neked er\u0151t, gyermekem! - Raiai f\u0151papja"
@@ -24,7 +26,7 @@ MonoBehaviour:
   ManaCost: 1
   MaxHealth: 0
   Attack: 0
-  AttacksForOneTurn: 1
+  AttacksForOneTurn: 0
   Bone: 0
   Flying: 0
   Hand: 0

@@ -39,4 +39,4 @@ MonoBehaviour:
   specialSpellAmount: 0
   playSpeed: 0
   spellSubType: 0
-  Targets: 0
+  Targets: 4

@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class DragOnTargetTest : DraggingActionsTest
 {
-    public TargetingOptions Targets = TargetingOptions.AllCharacters;
+    //public TargetingOptions Targets = TargetingOptions.AllCharacters;
     private SpriteRenderer sr;
     private LineRenderer lr;
     private Transform triangle;

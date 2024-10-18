@@ -108,8 +108,6 @@ public class DragCreatureAttack : DraggingActions {
 
         bool targetValid = false;
 
-        Debug.Log(Target);
-
         if (Target != null)
         {
             int targetID = Target.GetComponent<IDHolder>().UniqueID;

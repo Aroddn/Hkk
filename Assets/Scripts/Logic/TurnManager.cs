@@ -159,14 +159,10 @@ public class TurnManager : MonoBehaviour {
     public void GiveControlToOtherPlayer()
     {
         //TODO
-        Debug.Log("WhoseAction: "+WhoseAction);
         WhoseAction = WhoseAction.otherPlayer;
         GlobalSettings.Instance.EnableEndTurnButtonOnStart(WhoseAction);
         WhoseAction.HighlightPlayableCards();
         WhoseAction.otherPlayer.HighlightPlayableCards(true);
-
-        Debug.Log("whoseTurn: " + whoseTurn);
-        Debug.Log("WhoseAction: " + WhoseAction);
     }
 
         public void Pass()
@@ -194,6 +190,7 @@ public class TurnManager : MonoBehaviour {
                     {
                         //give other player control
                         //so whoseAction changes
+                        GiveControlToOtherPlayer();
                         GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
                     }
                 }

@@ -17,6 +17,8 @@ MonoBehaviour:
   releaseYear: 2016
   mental: 0
   defense: 0
+  fire: 0
+  anchor: 0
   Description: "C\xE9lpont lap a gy\u0171jt\u0151be ker\xFCl. Ellenfeled kap \"1
     VP\"-t"
   FlavorText: "Raiai legtiszt\xE1bb k\xF6vet\u0151i mindig azt hitt\xE9k, hogy a
@@ -37,4 +39,4 @@ MonoBehaviour:
   specialSpellAmount: 0
   playSpeed: 1
   spellSubType: 0
-  Targets: 1
+  Targets: 0

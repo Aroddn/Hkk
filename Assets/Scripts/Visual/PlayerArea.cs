@@ -13,6 +13,9 @@ public class PlayerArea : MonoBehaviour
     public TableVisual tableVisual;
     public BoneVisual Bones;
 
+    public GraveYardVisual graveYardVisual;
+    public VoidVisual voidVisual;
+
     //portrait
     public PlayerPortraitVisual Portrait;
     public Transform PortraitPosition;

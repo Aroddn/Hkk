@@ -2,10 +2,6 @@
 using System.Collections;
 
 public class DrawACardCommand : Command {
-    // first argument
-    // "1" - fast
-    // "0" - normal
-
     private Player p;
     private CardLogic cl;
     private bool fast;

@@ -17,6 +17,8 @@ MonoBehaviour:
   releaseYear: 2012
   mental: 0
   defense: 0
+  fire: 0
+  anchor: 0
   Description: "Rep\xFCl. L\xE1thatatlan"
   FlavorText: 
   CardImage: {fileID: 21300000, guid: 09e6afef41d9d5645abb2ad91887ff92, type: 3}

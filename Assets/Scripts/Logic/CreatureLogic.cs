@@ -101,7 +101,10 @@ public class CreatureLogic: ICharacter
             owner.otherPlayer.TotalBones++;
         }
 
+        owner.graveYard.cards.Add(ca);
+
         new CreatureDieCommand(UniqueCreatureID, owner).AddToQueue();
+
     }
 
     public void GoFace()

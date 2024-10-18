@@ -40,14 +40,19 @@ public class CardLogic: IIdentifiable
 
     public CardLogic(CardAsset ca)
     {
+        // set the CardAsset reference
         this.ca = ca;
+        // get unique int ID
         UniqueCardID = IDFactory.GetUniqueID();
+        //UniqueCardID = IDFactory.GetUniqueID();
         ResetManaCost();
-
-        if (ca.SpellScriptName!= null && ca.SpellScriptName!= "")
+        // create an instance of SpellEffect with a name from our CardAsset
+        // and attach it to 
+        if (ca.SpellScriptName != null && ca.SpellScriptName != "")
         {
             effect = System.Activator.CreateInstance(System.Type.GetType(ca.SpellScriptName)) as SpellEffect;
         }
+        // add this card to a dictionary with its ID as a key
         CardsCreatedThisGame.Add(UniqueCardID, this);
     }
 
