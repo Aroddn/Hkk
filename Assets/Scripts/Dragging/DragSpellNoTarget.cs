@@ -12,10 +12,6 @@ public class DragSpellNoTarget: DraggingActions{
     {
         get
         {
-            // TEST LINE: this is just to test playing creatures before the game is complete 
-            // return true;
-
-            // TODO : include full field check
             return base.CanDrag && manager.CanBePlayedNow;
         }
     }

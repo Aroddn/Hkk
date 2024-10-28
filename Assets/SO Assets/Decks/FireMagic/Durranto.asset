@@ -30,7 +30,7 @@ MonoBehaviour:
   Bone: 1
   Flying: 1
   Hand: 1
-  CreatureScriptName: 
+  CreatureScriptName: DrawCard
   specialCreatureAmount: 0
   type: 0
   subType: 0

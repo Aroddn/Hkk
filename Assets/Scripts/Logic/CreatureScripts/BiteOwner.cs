@@ -9,6 +9,7 @@ public class BiteOwner : CreatureEffect
     public override void RegisterEffect()
     {
         owner.EndTurnEvent += CauseEffect;
+        //owner.otherPlayer.EndTurnEvent += CauseEffect; also calls it on enemy turn
         Debug.Log("Registered bite effect!!!!");
     }
 

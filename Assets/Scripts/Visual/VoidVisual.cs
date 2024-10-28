@@ -13,7 +13,7 @@ public class VoidVisual : MonoBehaviour, IPointerClickHandler
         {
             foreach (CardAsset card in GlobalSettings.Instance.Players[owner].voiid.cards)
             {
-                //Debug.Log(card);
+                Debug.Log(card);
             }
         }
     }

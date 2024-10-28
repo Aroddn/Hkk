@@ -101,6 +101,9 @@ public class CreatureLogic: ICharacter
             owner.otherPlayer.TotalBones++;
         }
 
+        if (effect != null)
+            effect.WhenACreatureDies();
+
         owner.graveYard.cards.Add(ca);
 
         new CreatureDieCommand(UniqueCreatureID, owner).AddToQueue();

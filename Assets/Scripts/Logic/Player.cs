@@ -239,6 +239,9 @@ public class Player : MonoBehaviour, ICharacter
             TurnManager.playerAction.Add(PlayerAction.PlayerTopAction);
         }
 
+        if (newCreature.effect != null)
+            newCreature.effect.WhenACreatureIsPlayed();
+
         TurnManager.Instance.GiveControlToOtherPlayer();
 
         //HighlightPlayableCards();

@@ -95,7 +95,7 @@ public class TurnManager : MonoBehaviour {
             //portrait things
             p.LoadCharacterInfoFromAsset();
             // move both portraits to the center
-            p.PArea.Portrait.transform.position = p.PArea.handVisual.OtherCardDrawSourceTransform.position;
+            p.PArea.Portrait.transform.position = p.PArea.InitialPortraitPosition.transform.position;
         }
 
         Sequence s = DOTween.Sequence();
@@ -142,7 +142,6 @@ public class TurnManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.D))
             whoseTurn.DrawACard(); 
-        
 
     }
 

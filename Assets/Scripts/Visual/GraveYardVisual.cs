@@ -13,7 +13,7 @@ public class GraveYardVisual : MonoBehaviour, IPointerClickHandler
         {
             foreach (CardAsset card in GlobalSettings.Instance.Players[owner].graveYard.cards)
             {
-                //Debug.Log(card);
+                Debug.Log(card);
             }
         }
     }

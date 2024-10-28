@@ -11,8 +11,6 @@ public class DamageEffectTest : MonoBehaviour {
         Instance = this;
     }
 
-
-    //for test
     //void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.A))
