@@ -48,9 +48,9 @@ public class GlobalSettings: MonoBehaviour
         List<CardAsset> deck = new List<CardAsset>();
         List<CardAsset> deck2 = new List<CardAsset>();
 
-        string[] angels = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Angels" });
-        string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/FireMagic" });
-        string[] beasts = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/SO Assets/Decks/Beasts" });
+        string[] angels = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/Angels" });
+        string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/FireMagic" });
+        string[] beasts = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/Beasts" });
 
         foreach (string angel in angels)
         {

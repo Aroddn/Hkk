@@ -90,7 +90,14 @@ public class Player : MonoBehaviour, ICharacter
         get { return health;}
         set
         {
-            health = value;
+            if (value > charAsset.MaxHealth)
+            {
+                health = charAsset.MaxHealth;
+            }
+            else
+            {
+                health = value;
+            }
             if (value <= 0)
                 Die(); 
         }

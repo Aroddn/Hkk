@@ -45,14 +45,28 @@ public class PlayerPortraitVisual : MonoBehaviour {
         }
     }
 
+    public void Heal(int amount, int healthAfter)
+    {
+        if (amount > 0)
+        {
+            HealEffect.CreateHealEffect(transform.position, amount);
+            if (healthAfter > charAsset.MaxHealth)
+            {
+                HealthText.text = charAsset.MaxHealth.ToString();
+            }
+            else
+            {
+                HealthText.text = healthAfter.ToString();
+            }
+        }
+    }
+
     public void Explode()
     {
-        /* TODO
         Instantiate(GlobalSettings.Instance.ExplosionPrefab, transform.position, Quaternion.identity);
         Sequence s = DOTween.Sequence();
         s.PrependInterval(2f);
-        s.OnComplete(() => GlobalSettings.Instance.GameOverCanvas.SetActive(true));
-        */
+        s.OnComplete(() => GlobalSettings.Instance.GameOverCanvas.SetActive(true)); 
     }
 
 

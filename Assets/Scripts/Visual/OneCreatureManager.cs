@@ -87,4 +87,22 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
             HealthText.text = healthAfter.ToString();
         }
     }
+
+    public void Heal(int amount, int healthAfter)
+    {
+        if (amount > 0)
+        {
+            //TODO
+            HealEffect.CreateHealEffect(transform.position, amount);
+            if (healthAfter > cardAsset.MaxHealth)
+            {
+                HealthText.text = cardAsset.MaxHealth.ToString();
+            }
+            else
+            {
+                HealthText.text = healthAfter.ToString();
+            }
+            
+        }
+    }
 }

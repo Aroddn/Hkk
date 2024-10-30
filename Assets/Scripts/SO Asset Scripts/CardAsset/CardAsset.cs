@@ -7,21 +7,26 @@ using System;
 public class CardAsset : ScriptableObject 
 {
     [Header("General info")]
-    public Rarity rarity;
-    public Color color;
+    public RarityOptions Rarity;
+    public ColorType color;
     public int releaseYear;
     public bool mental;
     public bool defense;
     public bool fire;
     public bool anchor;
 
-    //public bool reaction
     [TextArea(2, 3)]
     public string Description;
+    [TextArea(2, 3)]
+    public string Tags;
     [TextArea(2, 3)]
     public string FlavorText;
     public Sprite CardImage;
     public int ManaCost;
+    public bool TokenCard = false;
+    public int OverrideLimitOfThisCardInDeck = -1;
+
+    public TypesOfCards TypeOfCard;
 
     [Header("Creature Info")]
     public int MaxHealth;
@@ -32,7 +37,7 @@ public class CardAsset : ScriptableObject
     public bool Hand;
     public string CreatureScriptName;
     public int specialCreatureAmount;
-    public Type type;
+    public MainType type;
     public SubType subType;
 
 
@@ -42,6 +47,52 @@ public class CardAsset : ScriptableObject
     public PlaySpeed playSpeed;
     public SubType spellSubType;
     public TargetingOptions Targets;
+
+    public int CompareTo(CardAsset other)
+    {
+        if (other.ManaCost < this.ManaCost)
+        {
+            return 1;
+        }
+        else if (other.ManaCost > this.ManaCost)
+        {
+            return -1;
+        }
+        else
+        {
+            // if mana costs are equal sort in alphabetical order
+            return name.CompareTo(other.name);
+        }
+    }
+
+    // Define the is greater than operator.
+    public static bool operator >(CardAsset operand1, CardAsset operand2)
+    {
+        return operand1.CompareTo(operand2) == 1;
+    }
+
+    // Define the is less than operator.
+    public static bool operator <(CardAsset operand1, CardAsset operand2)
+    {
+        return operand1.CompareTo(operand2) == -1;
+    }
+
+    // Define the is greater than or equal to operator.
+    public static bool operator >=(CardAsset operand1, CardAsset operand2)
+    {
+        return operand1.CompareTo(operand2) >= 0;
+    }
+
+    // Define the is less than or equal to operator.
+    public static bool operator <=(CardAsset operand1, CardAsset operand2)
+    {
+        return operand1.CompareTo(operand2) <= 0;
+    }
+}
+
+public enum TypesOfCards
+{
+    Creature, Spell
 }
 public enum TargetingOptions
 {
@@ -54,15 +105,16 @@ public enum TargetingOptions
     YourCharacters
 }
 
-public enum Rarity
+public enum RarityOptions
 {
+    Basic,
     COMMON,
     UNCOMMON,
     RARE,
     ULTRARARE
 }
 
-public enum Color
+public enum ColorType
 {
     CHARADIN,
     DORNODON,
@@ -85,7 +137,7 @@ public enum PlaySpeed
 }
 
 
-public enum Type
+public enum MainType
 {
     MONSTER,
     ADVENTURER
@@ -116,5 +168,4 @@ public enum Special
     MONSTER_COMPONENT,
     ANCHOR,
     MENTAL
-
 }
