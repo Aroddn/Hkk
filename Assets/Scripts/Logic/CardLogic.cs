@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 [System.Serializable]
-public class CardLogic: IIdentifiable
+public class CardLogic: IIdentifiable, IComparable<CardLogic>
 {
     public Player owner;
     public int UniqueCardID; 
@@ -54,6 +54,21 @@ public class CardLogic: IIdentifiable
         }
         // add this card to a dictionary with its ID as a key
         CardsCreatedThisGame.Add(UniqueCardID, this);
+    }
+
+    public int CompareTo(CardLogic other)
+    {
+        if (other.ca < this.ca)
+        {
+            return 1;
+        }
+        else if (other.ca > this.ca)
+        {
+            return -1;
+
+        }
+        else
+            return 0;
     }
 
     public void ResetManaCost()

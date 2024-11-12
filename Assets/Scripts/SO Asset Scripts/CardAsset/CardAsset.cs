@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 
-public class CardAsset : ScriptableObject 
+public class CardAsset : ScriptableObject, IComparable<CardAsset>
 {
     [Header("General info")]
     public RarityOptions Rarity;
