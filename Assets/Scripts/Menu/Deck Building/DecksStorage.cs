@@ -95,7 +95,7 @@ public class DecksStorage : MonoBehaviour {
         // clear all the keys of characters and deck names
         for(int i=0; i < 9; i++)
         {
-            string characterKey = "DeckHero" + i.ToString();
+            string characterKey = "DeckHero" + i.ToString();//Todo remove
             string deckNameKey = "DeckName" + i.ToString();
            
             if (PlayerPrefs.HasKey(characterKey))
@@ -112,7 +112,7 @@ public class DecksStorage : MonoBehaviour {
         for(int i=0; i< AllDecks.Count; i++)
         {
             string deckListKey = "Deck" + i.ToString();
-            string characterKey = "DeckHero" + i.ToString();
+            string characterKey = "DeckHero" + i.ToString();//Todo remove
             string deckNameKey = "DeckName" + i.ToString();
 
             List<string> cardNamesList = new List<string>();
@@ -123,7 +123,7 @@ public class DecksStorage : MonoBehaviour {
 
             PlayerPrefsX.SetStringArray(deckListKey, cardNamesArray);
             PlayerPrefs.SetString(deckNameKey, AllDecks[i].DeckName);
-            PlayerPrefs.SetString(characterKey, AllDecks[i].Character.name);
+            PlayerPrefs.SetString(characterKey, AllDecks[i].Character.name);//Todo remove
         }
     }
 
