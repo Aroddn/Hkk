@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Kezratetel
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 4
   releaseYear: 2016
   mental: 0
@@ -21,9 +21,13 @@ MonoBehaviour:
   anchor: 0
   Description: "H\xFAzz 1 lapot! C\xE9lpont l\xE9ny vagy j\xE1t\xE9kos gy\xF3gyul
     6-ot"
+  Tags: 
   FlavorText: "A hit adjon neked er\u0151t, gyermekem! - Raiai f\u0151papja"
   CardImage: {fileID: 21300000, guid: 511797a8cc5771e489ad39ba12ae8540, type: 3}
   ManaCost: 1
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 0

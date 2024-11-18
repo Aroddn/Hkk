@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Shomorituzmagia
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 1
   releaseYear: 2017
   mental: 0
@@ -22,10 +22,14 @@ MonoBehaviour:
   Description: "K\xF6lts\xE9g\xE9b\u0151l \"4 VP\"-t helyettes\xEDthetsz 5 \xC9P
     fel\xE1ldoz\xE1s\xE1val(ha van legal\xE1bb 5 \xC9P-d). C\xE9lpont l\xE9ny vagy
     j\xE1t\xE9kos sebz\u0151dik 5-\xF6t."
+  Tags: 
   FlavorText: "Shomor v\xE1ros\xE1ban minden er\u0151s a k\xEDnb\xF3l ered. Hihetetlen,
     hogy a szenved\xE9s milyen enegri\xE1kat szabad\xEDthat fel."
   CardImage: {fileID: 21300000, guid: bf30ee77e328dec4aaf33f790bdf429f, type: 3}
   ManaCost: 4
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

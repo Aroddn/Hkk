@@ -9,7 +9,7 @@ public class DeckBuilder : MonoBehaviour
     public Transform Content;
     public InputField DeckName;
 
-    public int SameCardLimit = 2;
+    public int SameCardLimit = 3;
     public int AmountOfCardsInDeck = 10;
 
     public GameObject DeckCompleteFrame;
@@ -89,7 +89,6 @@ public class DeckBuilder : MonoBehaviour
 
     public void RemoveCard(CardAsset asset)
     {
-        Debug.Log("InRemoveCard");
         CardNameRibbon ribbonToRemove = ribbons[asset];
         ribbonToRemove.SetQuantity(ribbonToRemove.Quantity-1);
 

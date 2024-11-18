@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Szikra
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 1
   releaseYear: 2017
   mental: 0
@@ -22,10 +22,14 @@ MonoBehaviour:
   Description: "C\xE9lpont l\xE9ny vagy j\xE1t\xE9kos sebz\u0151dik 2-t, vagy c\xE9lpont
     j\xE1t\xE9kos vesz\xEDt 3 \"Csont\"-ot, vagy egy c\xE9lpont lap a j\xE1t\xE9kb\xF3l
     visszaker\xFCl tulajdonosa kez\xE9be."
+  Tags: 
   FlavorText: "A leghatalmasabb t\u0171zv\xE9szek is egy szikr\xE1val kezd\u0151dtek
     - Zoregblum professzor"
   CardImage: {fileID: 21300000, guid: 2caa26964ad85c74ca6c2a54162ebc94, type: 3}
   ManaCost: 0
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

@@ -92,7 +92,9 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
 
 public enum TypesOfCards
 {
-    Creature, Spell
+    Creature,
+    Spell,
+    Follower
 }
 public enum TargetingOptions
 {

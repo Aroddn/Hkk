@@ -67,10 +67,6 @@ public class DecksStorage : MonoBehaviour {
             string deckNameKey = "DeckName" + i.ToString();
             string[] DeckAsCardNames = PlayerPrefsX.GetStringArray(deckListKey);
 
-            Debug.Log("Has character key: "+  PlayerPrefs.HasKey(characterKey));
-            Debug.Log("Has Deckname key: "+  PlayerPrefs.HasKey(deckNameKey));
-            Debug.Log("Length of DeckAsCardNames: " + DeckAsCardNames.Length);
-
             if (DeckAsCardNames.Length > 0 && PlayerPrefs.HasKey(characterKey) && PlayerPrefs.HasKey(deckNameKey))
             {
                 string characterName = PlayerPrefs.GetString(characterKey);
@@ -112,7 +108,7 @@ public class DecksStorage : MonoBehaviour {
         for(int i=0; i< AllDecks.Count; i++)
         {
             string deckListKey = "Deck" + i.ToString();
-            string characterKey = "DeckHero" + i.ToString();//Todo remove
+            string characterKey = "DeckHero" + i.ToString();
             string deckNameKey = "DeckName" + i.ToString();
 
             List<string> cardNamesList = new List<string>();
@@ -123,7 +119,7 @@ public class DecksStorage : MonoBehaviour {
 
             PlayerPrefsX.SetStringArray(deckListKey, cardNamesArray);
             PlayerPrefs.SetString(deckNameKey, AllDecks[i].DeckName);
-            PlayerPrefs.SetString(characterKey, AllDecks[i].Character.name);//Todo remove
+            PlayerPrefs.SetString(characterKey, AllDecks[i].Character.name);
         }
     }
 

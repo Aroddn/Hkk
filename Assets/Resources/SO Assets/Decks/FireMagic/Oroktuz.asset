@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Oroktuz
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 1
   releaseYear: 2017
   mental: 0
@@ -22,10 +22,14 @@ MonoBehaviour:
   Description: "C\xE9lpont l\xE9ny vagy j\xE1t\xE9kos sebz\u0151dik 7-et. Kompenz\xE1ci\xF3:
     h\xFAzz 1 lapot \xE9s kapsz \"2 VP\"-t.(A kompenz\xE1ci\xF3 csak akkor j\xF6n
     l\xE9tre, ha a lapot megakad\xE1lyozz\xE1k.)"
+  Tags: 
   FlavorText: "Nemcsak a testedet semmis\xEDti meg: m\xE9g a l\xE9tez\xE9sed eml\xE9k\xE9t
     is kit\xF6rli a t\xE9r-id\u0151 sz\xF6vet\xE9b\u0151l."
   CardImage: {fileID: 21300000, guid: 41b044562b2fe5746885237b1480100f, type: 3}
   ManaCost: 3
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

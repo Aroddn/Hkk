@@ -12,17 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Ezustsereg
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 4
   releaseYear: 2016
   mental: 0
   defense: 0
+  fire: 0
+  anchor: 0
   Description: "Kij\xE1tsz\xE1sakor h\xFAzz 1 lapot \xE9s kapsz 1 Kisebb angyal lapot
     akt\xEDvan a tartal\xE9kodba. Minden Raiai, Rhatt \xE9s Eleionos l\xE9nyed kap
     +1/+1-et."
+  Tags: 
   FlavorText: 
   CardImage: {fileID: 21300000, guid: 6812457c78524c84785a925692fb00a4, type: 3}
   ManaCost: 2
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

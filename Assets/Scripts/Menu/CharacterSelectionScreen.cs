@@ -9,7 +9,6 @@ public class CharacterSelectionScreen : MonoBehaviour {
     public HeroInfoPanel HeroPanel;
     public PortraitMenu[] AllPortraits;
 
-	// Use this for initialization
 	void Awake () 
     {
         Instance = this;	

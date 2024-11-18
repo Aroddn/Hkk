@@ -12,18 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Hendialacselszovese
   m_EditorClassIdentifier: 
-  rarity: 2
+  Rarity: 0
   color: 8
   releaseYear: 2016
   mental: 1
   defense: 0
+  fire: 0
+  anchor: 0
   Description: "X annyi ah\xE1nyadik k\xF6r van (de max 3). Ez a lap a Semmibe ker\xFCl,
     v\xE1lassz: ellenfeled k\xF6vezkez\u0151 el\u0151k\xE9sz\xEDt\u0151 f\xE1zis\xE1ban
     a VP-t te kapod meg helyette, VAGY a k\xF6vetkez\u0151 h\xFAz\xE1s f\xE1zis\xE1ban
     te h\xFAzol helyette."
+  Tags: 
   FlavorText: 
   CardImage: {fileID: 21300000, guid: 225d8e40e0d191e45a4b3ba6f1ee2c73, type: 3}
   ManaCost: 0
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

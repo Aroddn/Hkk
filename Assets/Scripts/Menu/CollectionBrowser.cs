@@ -6,7 +6,8 @@ public class CollectionBrowser : MonoBehaviour {
 
     public Transform[] Slots;
     public GameObject SpellMenuPrefab;
-    public GameObject CreatureMenuPrefab;
+    public GameObject CreatureMenuPrefab; 
+    //public GameObject FollowerMenuPrefab;
 
     public GameObject OneCharacterTabs;
     public GameObject AllCharactersTabs;
@@ -18,7 +19,6 @@ public class CollectionBrowser : MonoBehaviour {
     private CharacterAsset _character;
 
     private List<GameObject> CreatedCards = new List<GameObject>();
-    //private CardsDisplayInfo InfoAboutLastShownPage;
 
     // PROPERTIES for every variable that matters for filtering and selecting cards:
     #region PROPERTIES
@@ -200,13 +200,12 @@ public class CollectionBrowser : MonoBehaviour {
         List<CardAsset> CardsOnThisPage = PageSelection(showingCardsPlayerDoesNotOwn, pageIndex, includeAllRarities, includeAllCharacters, rarity,
             asset, keyword, manaCost, includeTokenCards);
 
+
         // clear created cards list 
         ClearCreatedCards();
 
         if (CardsOnThisPage.Count == 0)
             return;
-        
-        // Debug.Log(CardsOnThisPage.Count);
 
         for (int i = 0; i < CardsOnThisPage.Count; i++)
         {

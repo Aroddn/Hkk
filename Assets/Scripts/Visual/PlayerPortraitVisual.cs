@@ -10,8 +10,6 @@ public class PlayerPortraitVisual : MonoBehaviour {
     //public Text NameText;
     public Text HealthText;
     [Header("Image References")]
-    //public Image HeroPowerIconImage;
-    //public Image HeroPowerBackgroundImage;
     public Image PortraitImage;
     public Image PortraitBackgroundImage;
 
@@ -27,13 +25,6 @@ public class PlayerPortraitVisual : MonoBehaviour {
         PortraitImage.sprite = charAsset.AvatarImage;
         PortraitBackgroundImage.sprite = charAsset.AvatarBGImage;
         PortraitBackgroundImage.color = charAsset.AvatarBGTint;
-
-        //hero power
-        //HeroPowerBackgroundImage.color = charAsset.HeroPowerBGTint;
-        //HeroPowerIconImage.sprite = charAsset.HeroPowerIconImage;
-        //HeroPowerBackgroundImage.sprite = charAsset.HeroPowerBGImage;
-
-
     }
 
     public void TakeDamage(int amount, int healthAfter)
@@ -68,7 +59,4 @@ public class PlayerPortraitVisual : MonoBehaviour {
         s.PrependInterval(2f);
         s.OnComplete(() => GlobalSettings.Instance.GameOverCanvas.SetActive(true)); 
     }
-
-
-
 }

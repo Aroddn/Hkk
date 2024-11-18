@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Sportszeruseg
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 4
   releaseYear: 2016
   mental: 0
@@ -21,10 +21,14 @@ MonoBehaviour:
   anchor: 0
   Description: "C\xE9lpont lap a gy\u0171jt\u0151be ker\xFCl. Ellenfeled kap \"1
     VP\"-t"
+  Tags: 
   FlavorText: "Raiai legtiszt\xE1bb k\xF6vet\u0151i mindig azt hitt\xE9k, hogy a
     c\xE9l NEM szentes\xEDti az eszk\xF6zt."
   CardImage: {fileID: 21300000, guid: 5a9825b31a99b3646ad8afe310f9e5c0, type: 3}
   ManaCost: 0
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

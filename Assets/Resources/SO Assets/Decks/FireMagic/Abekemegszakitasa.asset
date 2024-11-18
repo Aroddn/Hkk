@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Abekemegszakitasa
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 1
   releaseYear: 2017
   mental: 0
@@ -20,9 +20,13 @@ MonoBehaviour:
   fire: 0
   anchor: 0
   Description: "Megakad\xE1lyoz egy l\xE9nyt, \xE9s ellenfeled kap \"1 VP\"-t"
+  Tags: 
   FlavorText: "A b\xE9ke t\xF6r\xE9keny, n\xE9ha egyetlen szikra is el\xE9g..."
   CardImage: {fileID: 21300000, guid: 3bab13dc8ef47584c9dbe5f88f603a6b, type: 3}
   ManaCost: 1
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

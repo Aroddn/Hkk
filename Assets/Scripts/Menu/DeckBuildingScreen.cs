@@ -15,8 +15,6 @@ public class DeckBuildingScreen : MonoBehaviour {
     public bool ShowReducedQuantitiesInDeckBuilding = true;
 
     public static DeckBuildingScreen Instance;
-
-    // Use this for initialization
     void Awake () 
     {
         Instance = this;    
@@ -47,7 +45,6 @@ public class DeckBuildingScreen : MonoBehaviour {
         CollectionBrowserScript.AllCharactersTabs.gameObject.SetActive(false);
         CollectionBrowserScript.OneCharacterTabs.gameObject.SetActive(true);
         Canvas.ForceUpdateCanvases();
-        // TODO: update the tab to say the name of the character class that we are building a deck for, update the script on the tab.
     }
 
     public void BuildADeckFor(CharacterAsset asset)

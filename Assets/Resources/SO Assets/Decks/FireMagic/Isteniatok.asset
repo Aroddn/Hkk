@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Isteniatok
   m_EditorClassIdentifier: 
-  rarity: 2
+  Rarity: 0
   color: 1
   releaseYear: 2017
   mental: 0
@@ -22,9 +22,13 @@ MonoBehaviour:
   Description: "Megakad\xE1lyoz egy lapot (ekkor reakci\xF3), vagy eloszhatsz 4 sebz\xE9st
     c\xE9lpont l\xE9nyek \xE9s j\xE1t\xE9kosok k\xF6z\xF6tt, vagy c\xE9lpont gy\u0171jt\u0151b\u0151l
     rakj max. 4 lapot a Semmibe."
+  Tags: 
   FlavorText: "A pokol t\xFCz\xE9vel lakol, aki ellenszeg\xFCl! - Dornodon"
   CardImage: {fileID: 21300000, guid: d32fe45a0364dd94b9815d38cdef8a3f, type: 3}
   ManaCost: 1
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

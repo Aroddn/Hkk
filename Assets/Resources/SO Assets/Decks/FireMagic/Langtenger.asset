@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Langtenger
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 1
   releaseYear: 2017
   mental: 0
@@ -23,9 +23,13 @@ MonoBehaviour:
     lap Semmibe dob\xE1s\xE1val a kezedb\u0151l. Az ellenf\xE9l minden l\xE9nye sebz\u0151dik
     5-\xF6t. Ah\xE1gy l\xE9ny a gy\u0171jt\u0151be ker\xFCl, annyit gy\xF3gyulsz,
     ellenfeled pedig ugyanannyig sebz\u0151dik."
+  Tags: 
   FlavorText: 
   CardImage: {fileID: 21300000, guid: c5a8af2f7e9074542aa2166064191526, type: 3}
   ManaCost: 4
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1

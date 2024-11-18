@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ListOfDecksInCollection : MonoBehaviour {
 
     public Transform Content;
-    // this is a prefab
     public GameObject DeckInListPrefab;
-    // this is also a prefab
     public GameObject NewDeckButtonPrefab;
 
     public void UpdateList()
@@ -32,7 +31,7 @@ public class ListOfDecksInCollection : MonoBehaviour {
 
         // if there is room to create more decks, create a NewDeckButton
         if (DecksStorage.Instance.AllDecks.Count < 9)
-        {
+        {     
             GameObject g = Instantiate(NewDeckButtonPrefab, Content);
             g.transform.localScale = Vector3.one;
         }

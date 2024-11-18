@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CardCollection : MonoBehaviour 
 {
-    public int DefaultNumberOfBasicCards = 3; // how many cards of basic rarity should a character have by default;
+    public int DefaultNumberOfBasicCards = 4; // how many cards of basic rarity should a character have by default;
 
     public static CardCollection Instance;
     private Dictionary<string, CardAsset > AllCardsDictionary = new Dictionary<string, CardAsset>();
@@ -31,8 +31,6 @@ public class CardCollection : MonoBehaviour
 
     private void LoadQuantityOfCardsFromPlayerPrefs()
     {
-        // TODO: load only cards from the non-basic set. Basic set should always have quantities set to some standard number, not disenchantable 
-
         foreach (CardAsset ca in allCardsArray)
         {
             // quantity of basic cards should not be affected:
@@ -115,9 +113,6 @@ public class CardCollection : MonoBehaviour
 
         if (!includeAllRarities)
             cards = cards.Where(card => card.Rarity == rarity);
-
-        //if (!includeAllCharacters)
-        //    cards = cards.Where(card => card.CharacterAsset == asset);
 
         if (keyword != null && keyword != "")
             cards = cards.Where(card => (card.name.ToLower().Contains(keyword.ToLower()) || 

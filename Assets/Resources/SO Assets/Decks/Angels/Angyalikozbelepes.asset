@@ -12,18 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Angyalikozbelepes
   m_EditorClassIdentifier: 
-  rarity: 0
+  Rarity: 0
   color: 4
   releaseYear: 2016
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 0
   Description: "Megakad\xE1lyoz egy l\xE9nyt. Ellenfeled kap \"1 VP\"-t"
+  Tags: 
   FlavorText: "Raiai h\xEDvei sosem maradnak seg\xEDts\xE9g n\xE9lk\xFCl! - az angyalg\xE1rda
     parancsnoka"
   CardImage: {fileID: 21300000, guid: bc9b09552f577cc42945e6a195e4345b, type: 3}
   ManaCost: 1
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
   MaxHealth: 0
   Attack: 0
   AttacksForOneTurn: 1
+  Bone: 0
   Flying: 0
+  Hand: 0
   CreatureScriptName: 
   specialCreatureAmount: 0
   type: 0
@@ -31,4 +41,5 @@ MonoBehaviour:
   SpellScriptName: 
   specialSpellAmount: 0
   playSpeed: 0
+  spellSubType: 0
   Targets: 0
