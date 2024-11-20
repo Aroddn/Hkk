@@ -7,6 +7,6 @@ public class HealTarget : SpellEffect
     {
         new HealCommand(target.ID, specialAmount, healthAfter: target.Health + specialAmount).AddToQueue();  
         target.Health += specialAmount;
-        //TurnManager.Instance.whoseTurn.DrawACard();
+        TurnManager.Instance.WhoseAction.DrawACard();
     }
 }

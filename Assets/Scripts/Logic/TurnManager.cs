@@ -113,7 +113,7 @@ public class TurnManager : MonoBehaviour {
                 //Debug.Log(whoGoesSecond);
          
                 // draw 5 cards for first player and 5 for second player
-                int initDraw = 4;
+                int initDraw = 8;
                 for (int i = 0; i < initDraw; i++)
                 {            
                     // second player draws a card

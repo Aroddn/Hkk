@@ -21,10 +21,6 @@ public class Player : MonoBehaviour, ICharacter
     public Void voiid;
 
     private int TurnCounter;
-    private int bonusManaThisTurn = 0;
-    //public bool usedHeroPowerThisTurn = false;
-
-    
 
     public int ID
     {
@@ -38,7 +34,6 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             manaThisTurn = value;
-            //PArea.ManaBar.CurrentMana = manaThisTurn;
             new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
         }
     }
@@ -128,8 +123,8 @@ public class Player : MonoBehaviour, ICharacter
 
     public void GetBonusMana(int amount)
     {
-        bonusManaThisTurn += amount;
-        ManaThisTurn += amount;
+        //bonusManaThisTurn += amount;
+        //ManaThisTurn += amount;
         ManaLeft += amount;
     }   
 
@@ -137,12 +132,10 @@ public class Player : MonoBehaviour, ICharacter
     {
         if(EndTurnEvent != null)
             EndTurnEvent.Invoke();
-        ManaThisTurn -= bonusManaThisTurn;
-        bonusManaThisTurn = 0;
         GetComponent<TurnMaker>().StopAllCoroutines();
     }
 
-    public void DrawACard(bool fast = false)//false
+    public void DrawACard(bool fast = false)
     {
         if (deck.cards.Count > 0)
         {
@@ -183,8 +176,6 @@ public class Player : MonoBehaviour, ICharacter
 
     public void PlayASpellFromHand(int SpellCardUniqueID, int TargetUniqueID)
     {
-        // TODO: !!!
-        // if TargetUnique ID < 0 , for example = -1, there is no target.
         if (TargetUniqueID < 0)
             PlayASpellFromHand(CardLogic.CardsCreatedThisGame[SpellCardUniqueID], null);
         else if (TargetUniqueID == ID)
@@ -206,7 +197,6 @@ public class Player : MonoBehaviour, ICharacter
     public void PlayASpellFromHand(CardLogic playedCard, ICharacter target)
     {
         ManaLeft -= playedCard.CurrentManaCost;
-        // cause effect instantly:
         if (playedCard.effect != null)
             playedCard.effect.ActivateEffect(playedCard.ca.specialSpellAmount, target);
         else
@@ -310,8 +300,6 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
-
-    //TODO what is this?
     public void Die(bool sacrifice)
     {
         throw new System.NotImplementedException();
