@@ -6,6 +6,7 @@ public class LoadDeckAndCharacterFromStaticClass : MonoBehaviour {
 
     void Awake()
     {
+
         Player p = GetComponent<Player>();
         if (BattleStartInfo.SelectedDeck != null)
         {

@@ -2865,7 +2865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 12.289993, y: 0.049987793}
+  m_AnchoredPosition: {x: 12.06, y: 0.05}
   m_SizeDelta: {x: 350, y: 841.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453459973
@@ -4227,7 +4227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &543118345
 Transform:
   m_ObjectHideFlags: 0
@@ -7912,18 +7912,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewDeckButton
       objectReference: {fileID: 0}
-    - target: {fileID: 114224916816390008, guid: 88fb87a17ae33584aad3a2423394190c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1096427871}
-    - target: {fileID: 114224916816390008, guid: 88fb87a17ae33584aad3a2423394190c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NewDeckScript, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 222790248540989988, guid: 88fb87a17ae33584aad3a2423394190c, type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224388578104277376, guid: 88fb87a17ae33584aad3a2423394190c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8014,17 +8002,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224388578104277376, guid: 88fb87a17ae33584aad3a2423394190c, type: 3}
   m_PrefabInstance: {fileID: 1096427868}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1096427871 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 565359620912422069, guid: 88fb87a17ae33584aad3a2423394190c, type: 3}
-  m_PrefabInstance: {fileID: 1096427868}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b64f9fa61c5434dbbe7e664bd3ea97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1101527825
 GameObject:
   m_ObjectHideFlags: 0
@@ -12578,13 +12555,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1887960590}
     m_Modifications:
-    - target: {fileID: 1259804548387954, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658992726971034, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
+    - target: {fileID: 1234345096828552, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
+      propertyPath: m_Name
+      value: Deck Icon
       objectReference: {fileID: 0}
     - target: {fileID: 4658992726971034, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12614,6 +12587,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 4658992726971034, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658992726971034, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658992726971034, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114148743173292484, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
@@ -12634,13 +12619,13 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224516023248581394, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224845952574422222, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+    - target: {fileID: 212504328625498074, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 44e95135d8aff0c479bedbcd153bcf2e, type: 3}
+    - target: {fileID: 212504328625498074, guid: b206ed8ea9f43ac4cb272da86d688a7a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14601,7 +14586,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1999946971
 Canvas:
   m_ObjectHideFlags: 0
@@ -16174,9 +16159,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeckNamePrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1788850645603346, guid: 16f8498d09e44924aa7a591bde336839, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 114139704892759600, guid: 16f8498d09e44924aa7a591bde336839, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114176920413396150, guid: 16f8498d09e44924aa7a591bde336839, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224492633059884706, guid: 16f8498d09e44924aa7a591bde336839, type: 3}
       propertyPath: m_Pivot.x
@@ -16256,6 +16245,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224492633059884706, guid: 16f8498d09e44924aa7a591bde336839, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513649240842510683, guid: 16f8498d09e44924aa7a591bde336839, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

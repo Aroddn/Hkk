@@ -91,7 +91,7 @@ public class DecksStorage : MonoBehaviour {
         // clear all the keys of characters and deck names
         for(int i=0; i < 9; i++)
         {
-            string characterKey = "DeckHero" + i.ToString();//Todo remove
+            string characterKey = "DeckHero" + i.ToString();
             string deckNameKey = "DeckName" + i.ToString();
            
             if (PlayerPrefs.HasKey(characterKey))

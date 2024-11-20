@@ -30,9 +30,7 @@ public class GlobalSettings: MonoBehaviour
     public GameObject ExplosionPrefab;
     [Header("Other")]
     public Button EndTurnButton;
-    //public CardAsset CoinCard;
     public GameObject GameOverCanvas;
-    //public Sprite HeroPowerCrossMark;
 
     public Dictionary<AreaPosition, Player> Players = new Dictionary<AreaPosition, Player>();
 
@@ -45,8 +43,34 @@ public class GlobalSettings: MonoBehaviour
         Players.Add(AreaPosition.Low, LowPlayer);
         Instance = this;
 
-        List<CardAsset> deck = new List<CardAsset>();
+
+        AssignDeckAndCharacter(LowPlayer, BattleStartInfo.SelectedDeck);
+        AssignDeckAndCharacter(TopPlayer, null);
+    }
+
+    private void AssignDeckAndCharacter(Player player, DeckInfo deckInfo)
+    {
+        if (deckInfo != null)
+        {
+            if (deckInfo.Character != null)
+                player.charAsset = deckInfo.Character;
+
+            if (deckInfo.Cards != null)
+                player.deck.cards = new List<CardAsset>(deckInfo.Cards);
+
+            player.deck.cards.Shuffle();
+        }
+        else
+        {
+            player.deck.cards = LoadDefaultDeck(1);
+        }
+    }
+
+    public List<CardAsset> LoadDefaultDeck(int num)
+    {
+        List<CardAsset> deck1 = new List<CardAsset>();
         List<CardAsset> deck2 = new List<CardAsset>();
+        List<CardAsset> deck3 = new List<CardAsset>();
 
         string[] angels = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/Angels" });
         string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/FireMagic" });
@@ -56,11 +80,9 @@ public class GlobalSettings: MonoBehaviour
         {
             string path = AssetDatabase.GUIDToAssetPath(angel);
             CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
-            deck.AddRange(Enumerable.Repeat(card, 3));
+            deck1.AddRange(Enumerable.Repeat(card, 3));
 
         }
-        //deck.Shuffle();
-        Players[AreaPosition.Top].deck.cards = deck;
 
         foreach (string f in fire)
         {
@@ -69,9 +91,30 @@ public class GlobalSettings: MonoBehaviour
             deck2.AddRange(Enumerable.Repeat(card, 3));
 
         }
-        deck2.Shuffle();
 
-        Players[AreaPosition.Low].deck.cards = deck2;
+        foreach (string b in beasts)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(b);
+            CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
+            deck3.AddRange(Enumerable.Repeat(card, 3));
+
+        }
+
+        deck1.Shuffle();
+        deck2.Shuffle();
+        deck3.Shuffle();
+
+        switch (num)
+        {
+            case 1:
+                return deck1;
+            case 2:
+                return deck2;
+            case 3:
+                return deck3;
+            default:
+                return deck1;
+        }
     }
 
     public bool CanControlThisPlayer(AreaPosition owner)
