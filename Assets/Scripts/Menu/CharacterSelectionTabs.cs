@@ -38,6 +38,6 @@ public class CharacterSelectionTabs : MonoBehaviour
     public void SetClassOnClassTab(CharacterAsset asset)
     {
         ClassTab.Asset = asset;
-        ClassTab.GetComponentInChildren<Text>().text = asset.name;
+        ClassTab.GetComponentInChildren<Text>().text = "Neutral";
     }
 }

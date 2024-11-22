@@ -74,6 +74,8 @@ public class DragCreatureOnTable : DraggingActions {
     {
         bool TableNotFull = (playerOwner.table.CreaturesOnTable.Count < 8);
 
-        return TableVisual.CursorOverSomeTable && TableNotFull;//TableNotFull;
+        bool ownTurn = TurnManager.Instance.WhoseAction == TurnManager.Instance.WhoseTurn;
+
+        return TableVisual.CursorOverSomeTable && TableNotFull && ownTurn;
     }
 }

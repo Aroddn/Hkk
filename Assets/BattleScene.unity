@@ -2245,11 +2245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6300373626888150602, guid: a0bd472ce611c434d8bbedd7f9a4a91c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6300373626888150602, guid: a0bd472ce611c434d8bbedd7f9a4a91c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 101.95808
       objectReference: {fileID: 0}
     - target: {fileID: 7187066921056617646, guid: a0bd472ce611c434d8bbedd7f9a4a91c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

@@ -27,14 +27,14 @@ public class Player : MonoBehaviour, ICharacter
         get { return PlayerID; }
     }
 
-    private int manaThisTurn;//maxmana
-    public int ManaThisTurn
+    private int maxMana;//maxmana
+    public int MaxMana
     {
-        get{ return manaThisTurn;}
+        get{ return maxMana; }
         set
         {
-            manaThisTurn = value;
-            new UpdateManaCrystalsCommand(this, manaThisTurn, manaLeft).AddToQueue();
+            maxMana = value;
+            new UpdateManaCrystalsCommand(this, maxMana, currentMana).AddToQueue();
         }
     }
 
@@ -51,19 +51,19 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
-    private int manaLeft;//currentMana
+    private int currentMana;//currentMana
 
-    public int ManaLeft
+    public int CurrentMana
     {
         get
-        { return manaLeft;}
+        { return currentMana; }
         set
         {
-            manaLeft = value;
+            currentMana = value;
             //PArea.ManaBar.CurrentMana = manaLeft;
-            new UpdateManaCrystalsCommand(this, ManaThisTurn, manaLeft).AddToQueue();
+            new UpdateManaCrystalsCommand(this, MaxMana, currentMana).AddToQueue();
             //Debug.Log(ManaLeft);
-            if (TurnManager.Instance.whoseTurn == this)
+            if (TurnManager.Instance.WhoseTurn == this)
                 HighlightPlayableCards();
         }
     }
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour, ICharacter
     public virtual void OnTurnStart()
     {
         TurnCounter++;
-        ManaLeft += TurnCounter;
+        CurrentMana += TurnCounter;
 
         foreach (CreatureLogic cl in table.CreaturesOnTable)
             cl.OnTurnStart();
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour, ICharacter
     {
         //bonusManaThisTurn += amount;
         //ManaThisTurn += amount;
-        ManaLeft += amount;
+        CurrentMana += amount;
     }   
 
     public void OnTurnEnd()
@@ -196,7 +196,7 @@ public class Player : MonoBehaviour, ICharacter
 
     public void PlayASpellFromHand(CardLogic playedCard, ICharacter target)
     {
-        ManaLeft -= playedCard.CurrentManaCost;
+        CurrentMana -= playedCard.CurrentManaCost;
         if (playedCard.effect != null)
             playedCard.effect.ActivateEffect(playedCard.ca.specialSpellAmount, target);
         else
@@ -207,7 +207,19 @@ public class Player : MonoBehaviour, ICharacter
         new PlayASpellCardCommand(this, playedCard).AddToQueue();
         // remove this card from hand
         hand.CardsInHand.Remove(playedCard);
-        // check if this is a creature or a spell
+
+        if (PArea.owner == AreaPosition.Low)//ID == 2
+        {
+            TurnManager.playerAction.Add(PlayerAction.PlayerLowAction);
+        }
+        else
+        {
+            TurnManager.playerAction.Add(PlayerAction.PlayerTopAction);
+        }
+
+        //Debug.Log("A spell has been played");
+
+        TurnManager.Instance.GiveControlToOtherPlayer();
     }
 
     public void PlayACreatureFromHand(int UniqueID, int tablePos)
@@ -218,7 +230,7 @@ public class Player : MonoBehaviour, ICharacter
 
     public void PlayACreatureFromHand(CardLogic playedCard, int tablePos)
     {
-        ManaLeft -= playedCard.CurrentManaCost;
+        CurrentMana -= playedCard.CurrentManaCost;
         // create a new creature object and add it to Table
         CreatureLogic newCreature = new CreatureLogic(this, playedCard.ca);
         table.CreaturesOnTable.Insert(tablePos, newCreature);
@@ -227,7 +239,7 @@ public class Player : MonoBehaviour, ICharacter
         // remove this card from hand
         hand.CardsInHand.Remove(playedCard);
 
-        if (ID == 2)
+        if (PArea.owner == AreaPosition.Low)
         {
             TurnManager.playerAction.Add(PlayerAction.PlayerLowAction);
         }
@@ -240,8 +252,6 @@ public class Player : MonoBehaviour, ICharacter
             newCreature.effect.WhenACreatureIsPlayed();
 
         TurnManager.Instance.GiveControlToOtherPlayer();
-
-        //HighlightPlayableCards();
     }
 
 
@@ -264,7 +274,7 @@ public class Player : MonoBehaviour, ICharacter
         {
             GameObject g = IDHolder.GetGameObjectWithID(cl.UniqueCardID);
             if (g!=null)
-                g.GetComponent<OneCardManager>().CanBePlayedNow = (cl.CurrentManaCost <= ManaLeft) && !removeAllHighlights;
+                g.GetComponent<OneCardManager>().CanBePlayedNow = (cl.CurrentManaCost <= CurrentMana) && !removeAllHighlights;
         }
 
         foreach (CreatureLogic crl in table.CreaturesOnTable)

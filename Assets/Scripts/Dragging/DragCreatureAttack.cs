@@ -84,7 +84,6 @@ public class DragCreatureAttack : DraggingActions {
     {
         Target = null;
         RaycastHit[] hits;
-        // TODO: raycast here anyway, store the results in 
         hits = Physics.RaycastAll(origin: Camera.main.transform.position, 
             direction: (-Camera.main.transform.position + this.transform.position).normalized, 
             maxDistance: 30f) ;

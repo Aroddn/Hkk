@@ -45,7 +45,7 @@ public class CreatureLogic: ICharacter
     {
         get
         {
-            bool ownersTurn = (TurnManager.Instance.whoseTurn == owner);
+            bool ownersTurn = (TurnManager.Instance.WhoseTurn == owner);
             return (ownersTurn && (AttacksLeftThisTurn > 0) && !Frozen);
         }
     }

@@ -28,8 +28,8 @@ public class Command
             PlayFirstCommandFromQueue();
         else
             playingQueue = false;
-        if (TurnManager.Instance.whoseTurn != null)
-            TurnManager.Instance.whoseTurn.HighlightPlayableCards();
+        if (TurnManager.Instance.WhoseTurn != null)
+            TurnManager.Instance.WhoseTurn.HighlightPlayableCards();
     }
 
     public static void PlayFirstCommandFromQueue()

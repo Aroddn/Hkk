@@ -35,10 +35,6 @@ public class WhereIsTheCardOrCreature : MonoBehaviour {
         set
         {
             slot = value;
-            /*if (value != -1)
-            {
-                canvas.sortingOrder = HandSortingOrder(slot);
-            }*/
         }
     }
 

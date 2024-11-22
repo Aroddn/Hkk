@@ -27,14 +27,14 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
     {
         get
         {
-            bool ownersTurn = (TurnManager.Instance.whoseTurn == owner);
+            bool ownersTurn = (TurnManager.Instance.WhoseTurn == owner);
             // for spells the amount of characters on the field does not matter
             bool fieldNotFull = true;
             // but if this is a creature, we have to check if there is room on board (table)
             if (ca.MaxHealth > 0)
                 fieldNotFull = (owner.table.CreaturesOnTable.Count < 7);
             //Debug.Log("Card: " + ca.name + " has params: ownersTurn=" + ownersTurn + "fieldNotFull=" + fieldNotFull + " hasMana=" + (CurrentManaCost <= owner.ManaLeft));
-            return ownersTurn && fieldNotFull && (CurrentManaCost <= owner.ManaLeft);
+            return ownersTurn && fieldNotFull && (CurrentManaCost <= owner.CurrentMana);
         }
     }
 

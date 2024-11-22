@@ -41,7 +41,7 @@ public class TurnManager : MonoBehaviour {
     }
 
     private Player _whoseTurn;
-    public Player whoseTurn
+    public Player WhoseTurn
     {
         get
         {
@@ -55,15 +55,14 @@ public class TurnManager : MonoBehaviour {
 
             GlobalSettings.Instance.EnableEndTurnButtonOnStart(_whoseTurn);
 
-            TurnMaker tm = whoseTurn.GetComponent<TurnMaker>();
-            // player`s method OnTurnStart() will be called in tm.OnTurnStart();
+            TurnMaker tm = WhoseTurn.GetComponent<TurnMaker>();
             tm.OnTurnStart();
             if (tm is PlayerTurnMaker)
             {
-                whoseTurn.HighlightPlayableCards();
+                WhoseTurn.HighlightPlayableCards();
             }
             // remove highlights for opponent.
-            whoseTurn.otherPlayer.HighlightPlayableCards(true);
+            WhoseTurn.otherPlayer.HighlightPlayableCards(true);
                 
         }
     }
@@ -86,8 +85,8 @@ public class TurnManager : MonoBehaviour {
 
         foreach (Player p in Player.Players)
         {
-            p.ManaThisTurn = 20;
-            p.ManaLeft = 0;
+            p.MaxMana = 20;
+            p.CurrentMana = 0;
             p.TotalBones = 0;
             p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
             p.TransmitInfoAboutPlayerToVisual();
@@ -105,15 +104,12 @@ public class TurnManager : MonoBehaviour {
         s.OnComplete(() =>
             {
                 // determine who starts the game.
-                int rnd = Random.Range(0,2);  // 2 is exclusive boundary
-                 //Debug.Log(Player.Players.Length);
-                Player whoGoesFirst = Player.Players[rnd];//rnd
-                 //Debug.Log(whoGoesFirst);
+                int rnd = Random.Range(0,2);
+                Player whoGoesFirst = Player.Players[rnd];
                 Player whoGoesSecond = whoGoesFirst.otherPlayer;
-                //Debug.Log(whoGoesSecond);
          
                 // draw 5 cards for first player and 5 for second player
-                int initDraw = 8;
+                int initDraw = 4;
                 for (int i = 0; i < initDraw; i++)
                 {            
                     // second player draws a card
@@ -128,20 +124,20 @@ public class TurnManager : MonoBehaviour {
             });
     }
 
-    // TEXT COMMANDS
+    // TEST COMMANDS
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            EndTurn();
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    EndTurn();
 
-        if (Input.GetKeyDown(KeyCode.F))
-            whoseTurn.DrawACard(true);
+        //if (Input.GetKeyDown(KeyCode.F))
+        //    WhoseTurn.DrawACard(true);
 
-        if (Input.GetKeyDown(KeyCode.M))
-            whoseTurn.ManaLeft--;
+        //if (Input.GetKeyDown(KeyCode.M))
+        //    WhoseTurn.ManaLeft--;
 
-        if (Input.GetKeyDown(KeyCode.D))
-            whoseTurn.DrawACard(); 
+        //if (Input.GetKeyDown(KeyCode.D))
+        //    WhoseTurn.DrawACard(); 
 
     }
 
@@ -150,9 +146,9 @@ public class TurnManager : MonoBehaviour {
         // stop timer
         timer.StopTimer();
         // send all commands in the end of current player`s turn
-        whoseTurn.OnTurnEnd();
+        WhoseTurn.OnTurnEnd();
 
-        new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
+        new StartATurnCommand(WhoseTurn.otherPlayer).AddToQueue();
     }
 
     public void GiveControlToOtherPlayer()

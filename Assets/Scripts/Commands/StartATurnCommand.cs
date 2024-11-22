@@ -13,7 +13,7 @@ public class StartATurnCommand : Command {
     public override void StartCommandExecution()
     {
         TurnManager.Instance.WhoseAction = p;
-        TurnManager.Instance.whoseTurn = p;
+        TurnManager.Instance.WhoseTurn = p;
         // this command is completed instantly
         CommandExecutionComplete();
     }
