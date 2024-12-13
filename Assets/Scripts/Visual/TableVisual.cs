@@ -123,15 +123,6 @@ public class TableVisual : MonoBehaviour
 
     public void RemoveCreatureWithID(int IDToRemove)
     {
-        // TODO: This has to last for some time
-        //Adding delay here did not work because it shows one creature die, then another creature die.
-
-        //Sequence s = DOTween.Sequence();
-        //s.AppendInterval(1f);
-        //s.OnComplete(() =>
-        //   {
-
-        //   });
         GameObject creatureToRemove = IDHolder.GetGameObjectWithID(IDToRemove);
         CreaturesOnTable.Remove(creatureToRemove);
         Destroy(creatureToRemove);

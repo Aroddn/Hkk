@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, ICharacter
     public Void voiid;
 
     private int TurnCounter;
-
+    
     public int ID
     {
         get { return PlayerID; }
@@ -98,6 +98,8 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
+    int ICharacter.Attack { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
     public delegate void VoidWithNoArguments();
     //public event VoidWithNoArguments CreaturePlayedEvent;
     //public event VoidWithNoArguments SpellPlayedEvent;
@@ -123,8 +125,6 @@ public class Player : MonoBehaviour, ICharacter
 
     public void GetBonusMana(int amount)
     {
-        //bonusManaThisTurn += amount;
-        //ManaThisTurn += amount;
         CurrentMana += amount;
     }   
 
@@ -311,6 +311,21 @@ public class Player : MonoBehaviour, ICharacter
     }
 
     public void Die(bool sacrifice)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void BuffHealth(int amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void BuffAttack(int amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void BuffAttackAndHealth(int attack, int health)
     {
         throw new System.NotImplementedException();
     }

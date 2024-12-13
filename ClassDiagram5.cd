@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BetterCardRotation">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAgAAAAABAAAAAAQAAAAAAQAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\BetterCardRotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoneVisual">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAE=</HashCode>
+      <FileName>Assets\Scripts\Visual\BoneVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CreatureAttackVisual">
+    <Position X="8" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAAAFA=</HashCode>
+      <FileName>Assets\Scripts\Visual\CreatureAttackVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DamageEffect">
+    <Position X="15" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAIKAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\DamageEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DamageEffectTest">
+    <Position X="16.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\DamageEffectTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndTurnButton">
+    <Position X="18.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\EndTurnButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalSettings" Collapsed="true">
+    <Position X="16.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAwABMAABIBAAAAAAoAAgKAAAAAgAQAAQCAAAAAAQGE=</HashCode>
+      <FileName>Assets\Scripts\Visual\GlobalSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraveYardVisual" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\GraveYardVisual.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HandVisual">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAQIAAAAAAAgAQQAAAAUAAigABAIAIAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\HandVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealEffect">
+    <Position X="15" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEQAAAAEAAQACAAAAAABAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\HealEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealEffectTest">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\HealEffectTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoverPreview">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCAQAAAQAAAggABAAABAAAAAEEAACAAQBAECIAAAAMA=</HashCode>
+      <FileName>Assets\Scripts\Visual\HoverPreview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManaPoolVisual">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAAAgAAAAAAAAAAAABAAgAAAgIAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\ManaPoolVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MessageManager">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgQAAAAAEAAAAAAAAAAAAAAAAAAQAgAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\MessageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OneCardManager">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAEAEAAAANAAAAAAAAAAAAAAAAAgAiAAMA=</HashCode>
+      <FileName>Assets\Scripts\Visual\OneCardManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OneCreatureManager" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAIgAgAAAEDAABFAMAAAAAACAAACAAAAgACAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\OneCreatureManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerArea">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAMAgCACAAAAAAAoIAACAAAAgAAAEAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\PlayerArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerDeckVisual">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACIAgAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\PlayerDeckVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerPortraitVisual">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAABCAAABAAAgAAAAAAACAAAAAgBAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\PlayerPortraitVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RopeVisual">
+    <Position X="16.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\RopeVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SameDistanceChildren">
+    <Position X="11.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\SameDistanceChildren.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TableVisual">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBgAAAAAAEhAAQAgAAAQIABAAAAAAAAAAAAAJAAEA=</HashCode>
+      <FileName>Assets\Scripts\Visual\TableVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VoidVisual" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\VoidVisual.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WhereIsTheCardOrCreature">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAACAAAAAAAAICAAABAAgEAAACgAAAAkQ=</HashCode>
+      <FileName>Assets\Scripts\Visual\WhereIsTheCardOrCreature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="AreaPosition" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\PlayerArea.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VisualStates" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAiAgAAAAAAAAAAACAAAAABAEAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Visual\WhereIsTheCardOrCreature.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -17,14 +17,18 @@ public class CreatureLogic: ICharacter
     public bool Frozen = false;
 
     // the basic health that we have in CardAsset
-    private int baseHealth;
+    private int health;
     // health with all the current buffs taken into account
+    private int baseHealth;
+
     public int MaxHealth
     {
         get{ return baseHealth;}
+
+        set { baseHealth = value; }
     }
         
-    private int health;
+    
 
     public int Health
     {
@@ -41,6 +45,22 @@ public class CreatureLogic: ICharacter
         }
     }
 
+    public void BuffHealth(int value)
+    {
+        health = value;
+        baseHealth = value;
+    }
+
+    public void BuffAttack(int value)
+    {
+
+    }
+
+    public void BuffAttackAndHealth(int health, int attack)
+    {
+
+    }
+
     public bool CanAttack
     {
         get
@@ -55,7 +75,7 @@ public class CreatureLogic: ICharacter
     public int Attack
     {
         get{ return baseAttack; }
-
+        set { }
     }
         
     private int attacksForOneTurn = 1;
@@ -73,7 +93,6 @@ public class CreatureLogic: ICharacter
         Health = ca.MaxHealth;
         baseAttack = ca.Attack;
         attacksForOneTurn = ca.AttacksForOneTurn;
-        // AttacksLeftThisTurn is now equal to 0
         if (ca.Flying)
             AttacksLeftThisTurn = attacksForOneTurn;
         this.owner = owner;

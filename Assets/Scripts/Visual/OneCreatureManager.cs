@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Runtime.InteropServices;
 
 public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
 {
@@ -82,9 +83,13 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
     {
         if (amount > 0)
         {
-            //TODO
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
+            if (healthAfter < cardAsset.MaxHealth)
+                HealthText.color = Color.red;
+            else if (healthAfter > cardAsset.MaxHealth)
+                HealthText.color = Color.green;
+            else HealthText.color = Color.white;
         }
     }
 

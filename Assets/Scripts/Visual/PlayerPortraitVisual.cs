@@ -32,6 +32,11 @@ public class PlayerPortraitVisual : MonoBehaviour {
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
+            if (healthAfter < charAsset.MaxHealth)
+                HealthText.color = Color.red;
+            else if(healthAfter > 20)
+                HealthText.color = Color.green;
+            else HealthText.color = Color.white;
         }
     }
 

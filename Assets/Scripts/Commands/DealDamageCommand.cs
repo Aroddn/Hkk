@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DealDamageCommand : Command {
+public class BuffTargetCommand : Command {
 
     private int targetID;
     private int amount;
     private int healthAfter;
 
-    public DealDamageCommand( int targetID, int amount, int healthAfter)
+    public BuffTargetCommand( int targetID, int amount, int healthAfter)
     {
         this.targetID = targetID;
         this.amount = amount;

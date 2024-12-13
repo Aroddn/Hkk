@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 
+//enum to help store the last action in the game
 public enum PlayerAction
 {
     PlayerLowAction,
@@ -97,6 +98,7 @@ public class TurnManager : MonoBehaviour {
             p.PArea.Portrait.transform.position = p.PArea.InitialPortraitPosition.transform.position;
         }
 
+        //DOTween
         Sequence s = DOTween.Sequence();
         s.Append(Player.Players[0].PArea.Portrait.transform.DOMove(Player.Players[0].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
         s.Insert(0f, Player.Players[1].PArea.Portrait.transform.DOMove(Player.Players[1].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
