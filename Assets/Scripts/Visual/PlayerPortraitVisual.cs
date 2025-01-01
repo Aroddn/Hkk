@@ -48,6 +48,7 @@ public class PlayerPortraitVisual : MonoBehaviour {
             if (healthAfter > charAsset.MaxHealth)
             {
                 HealthText.text = charAsset.MaxHealth.ToString();
+                HealthText.color = Color.white;
             }
             else
             {

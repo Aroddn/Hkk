@@ -14,6 +14,10 @@ public class DragSpellOnTarget : DraggingActions {
     private GameObject Target;
     private OneCardManager manager;
 
+    private CurvedLinePoint[] linePoints = new CurvedLinePoint[0];
+    private Vector3[] linePositions = new Vector3[0];
+    private Vector3[] linePositionsOld = new Vector3[0];
+
     public override bool CanDrag
     {
         get
@@ -73,6 +77,7 @@ public class DragSpellOnTarget : DraggingActions {
 
     public override void OnEndDrag()
     {
+        HandVisual PlayerHand = playerOwner.PArea.handVisual;
         Target = null;
         RaycastHit[] hits;
         // TODO: raycast here anyway, store the results in 
@@ -179,6 +184,8 @@ public class DragSpellOnTarget : DraggingActions {
             // not a valid target, return
             whereIsThisCard.VisualState = tempVisualState;
             whereIsThisCard.SetHandSortingOrder();
+
+            PlayerHand.PlaceCardsOnNewSlots();
         }
 
         // return target and arrow to original position
@@ -194,5 +201,10 @@ public class DragSpellOnTarget : DraggingActions {
     protected override bool DragSuccessful()
     {
         return true;
+    }
+
+    public override void OnCancelDrag()
+    {
+
     }
 }

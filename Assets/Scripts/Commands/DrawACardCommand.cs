@@ -18,6 +18,6 @@ public class DrawACardCommand : Command {
     public override void StartCommandExecution()
     {
         p.PArea.PDeck.CardsInDeck--;
-        p.PArea.handVisual.GivePlayerACard(cl.ca, cl.UniqueCardID, fast, fromDeck);//handpos was here?
+        p.PArea.handVisual.GivePlayerACard(cl.ca, cl.UniqueCardID, fast, fromDeck);
     }
 }

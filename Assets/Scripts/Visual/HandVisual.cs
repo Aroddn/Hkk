@@ -87,8 +87,7 @@ public class HandVisual : MonoBehaviour
         slots.gameObject.transform.DOLocalMoveX(posX, 0.3f);
     }
 
-
-    void PlaceCardsOnNewSlots()
+    public void PlaceCardsOnNewSlots()
     {
         foreach (GameObject g in CardsInHand)
         {

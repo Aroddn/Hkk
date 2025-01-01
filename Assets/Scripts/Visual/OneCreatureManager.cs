@@ -49,7 +49,7 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
             // Toggle the right-click menu
             if (rightClickMenu != null)
             {
-                rightClickMenu.SetActive(!rightClickMenu.activeSelf);  
+                rightClickMenu.SetActive(!rightClickMenu.activeSelf);
             }
         }
     }
@@ -77,7 +77,7 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
             PreviewManager.cardAsset = cardAsset;
             PreviewManager.ReadCardFromAsset();
         }
-    }	
+    }
 
     public void TakeDamage(int amount, int healthAfter)
     {
@@ -93,21 +93,38 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void Buff(int attackAfter, int healthAfter)
+    {
+        AttackText.text = attackAfter.ToString();
+        if (attackAfter < cardAsset.Attack)
+            AttackText.color = Color.red;
+        else if (attackAfter > cardAsset.Attack)
+            AttackText.color = Color.green;
+        else AttackText.color = Color.black;
+
+        HealthText.text = healthAfter.ToString();
+        if (healthAfter < cardAsset.MaxHealth)
+            HealthText.color = Color.red;
+        else if (healthAfter > cardAsset.MaxHealth)
+            HealthText.color = Color.green;
+        else HealthText.color = Color.black;
+    }
+
     public void Heal(int amount, int healthAfter)
     {
         if (amount > 0)
         {
-            //TODO
             HealEffect.CreateHealEffect(transform.position, amount);
             if (healthAfter > cardAsset.MaxHealth)
             {
                 HealthText.text = cardAsset.MaxHealth.ToString();
+                HealthText.color = Color.white;
             }
             else
             {
                 HealthText.text = healthAfter.ToString();
             }
-            
+
         }
     }
 }

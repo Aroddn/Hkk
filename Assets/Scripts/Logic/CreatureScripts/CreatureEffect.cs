@@ -16,6 +16,8 @@ public abstract class CreatureEffect
 
     public virtual void RegisterEffect() { }
 
+    public virtual void UnRegisterEffect() { }
+
     public virtual void CauseEffect() { }
 
     public virtual void WhenACreatureIsPlayed() { }

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class SpellEffect
 {
-    public virtual void ActivateEffect(int specialAmount = 0, ICharacter target = null)
+    public virtual void ActivateEffect(int specialAmount = 0, int specialAmount2 = 0, ICharacter target = null)
     {
         Debug.Log("No Spell effect with this name found! Check for typos in CardAssets");
     }
-        
+
 }

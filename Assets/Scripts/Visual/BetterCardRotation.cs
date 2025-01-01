@@ -63,21 +63,4 @@ public class BetterCardRotation : MonoBehaviour
         }
 
     }
-    void OnDrawGizmos()
-    {
-        if (targetFacePoint != null && Camera.main != null)
-        {
-            Gizmos.color = UnityEngine.Color.green;
-            Vector3 origin = Camera.main.transform.position;
-            Vector3 direction = (targetFacePoint.position - origin).normalized;
-            float maxDistance = (targetFacePoint.position - origin).magnitude;
-
-            // Draw the raycast line
-            Gizmos.DrawLine(origin, origin + direction * maxDistance);
-
-            // Draw a sphere at the end of the raycast to visualize the target point
-            Gizmos.color = UnityEngine.Color.red;
-            Gizmos.DrawSphere(targetFacePoint.position, 0.05f);
-        }
-    }
 }

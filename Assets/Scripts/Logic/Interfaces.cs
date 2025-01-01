@@ -9,9 +9,8 @@ public interface ICharacter: IIdentifiable
 
     void Die(bool sacrifice);
 
-    void BuffHealth(int amount);
-    void BuffAttack(int amount);
-    void BuffAttackAndHealth(int attack, int health);    
+    void ChangeHealth(int amount, bool heal);
+  
 }
 
 public interface IIdentifiable

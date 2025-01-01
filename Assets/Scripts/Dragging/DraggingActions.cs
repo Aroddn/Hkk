@@ -9,6 +9,8 @@ public abstract class DraggingActions : MonoBehaviour {
 
     public abstract void OnDraggingInUpdate();
 
+    public abstract void OnCancelDrag();
+
     public virtual bool CanDrag
     {
         get

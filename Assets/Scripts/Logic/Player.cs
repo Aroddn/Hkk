@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour, ICharacter
 {
     // PUBLIC FIELDS
-    // int ID that we get from ID factory
     public int PlayerID;
     public CharacterAsset charAsset;
     public PlayerArea PArea;
@@ -16,7 +15,6 @@ public class Player : MonoBehaviour, ICharacter
     public Deck deck;
     public Hand hand;
     public Table table;
-
     public GraveYard graveYard;
     public Void voiid;
 
@@ -27,7 +25,7 @@ public class Player : MonoBehaviour, ICharacter
         get { return PlayerID; }
     }
 
-    private int maxMana;//maxmana
+    private int maxMana;
     public int MaxMana
     {
         get{ return maxMana; }
@@ -40,7 +38,6 @@ public class Player : MonoBehaviour, ICharacter
 
     private int totalBones;
 
-
     public int TotalBones
     {
         get { return totalBones; }
@@ -51,7 +48,7 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
-    private int currentMana;//currentMana
+    private int currentMana;
 
     public int CurrentMana
     {
@@ -60,9 +57,7 @@ public class Player : MonoBehaviour, ICharacter
         set
         {
             currentMana = value;
-            //PArea.ManaBar.CurrentMana = manaLeft;
             new UpdateManaCrystalsCommand(this, MaxMana, currentMana).AddToQueue();
-            //Debug.Log(ManaLeft);
             if (TurnManager.Instance.WhoseTurn == this)
                 HighlightPlayableCards();
         }
@@ -79,12 +74,18 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
+    private int maxHealth;
+
+    public int MaxHealth {
+        get { return maxHealth; }
+        set { maxHealth = value; }
+    }
+
     private int health;
     public int Health
     {
         get { return health;}
-        set
-        {
+        set { health = value;
             if (value > charAsset.MaxHealth)
             {
                 health = charAsset.MaxHealth;
@@ -98,12 +99,40 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
+    public void ChangeHealth(int value, bool heal)
+    {
+        GameObject creature = IDHolder.GetGameObjectWithID(ID);
+        if (heal)
+        {
+            if (Health + value > MaxHealth)
+            {
+                Health = MaxHealth;
+            } else if (Health + value < 0)
+                Die();
+            else
+            {
+                Health += value;
+            }
+        }
+        else
+        {
+            if (MaxHealth + value < 0)
+            {
+                Die();
+            }
+            else
+            {
+                MaxHealth += value;
+            }
+        }
+    }
+
     int ICharacter.Attack { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     public delegate void VoidWithNoArguments();
-    //public event VoidWithNoArguments CreaturePlayedEvent;
-    //public event VoidWithNoArguments SpellPlayedEvent;
-    //public event VoidWithNoArguments StartTurnEvent;
+    public event VoidWithNoArguments CreaturePlayedEvent;
+    public event VoidWithNoArguments SpellPlayedEvent;
+    public event VoidWithNoArguments StartTurnEvent;
     public event VoidWithNoArguments EndTurnEvent;
 
     public static Player[] Players;
@@ -119,8 +148,30 @@ public class Player : MonoBehaviour, ICharacter
         TurnCounter++;
         CurrentMana += TurnCounter;
 
+        if (StartTurnEvent != null)
+            StartTurnEvent.Invoke();
+        GetComponent<TurnMaker>().StopAllCoroutines();
+
+        //enemy creatures
+        foreach (CreatureLogic cl in this.otherPlayer.table.CreaturesOnTable)
+        {
+            cl.FullHeal();
+            cl.Attack += 1;
+            cl.ChangeHealth(1, false);   
+        }
+
+        //your creatures
         foreach (CreatureLogic cl in table.CreaturesOnTable)
-            cl.OnTurnStart();
+        {
+            cl.OnTurnStart();           
+            cl.Attack -= 1;
+            if (cl.Health-1 >0)
+            {
+                cl.ChangeHealth(-1, false);
+            }
+            cl.FullHeal();
+        }    
+            
     }
 
     public void GetBonusMana(int amount)
@@ -198,7 +249,7 @@ public class Player : MonoBehaviour, ICharacter
     {
         CurrentMana -= playedCard.CurrentManaCost;
         if (playedCard.effect != null)
-            playedCard.effect.ActivateEffect(playedCard.ca.specialSpellAmount, target);
+            playedCard.effect.ActivateEffect(playedCard.ca.specialSpellAmount, playedCard.ca.specialSpellAmount2, target);
         else
         {
             Debug.LogWarning("No effect found on card " + playedCard.ca.name);
@@ -291,6 +342,7 @@ public class Player : MonoBehaviour, ICharacter
     public void LoadCharacterInfoFromAsset()
     {
         Health = charAsset.MaxHealth;
+        MaxHealth = charAsset.MaxHealth;
         PArea.Portrait.charAsset = charAsset;
         PArea.Portrait.ApplyLookFromAsset();
     }
@@ -315,18 +367,5 @@ public class Player : MonoBehaviour, ICharacter
         throw new System.NotImplementedException();
     }
 
-    public void BuffHealth(int amount)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void BuffAttack(int amount)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void BuffAttackAndHealth(int attack, int health)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DealDamageCommand : Command {
+public class BuffTargetCommand : Command {
 
     private int targetID;
-    private int amount;
+    private int attackAfter;
     private int healthAfter;
 
-    public DealDamageCommand( int targetID, int amount, int healthAfter)
+    public BuffTargetCommand( int targetID,int attackAfter,int healthAfter)
     {
         this.targetID = targetID;
-        this.amount = amount;
+        this.attackAfter = attackAfter;
         this.healthAfter = healthAfter;
     }
 
@@ -18,16 +18,11 @@ public class DealDamageCommand : Command {
     {
 
         GameObject target = IDHolder.GetGameObjectWithID(targetID);
-        if (targetID == GlobalSettings.Instance.LowPlayer.PlayerID || targetID == GlobalSettings.Instance.TopPlayer.PlayerID)
+        if (!(targetID == GlobalSettings.Instance.LowPlayer.PlayerID) && !(targetID == GlobalSettings.Instance.TopPlayer.PlayerID))
         {
-            // target is a hero
-            target.GetComponent<PlayerPortraitVisual>().TakeDamage(amount, healthAfter);
+            target.GetComponent<OneCreatureManager>().Buff(attackAfter, healthAfter);
         }
-        else
-        {
-            // target is a creature
-            target.GetComponent<OneCreatureManager>().TakeDamage(amount, healthAfter);
-        }
+
         CommandExecutionComplete();
     }
 }

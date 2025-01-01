@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GiveManaBonus: SpellEffect 
 {
-    public override void ActivateEffect(int specialAmount = 0, ICharacter target = null)
+    public override void ActivateEffect(int specialAmount = 0, int specialAmount2 = 0, ICharacter target = null)
     {
         TurnManager.Instance.WhoseTurn.GetBonusMana(specialAmount);
     }

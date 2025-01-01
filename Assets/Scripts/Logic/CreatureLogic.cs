@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEngine.GraphicsBuffer;
+using System;
 
 [System.Serializable]
 public class CreatureLogic: ICharacter 
@@ -16,50 +18,101 @@ public class CreatureLogic: ICharacter
     }
     public bool Frozen = false;
 
-    // the basic health that we have in CardAsset
+    //current
     private int health;
-    // health with all the current buffs taken into account
+
+    //max
     private int baseHealth;
 
     public int MaxHealth
     {
         get{ return baseHealth;}
-
-        set { baseHealth = value; }
+        set{ baseHealth = value;}
     }
-        
-    
+
 
     public int Health
     {
         get{ return health; }
-
-        set
-        {
-            if (value > MaxHealth)
-                health = baseHealth;
-            else if (value <= 0)
+        set{
+            if (value <= 0)
                 Die(false);
             else
                 health = value;
         }
     }
 
-    public void BuffHealth(int value)
+    public void ChangeHealth(int value, bool heal)
     {
-        health = value;
-        baseHealth = value;
+        GameObject creature = IDHolder.GetGameObjectWithID(ID);
+        if (heal)
+        {
+            if (Health+value > MaxHealth)
+            {
+                Health = baseHealth;
+                
+                if (creature != null)
+                    creature.GetComponent<OneCreatureManager>().HealthText.text = Health.ToString();
+            }
+            else
+            {
+                if (creature != null)
+                    creature.GetComponent<OneCreatureManager>().Heal(value,Health+value);
+            }
+        }
+        else
+        {
+            if (Health+value <=0 )
+            {
+                Die(false);
+            }
+            else
+            {
+                Health += value;
+                MaxHealth = Health;
+
+                if (creature != null)
+                    creature.GetComponent<OneCreatureManager>().Buff(Attack, Health);
+            }             
+        }
+
     }
 
-    public void BuffAttack(int value)
+    public void FullHeal()
     {
+        GameObject creature = IDHolder.GetGameObjectWithID(ID);
+        if (!(Health > ca.MaxHealth))
+        {
+            Health = ca.MaxHealth;
+        }
 
+        if (creature != null)
+            creature.GetComponent<OneCreatureManager>().Buff(Attack, Health);
     }
 
-    public void BuffAttackAndHealth(int health, int attack)
+    private int attack;
+    public int Attack
     {
+        get { return attack; }
+        set
+        {
+            GameObject creature = IDHolder.GetGameObjectWithID(ID);
+            
+            if (value < 0)
+            {
+                if(creature != null) creature.GetComponent<OneCreatureManager>().AttackText.text = 0.ToString();
+                attack = 0;
+            }
+            else
+            {
+                attack = value;
+                if (creature != null) creature.GetComponent<OneCreatureManager>().AttackText.text = value.ToString();
+            }
 
+        }
     }
+   
+    
 
     public bool CanAttack
     {
@@ -68,14 +121,6 @@ public class CreatureLogic: ICharacter
             bool ownersTurn = (TurnManager.Instance.WhoseTurn == owner);
             return (ownersTurn && (AttacksLeftThisTurn > 0) && !Frozen);
         }
-    }
-
-    private int baseAttack;
-    // attack with buffs
-    public int Attack
-    {
-        get{ return baseAttack; }
-        set { }
     }
         
     private int attacksForOneTurn = 1;
@@ -91,7 +136,7 @@ public class CreatureLogic: ICharacter
         this.ca = ca;
         baseHealth = ca.MaxHealth;
         Health = ca.MaxHealth;
-        baseAttack = ca.Attack;
+        Attack = ca.Attack;
         attacksForOneTurn = ca.AttacksForOneTurn;
         if (ca.Flying)
             AttacksLeftThisTurn = attacksForOneTurn;
@@ -140,13 +185,14 @@ public class CreatureLogic: ICharacter
     public void AttackCreature (CreatureLogic target)
     {
         AttacksLeftThisTurn--;
-        // calculate the values so that the creature does not fire the DIE command before the Attack command is sent
         int targetHealthAfter = target.Health - Attack;
         int attackerHealthAfter = Health - target.Attack;
         new CreatureAttackCommand(target.UniqueCreatureID, UniqueCreatureID, target.Attack, Attack, attackerHealthAfter, targetHealthAfter).AddToQueue();
 
         target.Health -= Attack;
         Health -= target.Attack;
+        //target.ChangeHealth(-Attack,false);
+        //ChangeHealth(-target.Attack,false);
     }
 
     public void AttackCreatureWithID(int uniqueCreatureID)

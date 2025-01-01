@@ -4,17 +4,14 @@ using DG.Tweening;
 
 public class HoverPreview: MonoBehaviour
 {
-    // PUBLIC FIELDS
-    public GameObject TurnThisOffWhenPreviewing;  // if this is null, will not turn off anything 
+    public GameObject TurnThisOffWhenPreviewing;
     public Vector3 TargetPosition;
     public float TargetScale;
     public GameObject previewGameObject;
     public bool ActivateInAwake = false;
 
-    // PRIVATE FIELDS
     private static HoverPreview currentlyViewing = null;
 
-    // PROPERTIES WITH UNDERLYING PRIVATE FIELDS
     private static bool _PreviewsAllowed = true;
     public static bool PreviewsAllowed
     {
@@ -22,7 +19,6 @@ public class HoverPreview: MonoBehaviour
 
         set 
         { 
-            //Debug.Log("Hover Previews Allowed is now: " + value);
             _PreviewsAllowed= value;
             if (!_PreviewsAllowed)
                 StopAllPreviews();
@@ -44,7 +40,6 @@ public class HoverPreview: MonoBehaviour
 
     public bool OverCollider { get; set;}
  
-    // MONOBEHVIOUR METHODS
     void Awake()
     {
         ThisPreviewEnabled = ActivateInAwake;
@@ -65,20 +60,13 @@ public class HoverPreview: MonoBehaviour
             StopAllPreviews();
     }
 
-    // OTHER METHODS
     void PreviewThisObject()
     {
-        // 1) clone this card 
-        // first disable the previous preview if there is one already
         StopAllPreviews();
-        // 2) save this HoverPreview as curent
         currentlyViewing = this;
-        // 3) enable Preview game object
         previewGameObject.SetActive(true);
-        // 4) disable if we have what to disable
         if (TurnThisOffWhenPreviewing!=null)
             TurnThisOffWhenPreviewing.SetActive(false); 
-        // 5) tween to target position
         previewGameObject.transform.localPosition = Vector3.zero;
         previewGameObject.transform.localScale = Vector3.one;
 
@@ -95,7 +83,6 @@ public class HoverPreview: MonoBehaviour
             TurnThisOffWhenPreviewing.SetActive(true); 
     }
 
-    // STATIC METHODS
     private static void StopAllPreviews()
     {
         if (currentlyViewing != null)

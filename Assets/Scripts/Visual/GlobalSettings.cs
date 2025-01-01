@@ -72,34 +72,10 @@ public class GlobalSettings: MonoBehaviour
         List<CardAsset> deck2 = new List<CardAsset>();
         List<CardAsset> deck3 = new List<CardAsset>();
 
-        string[] angels = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/Angels" });
-        string[] fire = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/FireMagic" });
-        string[] beasts = AssetDatabase.FindAssets("t:CardAsset", new[] { "Assets/Resources/SO Assets/Decks/Beasts" });
-
-        foreach (string angel in angels)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(angel);
-            CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
-            deck1.AddRange(Enumerable.Repeat(card, 3));
-
-        }
-
-        foreach (string f in fire)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(f);
-            CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
-            deck2.AddRange(Enumerable.Repeat(card, 3));
-
-        }
-
-        foreach (string b in beasts)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(b);
-            CardAsset card = AssetDatabase.LoadAssetAtPath<CardAsset>(path);
-            deck3.AddRange(Enumerable.Repeat(card, 3));
-
-        }
-
+        deck1 = Resources.LoadAll<CardAsset>("SO Assets/Decks/Angels").ToList();
+        deck2 = Resources.LoadAll<CardAsset>("SO Assets/Decks/FireMagic").ToList();
+        deck3 = Resources.LoadAll<CardAsset>("SO Assets/Decks/Beasts").ToList();
+  
         deck1.Shuffle();
         deck2.Shuffle();
         deck3.Shuffle();

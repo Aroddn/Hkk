@@ -44,6 +44,7 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
     [Header("SpellInfo")]
     public string SpellScriptName;
     public int specialSpellAmount;
+    public int specialSpellAmount2;
     public PlaySpeed playSpeed;
     public SubType spellSubType;
     public TargetingOptions Targets;

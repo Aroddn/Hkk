@@ -9,7 +9,18 @@ using DG.Tweening;
 /// </summary>
 
 public class Draggable : MonoBehaviour {
+    public enum StartDragBehavior
+    {
+        OnMouseDown, InAwake
+    }
 
+    public enum EndDragBehavior
+    {
+        OnMouseUp, OnMouseDown
+    }
+
+    public StartDragBehavior HowToStart = StartDragBehavior.OnMouseDown;
+    public EndDragBehavior HowToEnd = EndDragBehavior.OnMouseUp;
     // PRIVATE FIELDS
 
     // a flag to know if we are currently dragging this GameObject
@@ -39,15 +50,30 @@ public class Draggable : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (da != null && da.CanDrag)
+        if (da != null && da.CanDrag && HowToStart == StartDragBehavior.OnMouseDown)
         {
-            dragging = true;
-            // when we are dragging something, all previews should be off
-            HoverPreview.PreviewsAllowed = false;
-            _draggingThis = this;
-            da.OnStartDrag();
-            zDisplacement = -Camera.main.transform.position.z + transform.position.z;
-            pointerDisplacement = -transform.position + MouseInWorldCoords();
+            StartDragging();
+        }
+
+        if (dragging && HowToEnd == EndDragBehavior.OnMouseDown)
+        {
+            dragging = false;
+            // turn all previews back on
+            HoverPreview.PreviewsAllowed = true;
+            _draggingThis = null;
+            da.OnEndDrag();
+        }
+    }
+
+    void OnMouseUp()
+    {
+        if (dragging && HowToEnd == EndDragBehavior.OnMouseUp)
+        {
+            dragging = false;
+            // turn all previews back on
+            HoverPreview.PreviewsAllowed = true;
+            _draggingThis = null;
+            da.OnEndDrag();
         }
     }
 
@@ -62,8 +88,18 @@ public class Draggable : MonoBehaviour {
             da.OnDraggingInUpdate();
         }
     }
-	
-    void OnMouseUp()
+    public void StartDragging()
+    {
+        dragging = true;
+        // when we are dragging something, all previews should be off
+        HoverPreview.PreviewsAllowed = false;
+        _draggingThis = this;
+        da.OnStartDrag();
+        zDisplacement = -Camera.main.transform.position.z + transform.position.z;
+        pointerDisplacement = -transform.position + MouseInWorldCoords();
+    }
+
+    public void CancelDrag()
     {
         if (dragging)
         {
@@ -71,9 +107,10 @@ public class Draggable : MonoBehaviour {
             // turn all previews back on
             HoverPreview.PreviewsAllowed = true;
             _draggingThis = null;
-            da.OnEndDrag();
+            da.OnCancelDrag();
         }
-    }   
+    }
+
 
     // returns mouse position in World coordinates for our GameObject to follow. 
     private Vector3 MouseInWorldCoords()
