@@ -21,9 +21,5 @@ public class PlayerArea : MonoBehaviour
     public Transform PortraitPosition;
     public Transform InitialPortraitPosition;
 
-    //dont need prolly
-    //public HeroPowerButton HeroPower;
-    //public EndTurnButton EndTurnButton;
-
     public bool AllowedToControlThisPlayer{get;  set;}      
 }

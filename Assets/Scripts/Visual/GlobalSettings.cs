@@ -12,10 +12,6 @@ public class GlobalSettings: MonoBehaviour
     [Header("Players")]
     public Player TopPlayer;
     public Player LowPlayer;
-    [Header("Colors")]
-    public Color32 CardBodyStandardColor;
-    public Color32 CardRibbonsStandardColor;
-    public Color32 CardGlowColor;
     [Header("Numbers and Values")]
     public float CardPreviewTime = 1f;
     public float CardTransitionTime= 1f;

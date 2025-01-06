@@ -17,9 +17,6 @@ public enum PlayerAction
 // this class will take care of switching turns and counting down time until the turn expires
 public class TurnManager : MonoBehaviour {
 
-
-    public CardAsset CoinCard;
-
     private RopeTimer timer;
 
     // for Singleton Pattern
@@ -76,7 +73,7 @@ public class TurnManager : MonoBehaviour {
 
     void Start()
     {
-        OnGameStart();
+        //OnGameStart();
     }
 
     public void OnGameStart()
@@ -86,6 +83,7 @@ public class TurnManager : MonoBehaviour {
 
         foreach (Player p in Player.Players)
         {
+            p.PArea.Portrait.gameObject.SetActive(true);
             p.MaxMana = 20;
             p.CurrentMana = 0;
             p.TotalBones = 0;
@@ -140,7 +138,6 @@ public class TurnManager : MonoBehaviour {
 
         //if (Input.GetKeyDown(KeyCode.D))
         //    WhoseTurn.DrawACard(); 
-
     }
 
     public void EndTurn()
