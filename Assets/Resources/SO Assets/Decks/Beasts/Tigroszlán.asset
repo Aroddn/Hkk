@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: "Tigroszl\xE1n"
   m_EditorClassIdentifier: 
-  rarity: 0
+  cardName: "Tigroszl\xE1n"
+  Rarity: 0
   color: 8
   releaseYear: 2017
   mental: 0
@@ -20,10 +21,14 @@ MonoBehaviour:
   fire: 0
   anchor: 0
   Description: "Ha ellenfelednek van l\xE9nye j\xE1t\xE9kban, \"Rep\xFCl\"."
+  Tags: 
   FlavorText: "A T\xFAl\xE9l\u0151k F\xF6ldj\xE9nek kalandoz\xF3i els\u0151sorban
     karm\xE1\xE9rt vad\xE1ssz\xE1k ezt a besti\xE1t. - Encyclopedia Fantasia"
-  CardImage: {fileID: 21300000, guid: ea2adaa2019db3f429ce2d94d005203f, type: 3}
+  CardImage: {fileID: 21300000, guid: d25443c57d699834baadfbe16ba165cc, type: 3}
   ManaCost: 2
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
   MaxHealth: 5
   Attack: 5
   AttacksForOneTurn: 1
@@ -36,6 +41,7 @@ MonoBehaviour:
   subType: 0
   SpellScriptName: 
   specialSpellAmount: 0
+  specialSpellAmount2: 0
   playSpeed: 0
   spellSubType: 0
   Targets: 0

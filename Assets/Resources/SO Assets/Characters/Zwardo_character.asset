@@ -12,23 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfd5b4ff6e64b14e9355c972510d5ce, type: 3}
   m_Name: Zwardo_character
   m_EditorClassIdentifier: 
-  Class: 0
-  ClassName: 
+  ClassName: Zwardo
   MaxHealth: 20
-  HeroPowerName: 
   AvatarImage: {fileID: 21300000, guid: 873aef84e59a4bf4aa093dfa14350221, type: 3}
-  HeroPowerIconImage: {fileID: 0}
-  AvatarBGImage: {fileID: 0}
-  HeroPowerBGImage: {fileID: 0}
-  AvatarBGTint:
-    serializedVersion: 2
-    rgba: 0
-  HeroPowerBGTint:
-    serializedVersion: 2
-    rgba: 0
-  ClassCardTint:
-    serializedVersion: 2
-    rgba: 0
-  ClassRibbonsTint:
-    serializedVersion: 2
-    rgba: 0

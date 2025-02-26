@@ -27,9 +27,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3126681714729696081}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.3896768, y: -0.39303255, z: 0.14546022}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3126681716131533532}
   - {fileID: 3126681715810922397}
@@ -37,7 +39,6 @@ Transform:
   - {fileID: 3126681716177342699}
   - {fileID: 3126681715237707566}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3126681714729696083
 MonoBehaviour:
@@ -51,14 +52,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7131c780724a69e409c2976b4319a567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  username: 
   PlayerID: 0
-  charAsset: {fileID: 11400000, guid: 480171153d0e72d46889754854821468, type: 2}
+  charAsset: {fileID: 0}
   PArea: {fileID: 0}
+  deckName: 
+  cardNames: []
   deck: {fileID: 3126681715810922396}
   hand: {fileID: 3126681716131533535}
   table: {fileID: 3126681715216203111}
   graveYard: {fileID: 3126681716177342698}
   voiid: {fileID: 3126681715237707569}
+  hasEnemy: 0
+  enemyInfo:
+    player: {fileID: 0}
+  firstPlayer: 0
 --- !u!114 &3126681714729696082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 3535466746
+  _assetId: 2121667553
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -145,12 +156,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3126681715216203109}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3126681714729696080}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3126681715216203111
 MonoBehaviour:
@@ -164,6 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3362042134a4d54f9627dfcc1518827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   CreaturesOnTable: []
 --- !u!1 &3126681715237707567
 GameObject:
@@ -189,12 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3126681715237707567}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3126681714729696080}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3126681715237707569
 MonoBehaviour:
@@ -208,6 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9c3505d11501242a6114ac238d38f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   cards: []
 --- !u!1 &3126681715810922394
 GameObject:
@@ -233,12 +252,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3126681715810922394}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3126681714729696080}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3126681715810922396
 MonoBehaviour:
@@ -252,17 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da8006941a18e7419d3c46eed9db9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
-  - {fileID: 11400000, guid: c990157e21525964680399951695a38c, type: 2}
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  cards: []
 --- !u!1 &3126681716131533533
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,12 +300,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3126681716131533533}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3126681714729696080}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3126681716131533535
 MonoBehaviour:
@@ -306,6 +320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f854cc68031b274ca2e8e69669ec794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   CardsInHand: []
 --- !u!1 &3126681716177342696
 GameObject:
@@ -331,12 +348,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3126681716177342696}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3126681714729696080}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3126681716177342698
 MonoBehaviour:
@@ -350,4 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e97ac2178ecd8748801ef180f41c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   cards: []

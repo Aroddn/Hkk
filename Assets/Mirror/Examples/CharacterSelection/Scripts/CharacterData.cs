@@ -17,7 +17,7 @@ namespace Mirror.Examples.CharacterSelection
 
         public void Awake()
         {
-            characterDataSingleton = this;
+                characterDataSingleton = this;
         }
 
     }

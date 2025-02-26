@@ -1,17 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
+using DG.Tweening.Core.Easing;
+using Mirror.Examples.MultipleMatch;
 
-public class Player : MonoBehaviour, ICharacter
+public enum PlayerType { PLAYER, ENEMY };
+
+public class Player : NetworkBehaviour, ICharacter
 {
+    [Header("Player Info")]
+    [SyncVar(hook = nameof(UpdatePlayerName))] public string username;
+
     // PUBLIC FIELDS
     public int PlayerID;
     public CharacterAsset charAsset;
     public PlayerArea PArea;
-    public SpellEffect HeroPowerEffect;
+
+    [SyncVar]
+    public string deckName;
+
+    [SyncVar]
+    public List<string> cardNames = new List<string>();
 
 
-    // REFERENCES TO LOGICAL STUFF THAT BELONGS TO THIS PLAYER
     public Deck deck;
     public Hand hand;
     public Table table;
@@ -19,7 +31,94 @@ public class Player : MonoBehaviour, ICharacter
     public Void voiid;
 
     private int TurnCounter;
-    
+
+
+     public static Player localPlayer;
+     public bool hasEnemy = false; // If we have set an enemy.
+     public PlayerInfo enemyInfo; // We can't pass a Player class through the Network, but we can pass structs. 
+    // We store all our enemy's info in a PlayerInfo struct so we can pass it through the network when needed.
+    public static GameManager gameManager;
+    [SyncVar] public bool firstPlayer = false;
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        localPlayer = this;
+        CmdLoadPlayer(PlayerPrefs.GetString("Name"));
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdSetPlayerData(string newDeckName, List<string> newCardNames)
+    {
+        // Update SyncVars (automatically syncs with clients)
+        deckName = newDeckName;
+    }
+
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (isClientOnly)
+        {
+            Debug.Log($"Player initialized with deck: {deckName}, cards: {string.Join(", ", cardNames)}");
+        }
+    }
+
+    // Utility: Deserialize a single string back into a list of strings
+    private List<string> DeserializeCardNames(string serialized)
+    {
+        return new List<string>(serialized.Split(','));
+    }
+
+    [Command]
+    public void CmdLoadPlayer(string user)
+    {
+        username = user;
+    }
+    void UpdatePlayerName(string oldUser, string newUser)
+    {
+        // Update username
+        username = newUser;
+
+        // Update game object's name in editor (only useful for debugging).
+        gameObject.name = newUser;
+    }
+
+
+    public void Update()
+    {
+        // Get EnemyInfo as soon as another player connects. Only start updating once our Player has been loaded in properly (username will be set if loaded in).
+        if (!hasEnemy && username != "")
+        {
+            UpdateEnemyInfo();
+        }
+    }
+
+    public void UpdateEnemyInfo()
+    {
+        // Find all Players and add them to the list.
+        Player[] onlinePlayers = FindObjectsOfType<Player>();
+
+        // Loop through all online Players (should just be one other Player)
+        foreach (Player player in onlinePlayers)
+        {
+
+            // Make sure the players are loaded properly (we load the usernames first)
+            if (player.username != "")
+            {
+                // There should only be one other Player online, so if it's not us then it's the enemy.
+                if (player != this)
+                {
+                    // Get & Set PlayerInfo from our Enemy's gameObject
+                    PlayerInfo currentPlayer = new PlayerInfo(player.gameObject);
+                    enemyInfo = currentPlayer;
+                    hasEnemy = true;
+                    //enemyInfo.data.casterType = Target.OPPONENT;
+                }
+            }
+        }
+    }
+
     public int ID
     {
         get { return PlayerID; }
@@ -130,8 +229,8 @@ public class Player : MonoBehaviour, ICharacter
     int ICharacter.Attack { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     public delegate void VoidWithNoArguments();
-    public event VoidWithNoArguments CreaturePlayedEvent;
-    public event VoidWithNoArguments SpellPlayedEvent;
+    //public event VoidWithNoArguments CreaturePlayedEvent;
+    //public event VoidWithNoArguments SpellPlayedEvent;
     public event VoidWithNoArguments StartTurnEvent;
     public event VoidWithNoArguments EndTurnEvent;
 
@@ -141,6 +240,7 @@ public class Player : MonoBehaviour, ICharacter
     {
         Players = GameObject.FindObjectsOfType<Player>();
         PlayerID = IDFactory.GetUniqueID();
+        //PArea = GameObject.Find("LowerPlayerArea").GetComponent<PlayerArea>();
     }
 
     public virtual void OnTurnStart()
@@ -366,6 +466,4 @@ public class Player : MonoBehaviour, ICharacter
     {
         throw new System.NotImplementedException();
     }
-
-    
 }

@@ -7,6 +7,7 @@ using System;
 public class CardAsset : ScriptableObject, IComparable<CardAsset>
 {
     [Header("General info")]
+    public string cardName;
     public RarityOptions Rarity;
     public ColorType color;
     public int releaseYear;

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Ehknagorhu
   m_EditorClassIdentifier: 
-  rarity: 0
+  cardName: Ehknagorhu
+  Rarity: 0
   color: 8
   releaseYear: 2017
   mental: 0
@@ -22,9 +23,13 @@ MonoBehaviour:
   Description: "Felt\xE1mad(vagyis kij\xE1thatod a gy\xFAjt\u0151b\xF6l is). Kij\xE1tsz\xE1sakor
     c\xE9lpont lapot a gy\u0171jt\u0151be k\xFCldhetsz(ez felt\xE1mad\xE1skor nem
     m\u0171k\xF6dik)"
+  Tags: 
   FlavorText: 
   CardImage: {fileID: 21300000, guid: 812e0200968604f4c8850394676d9e3b, type: 3}
   ManaCost: 3
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
   MaxHealth: 4
   Attack: 4
   AttacksForOneTurn: 1
@@ -37,6 +42,7 @@ MonoBehaviour:
   subType: 4
   SpellScriptName: 
   specialSpellAmount: 0
+  specialSpellAmount2: 0
   playSpeed: 0
   spellSubType: 0
   Targets: 0

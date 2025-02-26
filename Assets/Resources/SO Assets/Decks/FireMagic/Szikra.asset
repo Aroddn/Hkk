@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: Szikra
   m_EditorClassIdentifier: 
+  cardName: Szikra
   Rarity: 0
   color: 1
   releaseYear: 2017
@@ -42,6 +43,7 @@ MonoBehaviour:
   subType: 0
   SpellScriptName: DealDamageToTarget
   specialSpellAmount: 2
+  specialSpellAmount2: 0
   playSpeed: 0
   spellSubType: 0
   Targets: 4

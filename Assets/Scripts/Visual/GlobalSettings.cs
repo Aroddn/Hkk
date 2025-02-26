@@ -6,6 +6,7 @@ using UnityEditor;
 using System;
 using Unity.Collections.LowLevel.Unsafe;
 using System.Linq;
+using Mirror;
 
 public class GlobalSettings: MonoBehaviour 
 {
@@ -35,16 +36,17 @@ public class GlobalSettings: MonoBehaviour
 
     void Awake()
     {
-        Players.Add(AreaPosition.Top, TopPlayer);
-        Players.Add(AreaPosition.Low, LowPlayer);
+        //Players.Add(AreaPosition.Top, TopPlayer);
+        //Players.Add(AreaPosition.Low, LowPlayer);
         Instance = this;
+        Console.WriteLine("halo");
 
 
-        AssignDeckAndCharacter(LowPlayer, BattleStartInfo.SelectedDeck);
-        AssignDeckAndCharacter(TopPlayer, null);
+        //AssignDeckAndCharacter(LowPlayer, BattleStartInfo.SelectedDeck);
+        //AssignDeckAndCharacter(TopPlayer, null);
     }
 
-    private void AssignDeckAndCharacter(Player player, DeckInfo deckInfo)
+    public void AssignDeckAndCharacter(Player player, DeckInfo deckInfo)
     {
         if (deckInfo != null)
         {

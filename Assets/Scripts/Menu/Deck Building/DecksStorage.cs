@@ -17,6 +17,9 @@ public class DeckInfo
         DeckName = deckName;
     }
 
+
+    public DeckInfo() { }
+
     public bool IsComplete()
     {
         return (DeckBuildingScreen.Instance.BuilderScript.AmountOfCardsInDeck == Cards.Count);

@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using Mirror.Examples.CharacterSelection;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
+using static Mirror.Examples.CharacterSelection.NetworkManagerCharacterSelection;
+using static NetworkManagerHKK;
 
 public class HeroInfoPanel : MonoBehaviour {
 
@@ -60,6 +64,14 @@ public class HeroInfoPanel : MonoBehaviour {
             // instantly load this information to our BattleStartInfo.
             BattleStartInfo.SelectedDeck = selectedDeck.DeckInformation;
 
+
+            StaticVariables.deckName = BattleStartInfo.SelectedDeck.DeckName;
+
+            StaticVariables.cardNames.Clear();
+            foreach (CardAsset card in BattleStartInfo.SelectedDeck.Cards)
+            {
+                StaticVariables.cardNames.Add(card.cardName);
+            }
             if (PlayButton!=null)
                 PlayButton.interactable = true;
         }

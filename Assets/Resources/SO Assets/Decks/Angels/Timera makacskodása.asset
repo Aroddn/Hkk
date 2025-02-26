@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "Timera makacskod\xE1sa"
+  m_EditorClassIdentifier: 
+  cardName: "Timera makacskod\xE1sa"
+  Rarity: 0
+  color: 8
+  releaseYear: 2016
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 0
+  Description: "Id\xE9z\xE9si k\xF6lts\xE9ge a te k\xF6r\xF6dben \"1 VP\", egy\xE9bk\xE9nt
+    \"0 VP\". Megakad\xE1lyoz egy lapot. Kij\xE1tsz\xE1sa ut\xE1n dobj egy kock\xE1val!
+    Ha 1-et vagy 2-t dobt\xE1l, dobj a kezedb\u0151l egy lapot a gy\u0171jt\u0151be."
+  Tags: 
+  FlavorText: 
+  CardImage: {fileID: 21300000, guid: 44af5ca7c4c28e443981256da852089b, type: 3}
+  ManaCost: 0
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
+  MaxHealth: 0
+  Attack: 0
+  AttacksForOneTurn: 1
+  Bone: 0
+  Flying: 0
+  Hand: 0
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 0
+  subType: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 11
+  Targets: 0

@@ -26,12 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8741539178986835608}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.2673697, y: -0.71394086, z: -3.064117}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6762515441937796506
 MonoBehaviour:
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 921951967
+  _assetId: 1948184516
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -98,8 +99,6 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  Player1: {fileID: 0}
-  Player2: {fileID: 0}
   LowPlayerArea: {fileID: 0}
   TopPlayerArea: {fileID: 0}
   TurnManager: {fileID: 0}

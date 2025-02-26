@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using static NetworkManagerHKK;
+using TMPro;
 
 public class SceneReloader: MonoBehaviour {
 
@@ -14,6 +16,11 @@ public class SceneReloader: MonoBehaviour {
     }
 
     public void LoadScene(string SceneName)
+    {
+        SceneManager.LoadScene(SceneName);
+    }
+
+    public void LoadSceneMultiPlayer(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
     }

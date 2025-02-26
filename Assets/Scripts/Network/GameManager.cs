@@ -5,8 +5,8 @@ using Mirror;
 
 public class GameManager : NetworkBehaviour
 {
-    public GameObject LowPlayerArea;
-    public GameObject TopPlayerArea;
+    public PlayerArea LowPlayerArea;
+    public PlayerArea TopPlayerArea;
     public TurnManager TurnManager;
 
     public override void OnStartClient()
@@ -19,5 +19,4 @@ public class GameManager : NetworkBehaviour
     {
         base.OnStartServer();
     }
-
 }

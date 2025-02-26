@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "T\u0171zb\xE9ka"
+  m_EditorClassIdentifier: 
+  cardName: "T\u0171zb\xE9ka"
+  Rarity: 0
+  color: 1
+  releaseYear: 2017
+  mental: 0
+  defense: 0
+  fire: 1
+  anchor: 0
+  Description: "Minden sebz\u0151 Dornodn var\xE1zslatod +1 sebz\xE9st okoz."
+  Tags: 
+  FlavorText: "T\u0171zm\xE1gusok famili\xE1risai, de \xF3vatlan kezekben fut\xF3t\xFCzz\xE9
+    v\xE1lnak."
+  CardImage: {fileID: 21300000, guid: 845b157b0e1d96b4dae0a5e7f1e5c6de, type: 3}
+  ManaCost: 1
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
+  MaxHealth: 1
+  Attack: 3
+  AttacksForOneTurn: 1
+  Bone: 0
+  Flying: 1
+  Hand: 0
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 0
+  subType: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 0
+  Targets: 0

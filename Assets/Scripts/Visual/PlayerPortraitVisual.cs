@@ -23,7 +23,6 @@ public class PlayerPortraitVisual : MonoBehaviour {
     {
         HealthText.text = charAsset.MaxHealth.ToString();
         PortraitImage.sprite = charAsset.AvatarImage;
-        PortraitBackgroundImage.sprite = charAsset.AvatarBGImage;
     }
 
     public void TakeDamage(int amount, int healthAfter)

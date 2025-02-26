@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "Baltaz\xE1r a behem\xF3t"
+  m_EditorClassIdentifier: 
+  cardName: "Baltaz\xE1r a behem\xF3t"
+  Rarity: 0
+  color: 4
+  releaseYear: 2016
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 0
+  Description: "X mindig annyi ah\xE1ny Raia lapod van j\xE1t\xE9kban."
+  Tags: 
+  FlavorText: "Baltaz\xE1r az egyik legk\xFCl\xF6nlegesebb mut\xE1ns. K\xE9pes t\xE1rsai
+    energi\xE1it a saj\xE1t test\xE9nek fejleszt\xE9s\xE9re ford\xEDtani. - Zoregblum
+    professzor"
+  CardImage: {fileID: 21300000, guid: 71d9830d60f569a449fdfe9622582024, type: 3}
+  ManaCost: 0
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
+  MaxHealth: 1
+  Attack: 0
+  AttacksForOneTurn: 1
+  Bone: 0
+  Flying: 1
+  Hand: 1
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 1
+  subType: 10
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 0
+  Targets: 0

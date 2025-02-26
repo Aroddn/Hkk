@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &203070438378056491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203070438378056489}
+  - component: {fileID: 203070438378056488}
+  m_Layer: 0
+  m_Name: GlobalSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203070438378056489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203070438378056491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203070438378056488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203070438378056491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6439772b838314097d5b308f09e9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TopPlayer: {fileID: 0}
+  LowPlayer: {fileID: 0}
+  CardPreviewTime: 1
+  CardTransitionTime: 1
+  CardPreviewTimeFast: 0.2
+  CardTransitionTimeFast: 0.5
+  NoTargetSpellCardPrefab: {fileID: 5587224232610038576, guid: 89c81b0c8fed647419ce64f8e1022d16, type: 3}
+  TargetedSpellCardPrefab: {fileID: 2284241216412319583, guid: d7980e66e501b3f499a7ab39cbf0c102, type: 3}
+  CreatureCardPrefab: {fileID: 3214865249935484206, guid: 7583ec4efe7967a44b3fb499b3590165, type: 3}
+  CreaturePrefab: {fileID: 2287487142421682092, guid: 88835c43cffa9684f8865b359887f021, type: 3}
+  DamageEffectPrefab: {fileID: 1297997911851717610, guid: 58bf6aecbc0e9f549845f9b0b9b4a703, type: 3}
+  ExplosionPrefab: {fileID: 5748390594418026224, guid: f99c8f32f99e67845b5372f5512d9866, type: 3}
+  EndTurnButton: {fileID: 0}
+  GameOverCanvas: {fileID: 0}

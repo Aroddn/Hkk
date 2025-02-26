@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 
-public class Table : MonoBehaviour 
+public class Table : NetworkBehaviour
 {
     public List<CreatureLogic> CreaturesOnTable = new List<CreatureLogic>();
 
