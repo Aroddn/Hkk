@@ -64,12 +64,6 @@ public class Player : NetworkBehaviour, ICharacter
         }
     }
 
-    // Utility: Deserialize a single string back into a list of strings
-    private List<string> DeserializeCardNames(string serialized)
-    {
-        return new List<string>(serialized.Split(','));
-    }
-
     [Command]
     public void CmdLoadPlayer(string user)
     {
@@ -114,9 +108,15 @@ public class Player : NetworkBehaviour, ICharacter
                     enemyInfo = currentPlayer;
                     hasEnemy = true;
                     //enemyInfo.data.casterType = Target.OPPONENT;
+                    GlobalSettings.Instance.LowPlayer = localPlayer;
+                    GlobalSettings.Instance.TopPlayer = localPlayer.otherPlayer;
+                    localPlayer.PArea = GameObject.Find("LowerPlayerArea").GetComponent<PlayerArea>();
+                    localPlayer.otherPlayer.PArea = GameObject.Find("TopPlayerArea").GetComponent<PlayerArea>();
                 }
             }
         }
+
+
     }
 
     public int ID

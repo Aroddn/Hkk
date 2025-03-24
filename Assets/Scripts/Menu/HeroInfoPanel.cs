@@ -66,6 +66,7 @@ public class HeroInfoPanel : MonoBehaviour {
 
 
             StaticVariables.deckName = BattleStartInfo.SelectedDeck.DeckName;
+            StaticVariables.charAssetName = BattleStartInfo.SelectedDeck.Character.ClassName;
 
             StaticVariables.cardNames.Clear();
             foreach (CardAsset card in BattleStartInfo.SelectedDeck.Cards)

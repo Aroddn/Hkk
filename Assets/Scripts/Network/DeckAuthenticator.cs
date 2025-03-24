@@ -17,6 +17,7 @@ public class DeckAuthenticator : NetworkAuthenticator
         AuthenticationRequestMessage authRequest = new AuthenticationRequestMessage
         {
             deckName = StaticVariables.deckName,
+            charAssetName = StaticVariables.charAssetName,
             cardNames = StaticVariables.cardNames
         };
 
@@ -34,6 +35,7 @@ public class DeckAuthenticator : NetworkAuthenticator
         conn.authenticationData = new DeckData
         {
             deckName = authRequest.deckName,
+            charAssetName = authRequest.charAssetName,
             cardNames = authRequest.cardNames
         };
 
@@ -50,6 +52,7 @@ public class DeckAuthenticator : NetworkAuthenticator
 public struct AuthenticationRequestMessage : NetworkMessage
 {
     public string deckName;
+    public string charAssetName;
     public List<string> cardNames;
 }
 
@@ -57,5 +60,6 @@ public struct AuthenticationRequestMessage : NetworkMessage
 public class DeckData
 {
     public string deckName;
+    public string charAssetName;
     public List<string> cardNames;
 }

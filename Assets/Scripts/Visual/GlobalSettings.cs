@@ -39,9 +39,6 @@ public class GlobalSettings: MonoBehaviour
         //Players.Add(AreaPosition.Top, TopPlayer);
         //Players.Add(AreaPosition.Low, LowPlayer);
         Instance = this;
-        Console.WriteLine("halo");
-
-
         //AssignDeckAndCharacter(LowPlayer, BattleStartInfo.SelectedDeck);
         //AssignDeckAndCharacter(TopPlayer, null);
     }

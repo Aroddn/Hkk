@@ -127,6 +127,9 @@ public class TurnManager : MonoBehaviour {
     // TEST COMMANDS
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            OnGameStart();
+
         //if (Input.GetKeyDown(KeyCode.Space))
         //    EndTurn();
 
