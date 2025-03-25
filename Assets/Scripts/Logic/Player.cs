@@ -110,6 +110,8 @@ public class Player : NetworkBehaviour, ICharacter
                     //enemyInfo.data.casterType = Target.OPPONENT;
                     GlobalSettings.Instance.LowPlayer = localPlayer;
                     GlobalSettings.Instance.TopPlayer = localPlayer.otherPlayer;
+                    GlobalSettings.Instance.Players.Add(AreaPosition.Top, GlobalSettings.Instance.TopPlayer);
+                    GlobalSettings.Instance.Players.Add(AreaPosition.Low, GlobalSettings.Instance.TopPlayer);
                     localPlayer.PArea = GameObject.Find("LowerPlayerArea").GetComponent<PlayerArea>();
                     localPlayer.otherPlayer.PArea = GameObject.Find("TopPlayerArea").GetComponent<PlayerArea>();
                 }

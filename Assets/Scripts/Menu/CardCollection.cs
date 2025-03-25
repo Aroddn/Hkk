@@ -10,21 +10,32 @@ public class CardCollection : MonoBehaviour
     public static CardCollection Instance;
     private Dictionary<string, CardAsset > AllCardsDictionary = new Dictionary<string, CardAsset>();
 
+    private Dictionary<string, CharacterAsset> AllCharacterAssetDictionary = new Dictionary<string, CharacterAsset>();
+
     public Dictionary<CardAsset, int> QuantityOfEachCard = new Dictionary<CardAsset, int>();
 
     private CardAsset[] allCardsArray;
+    private CharacterAsset[] allCharacterArray;
 
     void Awake()
     {
         Instance = this;
 
         allCardsArray = Resources.LoadAll<CardAsset>("");
+        allCharacterArray = Resources.LoadAll<CharacterAsset>("");
+        
         //Debug.Log(allCardsArray.Length);
         foreach (CardAsset ca in allCardsArray)
         {
             if (!AllCardsDictionary.ContainsKey(ca.name))
                 AllCardsDictionary.Add(ca.name, ca);
-        }      
+        }
+
+        foreach (CharacterAsset ca in allCharacterArray)
+        {
+            if (!AllCharacterAssetDictionary.ContainsKey(ca.ClassName))
+                AllCharacterAssetDictionary.Add(ca.ClassName, ca);
+        }
 
         LoadQuantityOfCardsFromPlayerPrefs();
     }
@@ -65,7 +76,15 @@ public class CardCollection : MonoBehaviour
             return AllCardsDictionary[name];
         else        // if there is no card with name
             return null;
-    }	
+    }
+
+    public CharacterAsset GetCharacterAssetByName(string name)
+    {
+        if (AllCharacterAssetDictionary.ContainsKey(name))  // if there is a card with this name, return its CardAsset
+            return AllCharacterAssetDictionary[name];
+        else        // if there is no card with name
+            return null;
+    }
 
     public List<CardAsset> GetCardsOfCharacter(CharacterAsset asset)
     {   

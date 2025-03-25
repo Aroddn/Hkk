@@ -47,13 +47,16 @@ public class NetworkManagerHKK : NetworkManager
             Player player = playerObject.GetComponent<Player>();
             player.deckName = deckData.deckName;
             player.cardNames = deckData.cardNames;
+            player.charAsset = CardCollection.Instance.GetCharacterAssetByName(deckData.charAssetName);
+
             foreach (string name in deckData.cardNames)
             {
                 {
                     player.deck.cards.Add(CardCollection.Instance.GetCardAssetByName(name));
                 }
             }
-             
+
+            player.deck.cards.Shuffle();
         }
 
         // Add the player to the server
