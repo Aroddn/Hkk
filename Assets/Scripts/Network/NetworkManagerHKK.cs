@@ -47,7 +47,9 @@ public class NetworkManagerHKK : NetworkManager
             Player player = playerObject.GetComponent<Player>();
             player.deckName = deckData.deckName;
             player.cardNames = deckData.cardNames;
+            player.charAssetName = deckData.charAssetName;
             player.charAsset = CardCollection.Instance.GetCharacterAssetByName(deckData.charAssetName);
+
 
             foreach (string name in deckData.cardNames)
             {

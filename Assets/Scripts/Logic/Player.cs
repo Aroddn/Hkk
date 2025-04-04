@@ -21,6 +21,9 @@ public class Player : NetworkBehaviour, ICharacter
     public string deckName;
 
     [SyncVar]
+    public string charAssetName;
+
+    [SyncVar]
     public List<string> cardNames = new List<string>();
 
 
@@ -60,7 +63,15 @@ public class Player : NetworkBehaviour, ICharacter
         base.OnStartClient();
         if (isClientOnly)
         {
-            Debug.Log($"Player initialized with deck: {deckName}, cards: {string.Join(", ", cardNames)}");
+
+            foreach (string name in cardNames)
+            {
+                {
+                    this.deck.cards.Add(CardCollection.Instance.GetCardAssetByName(name));
+                }
+            }
+            this.charAsset = CardCollection.Instance.GetCharacterAssetByName(charAssetName);
+
         }
     }
 
@@ -110,8 +121,9 @@ public class Player : NetworkBehaviour, ICharacter
                     //enemyInfo.data.casterType = Target.OPPONENT;
                     GlobalSettings.Instance.LowPlayer = localPlayer;
                     GlobalSettings.Instance.TopPlayer = localPlayer.otherPlayer;
+                    GlobalSettings.Instance.Players.Clear();
                     GlobalSettings.Instance.Players.Add(AreaPosition.Top, GlobalSettings.Instance.TopPlayer);
-                    GlobalSettings.Instance.Players.Add(AreaPosition.Low, GlobalSettings.Instance.TopPlayer);
+                    GlobalSettings.Instance.Players.Add(AreaPosition.Low, GlobalSettings.Instance.LowPlayer);
                     localPlayer.PArea = GameObject.Find("LowerPlayerArea").GetComponent<PlayerArea>();
                     localPlayer.otherPlayer.PArea = GameObject.Find("TopPlayerArea").GetComponent<PlayerArea>();
                 }
