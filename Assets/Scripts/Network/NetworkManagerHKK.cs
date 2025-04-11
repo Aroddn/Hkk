@@ -1,6 +1,6 @@
 using UnityEngine;
 using Mirror;
-using Mirror.Examples.CharacterSelection;
+//using Mirror.Examples.CharacterSelection;
 using System.Collections.Generic;
 
 // Doesnt do anything special but it's set up to be built-upon

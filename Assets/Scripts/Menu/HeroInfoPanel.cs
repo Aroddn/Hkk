@@ -1,10 +1,10 @@
-﻿using Mirror.Examples.CharacterSelection;
+﻿//using Mirror.Examples.CharacterSelection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
-using static Mirror.Examples.CharacterSelection.NetworkManagerCharacterSelection;
+//using static Mirror.Examples.CharacterSelection.NetworkManagerCharacterSelection;
 using static NetworkManagerHKK;
 
 public class HeroInfoPanel : MonoBehaviour {
