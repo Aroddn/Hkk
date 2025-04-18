@@ -54,7 +54,7 @@ public class DragCreatureOnTable : DraggingActions {
             int tablePos = playerOwner.PArea.tableVisual.TablePosForNewCreature(Camera.main.ScreenToWorldPoint(
                new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)).x);
             // play this card
-            playerOwner.PlayACreatureFromHand(GetComponent<IDHolder>().UniqueID, tablePos);
+            playerOwner.CmdPlayCreature(GetComponent<IDHolder>().UniqueID, tablePos);
             
             
         }

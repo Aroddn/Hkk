@@ -317,27 +317,22 @@ public class Player : NetworkBehaviour, ICharacter
                 new DrawACardCommand(hand.CardsInHand[0], this, fast, fromDeck: true).AddToQueue();
             }
         }
-        else
-        {
-            //nothing happens cause in this game you cant deck out
-        }
-       
     }
 
 
-    public void GetACardNotFromDeck(CardAsset cardAsset)
-    {
-        if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length)
-        {
-            // 1) logic: add card to hand
-            CardLogic newCard = new CardLogic(cardAsset);
-            newCard.owner = this;
-            hand.CardsInHand.Insert(0, newCard);
-            // 2) send message to the visual Deck
-            new DrawACardCommand(hand.CardsInHand[0], this, fast: true, fromDeck: false).AddToQueue();
-        }
-        // no removal from deck because the card was not in the deck
-    }
+    //public void GetACardNotFromDeck(CardAsset cardAsset)
+    //{
+    //    if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length)
+    //    {
+    //        // 1) logic: add card to hand
+    //        CardLogic newCard = new CardLogic(cardAsset);
+    //        newCard.owner = this;
+    //        hand.CardsInHand.Insert(0, newCard);
+    //        // 2) send message to the visual Deck
+    //        new DrawACardCommand(hand.CardsInHand[0], this, fast: true, fromDeck: false).AddToQueue();
+    //    }
+    //    // no removal from deck because the card was not in the deck
+    //}
 
     public void PlayASpellFromHand(int SpellCardUniqueID, int TargetUniqueID)
     {
@@ -387,11 +382,20 @@ public class Player : NetworkBehaviour, ICharacter
         TurnManager.Instance.GiveControlToOtherPlayer();
     }
 
-    public void PlayACreatureFromHand(int UniqueID, int tablePos)
-    {
-        PlayACreatureFromHand(CardLogic.CardsCreatedThisGame[UniqueID], tablePos);
 
+    [Command]
+    public void CmdPlayCreature(int UniqueID, int tablePos)
+    {
+        RpcPlayCreature(UniqueID, tablePos);
     }
+
+    [ClientRpc]
+    void RpcPlayCreature(int UniqueID, int tablePos)
+    {
+        var card = CardLogic.CardsCreatedThisGame[UniqueID];
+        PlayACreatureFromHand(card, tablePos);
+    }
+
 
     public void PlayACreatureFromHand(CardLogic playedCard, int tablePos)
     {

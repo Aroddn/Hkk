@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
+using Mirror;
 
 //enum to help store the last action in the game
 public enum PlayerAction
@@ -15,7 +16,7 @@ public enum PlayerAction
 }
 
 // this class will take care of switching turns and counting down time until the turn expires
-public class TurnManager : MonoBehaviour {
+public class TurnManager : NetworkBehaviour {
 
     private RopeTimer timer;
 
@@ -78,6 +79,13 @@ public class TurnManager : MonoBehaviour {
 
     public void OnGameStart()
     {
+        int rnd = Random.Range(0, 2);
+        RpcSetWhoGoesFirst(rnd);
+    }
+
+    [ClientRpc]
+    public void RpcSetWhoGoesFirst(int playerIndex)
+    {
         CardLogic.CardsCreatedThisGame.Clear();
         CreatureLogic.CreaturesCreatedThisGame.Clear();
 
@@ -102,26 +110,22 @@ public class TurnManager : MonoBehaviour {
         s.Insert(0f, Player.Players[1].PArea.Portrait.transform.DOMove(Player.Players[1].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
         s.PrependInterval(3f);
         s.OnComplete(() =>
+        {
+            // determine who starts the game.
+
+            Player whoGoesFirst = Player.Players[playerIndex];
+            Player whoGoesSecond = whoGoesFirst.otherPlayer;
+
+            int initDraw = 4;
+            for (int i = 0; i < initDraw; i++)
             {
-                // determine who starts the game.
-                int rnd = Random.Range(0,2);
-                Player whoGoesFirst = Player.Players[rnd];
-                Player whoGoesSecond = whoGoesFirst.otherPlayer;
-         
-                // draw 5 cards for first player and 5 for second player
-                int initDraw = 4;
-                for (int i = 0; i < initDraw; i++)
-                {            
-                    // second player draws a card
-                    whoGoesSecond.DrawACard(true);
-                    // first player draws a card
-                    whoGoesFirst.DrawACard(true);
-                }
-
                 whoGoesSecond.DrawACard(true);
+                whoGoesFirst.DrawACard(true);
+            }
 
-                new StartATurnCommand(whoGoesFirst).AddToQueue();
-            });
+            whoGoesSecond.DrawACard(true);
+            new StartATurnCommand(whoGoesFirst).AddToQueue();
+        });
     }
 
     // TEST COMMANDS

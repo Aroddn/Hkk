@@ -2,6 +2,8 @@ using UnityEngine;
 using Mirror;
 //using Mirror.Examples.CharacterSelection;
 using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 // Doesnt do anything special but it's set up to be built-upon
 [AddComponentMenu("Network Manager HKK")]
@@ -46,6 +48,7 @@ public class NetworkManagerHKK : NetworkManager
            
             Player player = playerObject.GetComponent<Player>();
             player.deckName = deckData.deckName;
+            deckData.cardNames.Shuffle();
             player.cardNames = deckData.cardNames;
             player.charAssetName = deckData.charAssetName;
             player.charAsset = CardCollection.Instance.GetCharacterAssetByName(deckData.charAssetName);
@@ -58,8 +61,11 @@ public class NetworkManagerHKK : NetworkManager
                 }
             }
 
-            player.deck.cards.Shuffle();
+            //player.deck.cards.Shuffle();
+
         }
+
+
 
         // Add the player to the server
         NetworkServer.AddPlayerForConnection(conn, playerObject);
