@@ -98,6 +98,10 @@ public class NetworkManagerHUDHKK : MonoBehaviour
                 }
             }
 
+            
+            
+            
+
             // Client + IP
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Client"))
@@ -110,6 +114,7 @@ public class NetworkManagerHUDHKK : MonoBehaviour
                 // Hide GUI
                 showGUI = false;
             }
+
             manager.networkAddress = GUILayout.TextField(manager.networkAddress);
             GUILayout.EndHorizontal();
 

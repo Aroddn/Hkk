@@ -40,6 +40,7 @@ public class TurnManager : NetworkBehaviour {
     }
 
     private Player _whoseTurn;
+
     public Player WhoseTurn
     {
         get
@@ -62,9 +63,10 @@ public class TurnManager : NetworkBehaviour {
             }
             // remove highlights for opponent.
             WhoseTurn.otherPlayer.HighlightPlayableCards(true);
-                
         }
     }
+
+
 
     void Awake()
     {
@@ -166,7 +168,8 @@ public class TurnManager : NetworkBehaviour {
         WhoseAction.otherPlayer.HighlightPlayableCards(true);
     }
 
-        public void Pass()
+    [ClientRpc]
+    public void Pass()
         {
             playerAction.Add(PlayerAction.Pass);
             PlayerAction last = playerAction[playerAction.Count - 1];
@@ -199,8 +202,8 @@ public class TurnManager : NetworkBehaviour {
             else
             {
                 if (last == PlayerAction.Pass) {
-
-                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
+                GiveControlToOtherPlayer();
+                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
                 }
             }
 
