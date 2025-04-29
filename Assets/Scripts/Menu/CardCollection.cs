@@ -119,7 +119,7 @@ public class CardCollection : MonoBehaviour
 
     /// the most general method that will use multiple filters
     public List<CardAsset> GetCards(bool showingCardsPlayerDoesNotOwn = false, bool includeAllRarities = true, bool includeAllCharacters = true, RarityOptions rarity = RarityOptions.Basic,
-                CharacterAsset asset = null, string keyword = "", int manaCost = -1, bool includeTokenCards = false)
+                CharacterAsset asset = null, Set set = Set.All,string keyword = "", int manaCost = -1, bool includeTokenCards = false)
     {
         // initially select all cards
         var cards = from card in allCardsArray select card;
@@ -132,6 +132,9 @@ public class CardCollection : MonoBehaviour
 
         if (!includeAllRarities)
             cards = cards.Where(card => card.Rarity == rarity);
+
+        if(set != Set.All)
+            cards = cards.Where(card => card.setName == set);
 
         if (keyword != null && keyword != "")
             cards = cards.Where(card => (card.name.ToLower().Contains(keyword.ToLower()) || 

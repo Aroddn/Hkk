@@ -59,5 +59,6 @@ public class DeckBuildingScreen : MonoBehaviour {
     {
         ScreenContent.SetActive(false);
         CollectionBrowserScript.ClearCreatedCards();
+        ConfirmationDialog.Hide();
     }
 }

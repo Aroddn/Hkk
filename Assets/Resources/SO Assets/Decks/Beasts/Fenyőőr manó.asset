@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Feny\u0151\u0151r man\xF3"
   Rarity: 0
   color: 6
+  setName: 2
   releaseYear: 2017
   mental: 0
   defense: 0

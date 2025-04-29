@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using static UnityEngine.GraphicsBuffer;
 using System;
+using Mirror;
 
 [System.Serializable]
-public class CreatureLogic: ICharacter 
+public class CreatureLogic: ICharacter
 {
     // PUBLIC FIELDS
     public Player owner;
@@ -155,12 +156,13 @@ public class CreatureLogic: ICharacter
         AttacksLeftThisTurn = attacksForOneTurn;
     }
 
+
+    
     public void Die(bool sacrifice)
     {
         owner.table.CreaturesOnTable.Remove(this);
-
         //except from sacrificeing
-        if(!sacrifice)
+        if (!sacrifice)
         {
             owner.otherPlayer.TotalBones++;
         }
@@ -171,8 +173,8 @@ public class CreatureLogic: ICharacter
         owner.graveYard.cards.Add(ca);
 
         new CreatureDieCommand(UniqueCreatureID, owner).AddToQueue();
-
     }
+
 
     public void GoFace()
     {

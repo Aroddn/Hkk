@@ -34,8 +34,8 @@ public class TurnManager : NetworkBehaviour {
         {
             return _whoseAction;
         }
-        set { 
-            _whoseAction = value;   
+        set {
+            _whoseAction = value;
         }
     }
 
@@ -169,46 +169,51 @@ public class TurnManager : NetworkBehaviour {
     }
 
     [ClientRpc]
-    public void Pass()
+    public void RcpPass()
+    {
+        playerAction.Add(PlayerAction.Pass);
+        PlayerAction last = playerAction[playerAction.Count - 1];
+
+        if (playerAction.Count > 1)
         {
-            playerAction.Add(PlayerAction.Pass);
-            PlayerAction last = playerAction[playerAction.Count - 1];
+            PlayerAction secondLast = playerAction[playerAction.Count - 2];
 
-            if (playerAction.Count > 1)
+            //whoseTurn changes
+            if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
             {
-                PlayerAction secondLast = playerAction[playerAction.Count - 2];
-
-                //whoseTurn changes
-                if (secondLast == PlayerAction.Pass && last == PlayerAction.Pass)
-                {
-                    playerAction.Add(PlayerAction.TurnChange);
-                    EndTurn();
-                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
-                }
-                else
-                {
-
-                    if (last == PlayerAction.Pass && secondLast == PlayerAction.TurnChange ||
-                        last == PlayerAction.Pass && secondLast == PlayerAction.PlayerLowAction ||
-                        last == PlayerAction.Pass && secondLast == PlayerAction.PlayerTopAction)
-                    {
-                        //give other player control
-                        //so whoseAction changes
-                        GiveControlToOtherPlayer();
-                        GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
-                    }
-                }
+                playerAction.Add(PlayerAction.TurnChange);
+                EndTurn();
+                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "Pass";
             }
             else
             {
-                if (last == PlayerAction.Pass) {
-                GiveControlToOtherPlayer();
-                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
+
+                if (last == PlayerAction.Pass && secondLast == PlayerAction.TurnChange ||
+                    last == PlayerAction.Pass && secondLast == PlayerAction.PlayerLowAction ||
+                    last == PlayerAction.Pass && secondLast == PlayerAction.PlayerTopAction)
+                {
+                    //give other player control
+                    //so whoseAction changes
+                    GiveControlToOtherPlayer();
+                    GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
                 }
             }
-
-
         }
+        else
+        {
+            if (last == PlayerAction.Pass)
+            {
+                GiveControlToOtherPlayer();
+                GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
+            }
+        }
+    }
+
+    [Command(requiresAuthority = false)]
+    public void Pass()
+    {
+        RcpPass();
+    }
 
     public void StopTheTimer()
     {

@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Aranymetsz\xE9s"
   Rarity: 0
   color: 2
+  setName: 2
   releaseYear: 2017
   mental: 0
   defense: 0

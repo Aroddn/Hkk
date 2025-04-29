@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Smaragds\xF6r\xE9ny\u0171 pegazus"
   Rarity: 0
   color: 6
+  setName: 2
   releaseYear: 2017
   mental: 0
   defense: 0

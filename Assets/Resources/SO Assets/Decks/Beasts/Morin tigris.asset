@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: Morin tigris
   Rarity: 0
   color: 8
+  setName: 2
   releaseYear: 2017
   mental: 0
   defense: 0

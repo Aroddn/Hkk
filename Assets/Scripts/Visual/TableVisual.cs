@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Mirror;
 
-public class TableVisual : MonoBehaviour 
+public class TableVisual : NetworkBehaviour
 {
     // PUBLIC FIELDS
 
-    // an enum that mark to whish caracter this table belongs. The alues are - Top or Low
+    // an enum that mark to which caracter this table belongs. The alues are - Top or Low
     public AreaPosition owner;
 
     // a referense to a game object that marks positions where we should put new Creatures
@@ -62,29 +63,29 @@ public class TableVisual : MonoBehaviour
         }
         cursorOverThisTable = passedThroughTableCollider;
     }
-   
 
-    public void AddCreatureAtIndex(CardAsset ca, int UniqueID ,int index)
+
+    public void AddCreatureAtIndex(CardAsset ca, CreatureLogic creatureLogic, int index, GameObject creature)
     {
-        // create a new creature from prefab
-        GameObject creature = GameObject.Instantiate(GlobalSettings.Instance.CreaturePrefab, slots.Children[index].transform.position, Quaternion.identity) as GameObject;
+        //GameObject creature = GameObject.Instantiate(GlobalSettings.Instance.CreaturePrefab, slots.Children[index].transform.position, Quaternion.identity) as GameObject;
+        creature.transform.position = slots.Children[index].transform.position;
         // apply the look from CardAsset
         OneCreatureManager manager = creature.GetComponent<OneCreatureManager>();
         manager.cardAsset = ca;
         manager.ReadCreatureFromAsset();
+        manager.creatureLogic = creatureLogic;
 
         // add tag according to owner
         foreach (Transform t in creature.GetComponentsInChildren<Transform>())
-            t.tag = owner.ToString()+"Creature";
+            t.tag = owner.ToString() + "Creature";
         // parent a new creature gameObject to table slots
-        
+
         creature.transform.SetParent(slots.transform);
         // add a new creature to the list
         // Debug.Log ("insert index: " + index.ToString());
         CreaturesOnTable.Insert(index, creature);
 
         // let this creature know about its position
-
 
         WhereIsTheCardOrCreature w = creature.GetComponent<WhereIsTheCardOrCreature>();
         w.Slot = index;
@@ -95,7 +96,10 @@ public class TableVisual : MonoBehaviour
 
 
         IDHolder id = creature.AddComponent<IDHolder>();
-        id.UniqueID = UniqueID;
+        id.UniqueID = creatureLogic.UniqueCreatureID;
+
+
+
 
         ShiftSlotsGameObjectAccordingToNumberOfCreatures();
         PlaceCreaturesOnNewSlots();
@@ -121,10 +125,12 @@ public class TableVisual : MonoBehaviour
         return 0;
     }
 
+    
     public void RemoveCreatureWithID(int IDToRemove)
     {
         GameObject creatureToRemove = IDHolder.GetGameObjectWithID(IDToRemove);
         CreaturesOnTable.Remove(creatureToRemove);
+        //NetworkServer.Destroy(creatureToRemove);
         Destroy(creatureToRemove);
 
         ShiftSlotsGameObjectAccordingToNumberOfCreatures();
@@ -154,6 +160,7 @@ public class TableVisual : MonoBehaviour
     {
         foreach (GameObject g in CreaturesOnTable)
         {
+
             g.transform.DOLocalMoveX(slots.Children[CreaturesOnTable.IndexOf(g)].transform.localPosition.x, 0.3f);
             // apply correct sorting order and HandSlot value for later 
             // TODO: figure out if I need to do something here:

@@ -55,8 +55,7 @@ public class DragCreatureOnTable : DraggingActions {
                new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)).x);
             // play this card
             playerOwner.CmdPlayCreature(GetComponent<IDHolder>().UniqueID, tablePos);
-            
-            
+
         }
         else
         {

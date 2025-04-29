@@ -102,8 +102,6 @@ public class DeckBuilder : MonoBehaviour
 
         CheckDeckCompleteFrame();
 
-        // update quantities of all cards that we currently show in the collection
-        // this should be after deckList.Remove(asset); line to show correct quantities
         DeckBuildingScreen.Instance.CollectionBrowserScript.UpdateQuantitiesOnPage();
     }
 
@@ -111,8 +109,6 @@ public class DeckBuilder : MonoBehaviour
     {
         InDeckBuildingMode = true;
         buildingForCharacter = asset;
-        // TODO: remove all the cards from the deck list if there are any, 
-        // both the actual list and visually delete all the card list items
         while (deckList.Count>0)
         {
             RemoveCard(deckList[0]);
@@ -130,11 +126,28 @@ public class DeckBuilder : MonoBehaviour
 
     public void DoneButtonHandler()
     {
-        // save current deck list, character and deck name into DecksStorage
+        if (string.IsNullOrEmpty(DeckName.text))
+        {
+            HashSet<string> existingNames = new HashSet<string>();
+            foreach (DeckInfo deck in DecksStorage.Instance.AllDecks)
+            {
+                existingNames.Add(deck.DeckName);
+            }
+            int i = 1;
+            while (true)
+            {
+                string potentialName = $"Deck{i}";
+                if (!existingNames.Contains(potentialName))
+                {
+                    DeckName.text = potentialName;
+                    break;
+                }
+                i++;
+            }
+        }
         DeckInfo deckToSave = new DeckInfo(deckList, DeckName.text, buildingForCharacter);
         DecksStorage.Instance.AllDecks.Add(deckToSave);
         DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
-        // the screen with collection and pre-made decks is loaded by calling other methods on this button
         DeckBuildingScreen.Instance.ShowScreenForCollectionBrowsing();
     }
 

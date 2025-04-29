@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "T\xFCnd\xF6kl\u0151 griff"
   Rarity: 0
   color: 8
+  setName: 1
   releaseYear: 2016
   mental: 0
   defense: 0

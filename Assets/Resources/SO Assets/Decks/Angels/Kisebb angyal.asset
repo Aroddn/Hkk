@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: Kisebb angyal
   Rarity: 0
   color: 4
+  setName: 1
   releaseYear: 2012
   mental: 0
   defense: 0

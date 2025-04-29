@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Dornodon k\xFCldet\xE9se"
   Rarity: 0
   color: 1
+  setName: 3
   releaseYear: 2017
   mental: 0
   defense: 0

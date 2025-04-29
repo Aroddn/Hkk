@@ -58,7 +58,7 @@ public class AITurnMaker: TurnMaker {
                 }
                 else
                 {
-                    p.PlayACreatureFromHand(c, 0);
+                    //p.PlayACreatureFromHand(c, 0);
                     InsertDelay(1.5f);
                     return true;
                 }

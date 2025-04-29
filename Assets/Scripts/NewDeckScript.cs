@@ -8,5 +8,6 @@ public class NewDeckScript : MonoBehaviour {
     {
         DeckBuildingScreen.Instance.HideScreen();
         CharacterSelectionScreen.Instance.ShowScreen();
+        ConfirmationDialog.Hide();
     }
 }

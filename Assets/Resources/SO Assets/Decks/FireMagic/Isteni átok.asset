@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Isteni \xE1tok"
   Rarity: 0
   color: 1
+  setName: 3
   releaseYear: 2017
   mental: 0
   defense: 0

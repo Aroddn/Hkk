@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Mirror;
 
 public class DealDamageCommand : Command {
 
@@ -18,7 +19,6 @@ public class DealDamageCommand : Command {
     {
 
         GameObject target = IDHolder.GetGameObjectWithID(targetID);
-        Debug.Log(target);
         if (targetID == GlobalSettings.Instance.LowPlayer.PlayerID || targetID == GlobalSettings.Instance.TopPlayer.PlayerID)
         {
             // target is a hero

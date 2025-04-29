@@ -60,6 +60,7 @@ MonoBehaviour:
   charAsset: {fileID: 0}
   PArea: {fileID: 0}
   deckName: 
+  charAssetName: 
   cardNames: []
   deck: {fileID: 3126681715810922396}
   hand: {fileID: 3126681716131533535}
@@ -70,6 +71,7 @@ MonoBehaviour:
   enemyInfo:
     player: {fileID: 0}
   firstPlayer: 0
+  creatureCardPrefab: {fileID: 3214865249935484206, guid: 7583ec4efe7967a44b3fb499b3590165, type: 3}
 --- !u!114 &3126681714729696082
 MonoBehaviour:
   m_ObjectHideFlags: 0

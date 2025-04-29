@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Kutat\xF3osztag-parancsnok"
   Rarity: 0
   color: 0
+  setName: 2
   releaseYear: 2017
   mental: 0
   defense: 0

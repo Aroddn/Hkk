@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class CharacterFilterTab : MonoBehaviour {
 
-    public CharacterAsset Asset; // if null - this is the tab that selects neutral cards
-    public bool showAllCharacters = false;
+    public CharacterAsset Asset;
+    public Set setName;
 
+    public bool showAllCharacters = false;
     private CharacterSelectionTabs TabsScript;
     private float selectionTransitionTime = 0.5f;
     private Vector3 initialScale = Vector3.one;
@@ -15,7 +16,6 @@ public class CharacterFilterTab : MonoBehaviour {
 
     public void TabButtonHandler()
     {
-        // transmit info about this character to the TabsScript;
         DeckBuildingScreen.Instance.TabsScript.SelectTab(this, false);
     }
 

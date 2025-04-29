@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using DG.Tweening.Core.Easing;
+using System;
+using System.Reflection;
 //using Mirror.Examples.MultipleMatch;
 
 public enum PlayerType { PLAYER, ENEMY };
@@ -382,30 +384,27 @@ public class Player : NetworkBehaviour, ICharacter
         TurnManager.Instance.GiveControlToOtherPlayer();
     }
 
-
     [Command]
     public void CmdPlayCreature(int UniqueID, int tablePos)
     {
-        RpcPlayCreature(UniqueID, tablePos);
+        GameObject creature = Instantiate(GlobalSettings.Instance.CreaturePrefab);
+        NetworkServer.Spawn(creature);
+        RpcPlayCreature(UniqueID, tablePos,creature);
     }
 
     [ClientRpc]
-    void RpcPlayCreature(int UniqueID, int tablePos)
+    void RpcPlayCreature(int UniqueID, int tablePos, GameObject creature)
     {
         var card = CardLogic.CardsCreatedThisGame[UniqueID];
-        PlayACreatureFromHand(card, tablePos);
+        PlayACreatureFromHand(card, tablePos,creature);
     }
 
-
-    public void PlayACreatureFromHand(CardLogic playedCard, int tablePos)
+    public void PlayACreatureFromHand(CardLogic playedCard, int tablePos, GameObject creature)
     {
         CurrentMana -= playedCard.CurrentManaCost;
-        // create a new creature object and add it to Table
         CreatureLogic newCreature = new CreatureLogic(this, playedCard.ca);
         table.CreaturesOnTable.Insert(tablePos, newCreature);
-        // no matter what happens, move this card to PlayACardSpot
-        new PlayACreatureCommand(playedCard, this, tablePos, newCreature.UniqueCreatureID).AddToQueue();
-        // remove this card from hand
+        new PlayACreatureCommand(playedCard, this, tablePos, newCreature,creature).AddToQueue();
         hand.CardsInHand.Remove(playedCard);
 
         if (PArea.owner == AreaPosition.Low)
@@ -484,4 +483,5 @@ public class Player : NetworkBehaviour, ICharacter
     {
         throw new System.NotImplementedException();
     }
+
 }

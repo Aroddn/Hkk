@@ -13,6 +13,7 @@ public class NetworkManagerHKK : NetworkManager
 
     public static new NetworkManagerHKK singleton => (NetworkManagerHKK)NetworkManager.singleton;
 
+
     public override void Awake()
     {
         base.Awake();
@@ -21,12 +22,12 @@ public class NetworkManagerHKK : NetworkManager
     public override void OnStartServer()
     {
         base.OnStartServer();
-
     }
 
     public override void OnClientConnect()
     {
         base.OnClientConnect();
+
     }
 
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
@@ -61,12 +62,7 @@ public class NetworkManagerHKK : NetworkManager
                 }
             }
 
-            //player.deck.cards.Shuffle();
-
         }
-
-
-
         // Add the player to the server
         NetworkServer.AddPlayerForConnection(conn, playerObject);
     }

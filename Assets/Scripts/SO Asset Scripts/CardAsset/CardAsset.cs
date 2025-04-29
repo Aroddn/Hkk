@@ -10,6 +10,7 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
     public string cardName;
     public RarityOptions Rarity;
     public ColorType color;
+    public Set setName;
     public int releaseYear;
     public bool mental;
     public bool defense;
@@ -172,4 +173,12 @@ public enum Special
     MONSTER_COMPONENT,
     ANCHOR,
     MENTAL
+}
+
+public enum Set
+{
+    All,
+    AlfaAngels,
+    AlfaBeasts,
+    AlfaFireMagic,
 }

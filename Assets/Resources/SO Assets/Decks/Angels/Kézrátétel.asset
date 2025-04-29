@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "K\xE9zr\xE1t\xE9tel"
   Rarity: 0
   color: 4
+  setName: 1
   releaseYear: 2016
   mental: 0
   defense: 0

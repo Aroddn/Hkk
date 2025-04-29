@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Mirror;
 
 public class CreatureAttackCommand : Command 
 {
@@ -23,6 +24,8 @@ public class CreatureAttackCommand : Command
     public override void StartCommandExecution()
     {
         GameObject Attacker = IDHolder.GetGameObjectWithID(AttackerUniqueID);
+
+        //Debug.Log(Attacker.GetComponent<OneCreatureManager>().creatureLogic.owner);
 
         Attacker.GetComponent<CreatureAttackVisual>().AttackTarget(TargetUniqueID, DamageTakenByTarget, DamageTakenByAttacker, AttackerHealthAfter, TargetHealthAfter);
     }

@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "A keres\xE9s l\xE1ngja"
   Rarity: 0
   color: 4
+  setName: 3
   releaseYear: 2017
   mental: 0
   defense: 0

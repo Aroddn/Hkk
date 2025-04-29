@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "Apr\xF3 g\xF6mbvill\xE1m"
   Rarity: 0
   color: 4
+  setName: 1
   releaseYear: 2016
   mental: 0
   defense: 0
