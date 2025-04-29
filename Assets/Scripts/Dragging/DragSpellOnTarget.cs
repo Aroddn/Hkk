@@ -14,9 +14,11 @@ public class DragSpellOnTarget : DraggingActions {
     private GameObject Target;
     private OneCardManager manager;
 
-    private CurvedLinePoint[] linePoints = new CurvedLinePoint[0];
-    private Vector3[] linePositions = new Vector3[0];
-    private Vector3[] linePositionsOld = new Vector3[0];
+
+    //not used but here for potential development
+    //private CurvedLinePoint[] linePoints = new CurvedLinePoint[0];
+    //private Vector3[] linePositions = new Vector3[0];
+    //private Vector3[] linePositionsOld = new Vector3[0];
 
     public override bool CanDrag
     {

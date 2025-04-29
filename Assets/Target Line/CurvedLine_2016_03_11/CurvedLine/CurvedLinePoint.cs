@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//idea for further development for a better targeting arrow but yet to be fully developed
 public class CurvedLinePoint : MonoBehaviour 
 {
 	[HideInInspector] public bool showGizmo = true;

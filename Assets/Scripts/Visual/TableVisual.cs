@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Mirror;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class TableVisual : NetworkBehaviour
 {
@@ -17,7 +19,7 @@ public class TableVisual : NetworkBehaviour
     // PRIVATE FIELDS
 
     // list of all the creature cards on the table as GameObjects
-    private List<GameObject> CreaturesOnTable = new List<GameObject>();
+    public List<GameObject> CreaturesOnTable = new List<GameObject>();
 
     // are we hovering over this table`s collider with a mouse
     private bool cursorOverThisTable = false;
@@ -82,7 +84,7 @@ public class TableVisual : NetworkBehaviour
 
         creature.transform.SetParent(slots.transform);
         // add a new creature to the list
-        // Debug.Log ("insert index: " + index.ToString());
+
         CreaturesOnTable.Insert(index, creature);
 
         // let this creature know about its position
@@ -98,20 +100,16 @@ public class TableVisual : NetworkBehaviour
         IDHolder id = creature.AddComponent<IDHolder>();
         id.UniqueID = creatureLogic.UniqueCreatureID;
 
-
-
-
         ShiftSlotsGameObjectAccordingToNumberOfCreatures();
         PlaceCreaturesOnNewSlots();
 
-        // TODO: remove this
         Command.CommandExecutionComplete();
     }
 
     public int TablePosForNewCreature(float MouseX)
     {
         // if there are no creatures or if we are pointing to the right of all creatures with a mouse.
-        // right - because the table slots are flipped and 0 is on the right side.
+        // right - because the table slots are flipped and 0 is on the right side.    
         if (CreaturesOnTable.Count == 0 || MouseX > slots.Children[0].transform.position.x)
             return 0;
         else if (MouseX < slots.Children[CreaturesOnTable.Count - 1].transform.position.x) // cursor on the left relative to all creatures on the table
@@ -125,17 +123,41 @@ public class TableVisual : NetworkBehaviour
         return 0;
     }
 
-    
-    public void RemoveCreatureWithID(int IDToRemove)
+
+    [ClientRpc]
+    public void RpcRemoveCreatureWithID(int IDToRemove,Player p, bool sacrifice)
     {
+        CreatureLogic creature = CreatureLogic.CreaturesCreatedThisGame[IDToRemove];
         GameObject creatureToRemove = IDHolder.GetGameObjectWithID(IDToRemove);
+        
+        //except from sacrificeing
+        if (!sacrifice)
+        {
+            p.otherPlayer.TotalBones++;
+        }
+
+        //implement potential deathrattle later
+        //if (effect != null)
+        //    effect.WhenACreatureDies();
+
+        p.graveYard.cards.Add(creature.ca);
+
         CreaturesOnTable.Remove(creatureToRemove);
-        //NetworkServer.Destroy(creatureToRemove);
         Destroy(creatureToRemove);
+
 
         ShiftSlotsGameObjectAccordingToNumberOfCreatures();
         PlaceCreaturesOnNewSlots();
+       
         Command.CommandExecutionComplete();
+    }
+
+    [Command(requiresAuthority = false)]
+    public void RemoveCreatureWithID(int IDToRemove,Player p,bool sacrifice)
+    {
+        CreatureLogic creature = CreatureLogic.CreaturesCreatedThisGame[IDToRemove];
+        p.table.CreaturesOnTable.Remove(creature);
+        RpcRemoveCreatureWithID(IDToRemove, p, sacrifice);
     }
 
     /// <summary>
@@ -160,11 +182,7 @@ public class TableVisual : NetworkBehaviour
     {
         foreach (GameObject g in CreaturesOnTable)
         {
-
             g.transform.DOLocalMoveX(slots.Children[CreaturesOnTable.IndexOf(g)].transform.localPosition.x, 0.3f);
-            // apply correct sorting order and HandSlot value for later 
-            // TODO: figure out if I need to do something here:
-            // g.GetComponent<WhereIsTheCardOrCreature>().SetTableSortingOrder() = CreaturesOnTable.IndexOf(g);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Command to give plus or minus stats to a creature
 public class BuffTargetCommand : Command {
 
     private int targetID;

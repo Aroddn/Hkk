@@ -36,13 +36,10 @@ public class GlobalSettings: MonoBehaviour
 
     void Awake()
     {
-        //Players.Add(AreaPosition.Top, TopPlayer);
-        //Players.Add(AreaPosition.Low, LowPlayer);
         Instance = this;
-        //AssignDeckAndCharacter(LowPlayer, BattleStartInfo.SelectedDeck);
-        //AssignDeckAndCharacter(TopPlayer, null);
     }
 
+    //not used anymore
     public void AssignDeckAndCharacter(Player player, DeckInfo deckInfo)
     {
         if (deckInfo != null)
@@ -111,12 +108,5 @@ public class GlobalSettings: MonoBehaviour
             EndTurnButton.interactable = true;
         else
             EndTurnButton.interactable = false;
-
-        //if (P == LowPlayer && CanControlThisPlayer(AreaPosition.Low) ||
-        //    P == TopPlayer && CanControlThisPlayer(AreaPosition.Top))
-        //    EndTurnButton.interactable = true;
-        //else
-        //    EndTurnButton.interactable = false;
-            
     }
 }

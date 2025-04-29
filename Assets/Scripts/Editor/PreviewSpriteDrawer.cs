@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//not used in project
 namespace UnityEditor
 {
     [CustomPropertyDrawer(typeof(PreviewSpriteAttribute))]

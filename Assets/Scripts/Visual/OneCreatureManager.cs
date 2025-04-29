@@ -4,8 +4,9 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using System.Runtime.InteropServices;
+using Mirror;
 
-public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
+public class OneCreatureManager : NetworkBehaviour, IPointerClickHandler
 {
     public CardAsset cardAsset;
     public OneCardManager PreviewManager;
@@ -24,6 +25,22 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
     {
         if (cardAsset != null)
             ReadCreatureFromAsset();
+    }
+
+
+    [Command]
+    public void Death(int amount)
+    {
+        Debug.Log("Server received damage: " + amount);
+        // Server-side logic, then optionally notify clients
+        RpcDeath(amount);
+    }
+
+    [ClientRpc]
+    void RpcDeath(int amount)
+    {
+        Debug.Log("Client sees damage: " + amount);
+        // Show damage popup or effects
     }
 
     private bool canAttackNow = false;
@@ -53,6 +70,7 @@ public class OneCreatureManager : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+
 
     // Sacrifice the card (call this from the Sacrifice button)
     public void Sacrifice()

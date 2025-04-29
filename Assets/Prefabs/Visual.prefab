@@ -1075,6 +1075,10 @@ PrefabInstance:
       propertyPath: _assetId
       value: 850521821
       objectReference: {fileID: 0}
+    - target: {fileID: 2145398749830460985, guid: c065120195d44c84c9488f3e65e1bfba, type: 3}
+      propertyPath: _assetId
+      value: 1838394462
+      objectReference: {fileID: 0}
     - target: {fileID: 2491948672913227651, guid: c065120195d44c84c9488f3e65e1bfba, type: 3}
       propertyPath: DrawPreviewSpot
       value: 
@@ -1230,6 +1234,10 @@ PrefabInstance:
       propertyPath: OtherCardDrawSourceTransform
       value: 
       objectReference: {fileID: 7642449711448762496}
+    - target: {fileID: 2664123356598871435, guid: 1f5be81e3a0dd7f4cbe9b3394bd25cff, type: 3}
+      propertyPath: _assetId
+      value: 1838394462
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 748064367, guid: 1f5be81e3a0dd7f4cbe9b3394bd25cff, type: 3}
     m_RemovedGameObjects: []

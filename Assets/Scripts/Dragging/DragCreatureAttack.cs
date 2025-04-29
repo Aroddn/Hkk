@@ -18,9 +18,11 @@ public class DragCreatureAttack : DraggingActions {
     // Reference to creature manager, attached to the parent game object
     private OneCreatureManager manager;
 
-    private CurvedLinePoint[] linePoints = new CurvedLinePoint[0];
-    private Vector3[] linePositions = new Vector3[0];
-    private Vector3[] linePositionsOld = new Vector3[0];
+
+    //not used but here for future development
+    //private CurvedLinePoint[] linePoints = new CurvedLinePoint[0];
+    //private Vector3[] linePositions = new Vector3[0];
+    //private Vector3[] linePositionsOld = new Vector3[0];
 
     void Awake()
     {

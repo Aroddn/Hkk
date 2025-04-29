@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using System.Reflection;
 
+//not used in project
 [CanEditMultipleObjects()]
 [CustomEditor(typeof(MeshRenderer))]
 public class MeshRendererSortingLayersEditor : Editor

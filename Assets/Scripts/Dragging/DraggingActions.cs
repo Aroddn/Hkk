@@ -15,7 +15,8 @@ public abstract class DraggingActions : MonoBehaviour {
     {
         get
         {
-            return GlobalSettings.Instance.CanControlThisPlayer(playerOwner);
+            //Player.localPlayer stops the player from playing the opponents card
+            return GlobalSettings.Instance.CanControlThisPlayer(playerOwner) && playerOwner==Player.localPlayer;
         }
     }
 

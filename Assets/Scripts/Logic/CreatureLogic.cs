@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using static UnityEngine.GraphicsBuffer;
-using System;
-using Mirror;
 
 [System.Serializable]
 public class CreatureLogic: ICharacter
@@ -156,25 +153,11 @@ public class CreatureLogic: ICharacter
         AttacksLeftThisTurn = attacksForOneTurn;
     }
 
-
-    
     public void Die(bool sacrifice)
     {
-        owner.table.CreaturesOnTable.Remove(this);
-        //except from sacrificeing
-        if (!sacrifice)
-        {
-            owner.otherPlayer.TotalBones++;
-        }
-
-        if (effect != null)
-            effect.WhenACreatureDies();
-
-        owner.graveYard.cards.Add(ca);
-
-        new CreatureDieCommand(UniqueCreatureID, owner).AddToQueue();
+        
+        new CreatureDieCommand(UniqueCreatureID, owner, sacrifice).AddToQueue();
     }
-
 
     public void GoFace()
     {
