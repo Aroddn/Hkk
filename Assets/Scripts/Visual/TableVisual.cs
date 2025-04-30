@@ -103,7 +103,7 @@ public class TableVisual : NetworkBehaviour
     public void RpcRemoveCreatureWithID(int IDToRemove,Player p, bool sacrifice)
     {
         CreatureLogic creature = CreatureLogic.CreaturesCreatedThisGame[IDToRemove];
-        GameObject creatureToRemove = IDHolder.GetGameObjectWithID(IDToRemove);
+        
 
         //except from sacrificing
         if (!sacrifice)
@@ -117,26 +117,37 @@ public class TableVisual : NetworkBehaviour
 
         p.graveYard.cards.Add(creature.ca);
 
-        CreaturesOnTable.Remove(creatureToRemove);
-        Destroy(creatureToRemove);
+        GameObject creatureToRemove = IDHolder.GetGameObjectWithID(IDToRemove);
+        if (creatureToRemove != null)
+        {
+            CreaturesOnTable.Remove(creatureToRemove);
+            Destroy(creatureToRemove);
+        }
+        else
+        {
+            // Try removing by ID instead (fallback)
+            CreaturesOnTable.RemoveAll(go => go == null || go.GetComponent<IDHolder>()?.UniqueID == IDToRemove);
+        }
 
+        CreaturesOnTable.RemoveAll(item => item == null);
 
         ShiftSlotsGameObjectAccordingToNumberOfCreatures();
         PlaceCreaturesOnNewSlots();
-       
+        Destroy(creatureToRemove);
+
         Command.CommandExecutionComplete();
     }
 
     [Command(requiresAuthority = false)]
     public void RemoveCreatureWithID(int IDToRemove,Player p,bool sacrifice)
     {
-        CreatureLogic creature = CreatureLogic.CreaturesCreatedThisGame[IDToRemove];
-        p.table.CreaturesOnTable.Remove(creature);
+        CreaturesOnTable.RemoveAll(item => item == null);
         RpcRemoveCreatureWithID(IDToRemove, p, sacrifice);
     }
 
     void ShiftSlotsGameObjectAccordingToNumberOfCreatures()
     {
+        CreaturesOnTable.RemoveAll(item => item == null);
         float posX;
         if (CreaturesOnTable.Count > 0)
             posX = (slots.Children[0].transform.localPosition.x - slots.Children[CreaturesOnTable.Count - 1].transform.localPosition.x) / 2f;
