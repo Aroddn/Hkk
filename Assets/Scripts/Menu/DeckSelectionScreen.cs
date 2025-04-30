@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DeckSelectionScreen : MonoBehaviour {
-
+  
+    public HeroInfoPanel HeroPanelDeckSelection;
     public GameObject ScreenContent;
     public DeckIcon[] DeckIcons;
-    public HeroInfoPanel HeroPanelDeckSelection;
 
     public static DeckSelectionScreen Instance;
 
@@ -17,9 +17,10 @@ public class DeckSelectionScreen : MonoBehaviour {
         HideScreen();
     }
 
+
+
     public void ShowDecks()
     {
-        // If there are no decks at all, show the character selection screen
         if (DecksStorage.Instance.AllDecks.Count == 0)
         {            
             HideScreen();
@@ -27,7 +28,6 @@ public class DeckSelectionScreen : MonoBehaviour {
             return;
         }
 
-        // disable all deck icons first
         foreach (DeckIcon icon in DeckIcons)
         {
             icon.gameObject.SetActive(false);
@@ -44,7 +44,9 @@ public class DeckSelectionScreen : MonoBehaviour {
     public void ShowScreen()
     {
         ScreenContent.SetActive(true);
+
         ShowDecks();
+
         HeroPanelDeckSelection.OnOpen();
     }
 

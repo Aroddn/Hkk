@@ -9,6 +9,7 @@ public class PlayerDeckVisual : MonoBehaviour {
 
     void Start()
     {
+        //not used because causes issues with networking
         //CardsInDeck = GlobalSettings.Instance.Players[owner].deck.cards.Count;
     }
 

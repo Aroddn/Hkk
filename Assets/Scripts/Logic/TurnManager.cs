@@ -59,10 +59,10 @@ public class TurnManager : NetworkBehaviour {
             tm.OnTurnStart();
             if (tm is PlayerTurnMaker)
             {
-                WhoseTurn.HighlightPlayableCards();
+                WhoseTurn.PlayableCardHighlighter();
             }
             // remove highlights for opponent.
-            WhoseTurn.otherPlayer.HighlightPlayableCards(true);
+            WhoseTurn.otherPlayer.PlayableCardHighlighter(true);
         }
     }
 
@@ -126,7 +126,7 @@ public class TurnManager : NetworkBehaviour {
             }
 
             whoGoesSecond.DrawACard(true);
-            new StartATurnCommand(whoGoesFirst).AddToQueue();
+            new StartANewTurnCommand(whoGoesFirst).AddToQueue();
         });
     }
 
@@ -151,26 +151,21 @@ public class TurnManager : NetworkBehaviour {
 
     public void EndTurn()
     {
-        // stop timer
         timer.StopTimer();
-        // send all commands in the end of current player`s turn
         WhoseTurn.OnTurnEnd();
-
-        new StartATurnCommand(WhoseTurn.otherPlayer).AddToQueue();
+        new StartANewTurnCommand(WhoseTurn.otherPlayer).AddToQueue();
     }
 
-    public void GiveControlToOtherPlayer()
-    {
-        //TODO
+    public void GiveControlToOtherPlayer(){
         WhoseAction = WhoseAction.otherPlayer;
         GlobalSettings.Instance.EnableEndTurnButtonOnStart(WhoseAction);
-        WhoseAction.HighlightPlayableCards();
-        WhoseAction.otherPlayer.HighlightPlayableCards(true);
+        WhoseAction.PlayableCardHighlighter();
+        WhoseAction.otherPlayer.PlayableCardHighlighter(true);
     }
 
+    //logic for the Pass button
     [ClientRpc]
-    public void RcpPass()
-    {
+    public void RcpPass(){
         playerAction.Add(PlayerAction.Pass);
         PlayerAction last = playerAction[playerAction.Count - 1];
 
@@ -201,14 +196,14 @@ public class TurnManager : NetworkBehaviour {
         }
         else
         {
-            if (last == PlayerAction.Pass)
-            {
+            if (last == PlayerAction.Pass){
                 GiveControlToOtherPlayer();
                 GlobalSettings.Instance.EndTurnButton.GetComponentInChildren<TMP_Text>().text = "End Turn";
             }
         }
     }
 
+    //the main Pass() command gets executed on the server then calls RcpPass to replicate it to all clients
     [Command(requiresAuthority = false)]
     public void Pass()
     {

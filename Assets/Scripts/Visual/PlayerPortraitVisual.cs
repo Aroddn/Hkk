@@ -3,11 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
 
+//attached to the PlayerPortaits
+
 public class PlayerPortraitVisual : MonoBehaviour {
 
     public CharacterAsset charAsset;
     [Header("Text Component References")]
-    //public Text NameText;
     public Text HealthText;
     [Header("Image References")]
     public Image PortraitImage;

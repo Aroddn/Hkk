@@ -40,12 +40,10 @@ public class CreatureAttackVisual : NetworkBehaviour
 
             if (targetUniqueID == GlobalSettings.Instance.LowPlayer.PlayerID || targetUniqueID == GlobalSettings.Instance.TopPlayer.PlayerID)
             {
-                //target.GetComponent<PlayerPortraitVisual>().HealthText.text = targetHealthAfter.ToString();
                 target.GetComponent<PlayerPortraitVisual>().TakeDamage(damageTakenByTarget, targetHealthAfter);
             }
             else
                 target.GetComponent<OneCreatureManager>().TakeDamage(damageTakenByTarget, targetHealthAfter);
-            //target.GetComponent<OneCreatureManager>().HealthText.text = targetHealthAfter.ToString();
 
             w.SetTableSortingOrder();
             w.VisualState = tempState;
@@ -54,7 +52,6 @@ public class CreatureAttackVisual : NetworkBehaviour
             Sequence s = DOTween.Sequence();
             s.AppendInterval(1f);
             s.OnComplete(Command.CommandExecutionComplete);
-            //Command.CommandExecutionComplete();
         });
     }  
 }

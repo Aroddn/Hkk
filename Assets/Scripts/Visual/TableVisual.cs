@@ -8,28 +8,12 @@ using Unity.VisualScripting;
 
 public class TableVisual : NetworkBehaviour
 {
-    // PUBLIC FIELDS
-
-    // an enum that mark to which caracter this table belongs. The alues are - Top or Low
     public AreaPosition owner;
-
-    // a referense to a game object that marks positions where we should put new Creatures
     public SameDistanceChildren slots;
-
-    // PRIVATE FIELDS
-
-    // list of all the creature cards on the table as GameObjects
     public List<GameObject> CreaturesOnTable = new List<GameObject>();
-
-    // are we hovering over this table`s collider with a mouse
     private bool cursorOverThisTable = false;
-
-    // A 3D collider attached to this game object
     private BoxCollider col;
 
-    // PROPERTIES
-
-    // returns true if we are hovering over any player`s table collider
     public static bool CursorOverSomeTable
     {
         get
@@ -39,22 +23,18 @@ public class TableVisual : NetworkBehaviour
         }
     }
 
-    // returns true only if we are hovering over this table`s collider
     public bool CursorOverThisTable
     {
         get{ return cursorOverThisTable; }
     }
 
-    // MONOBEHAVIOUR SCRIPTS (mouse over collider detection)
     void Awake()
     {
         col = GetComponent<BoxCollider>();
     }
 
-    // CURSOR/MOUSE DETECTION
     void Update()
     {
-        // we need to Raycast because OnMouseEnter, etc reacts to colliders on cards and cards "cover" the table
         RaycastHit[] hits;
         hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition), 30f);
         bool passedThroughTableCollider = false;
@@ -71,23 +51,20 @@ public class TableVisual : NetworkBehaviour
     {
         //GameObject creature = GameObject.Instantiate(GlobalSettings.Instance.CreaturePrefab, slots.Children[index].transform.position, Quaternion.identity) as GameObject;
         creature.transform.position = slots.Children[index].transform.position;
-        // apply the look from CardAsset
+
         OneCreatureManager manager = creature.GetComponent<OneCreatureManager>();
         manager.cardAsset = ca;
         manager.ReadCreatureFromAsset();
         manager.creatureLogic = creatureLogic;
 
-        // add tag according to owner
+
         foreach (Transform t in creature.GetComponentsInChildren<Transform>())
             t.tag = owner.ToString() + "Creature";
-        // parent a new creature gameObject to table slots
 
         creature.transform.SetParent(slots.transform);
-        // add a new creature to the list
 
         CreaturesOnTable.Insert(index, creature);
 
-        // let this creature know about its position
 
         WhereIsTheCardOrCreature w = creature.GetComponent<WhereIsTheCardOrCreature>();
         w.Slot = index;
@@ -107,12 +84,10 @@ public class TableVisual : NetworkBehaviour
     }
 
     public int TablePosForNewCreature(float MouseX)
-    {
-        // if there are no creatures or if we are pointing to the right of all creatures with a mouse.
-        // right - because the table slots are flipped and 0 is on the right side.    
+    {   
         if (CreaturesOnTable.Count == 0 || MouseX > slots.Children[0].transform.position.x)
             return 0;
-        else if (MouseX < slots.Children[CreaturesOnTable.Count - 1].transform.position.x) // cursor on the left relative to all creatures on the table
+        else if (MouseX < slots.Children[CreaturesOnTable.Count - 1].transform.position.x)
             return CreaturesOnTable.Count;
         for (int i = 0; i < CreaturesOnTable.Count; i++)
         {
@@ -129,8 +104,8 @@ public class TableVisual : NetworkBehaviour
     {
         CreatureLogic creature = CreatureLogic.CreaturesCreatedThisGame[IDToRemove];
         GameObject creatureToRemove = IDHolder.GetGameObjectWithID(IDToRemove);
-        
-        //except from sacrificeing
+
+        //except from sacrificing
         if (!sacrifice)
         {
             p.otherPlayer.TotalBones++;
@@ -160,9 +135,6 @@ public class TableVisual : NetworkBehaviour
         RpcRemoveCreatureWithID(IDToRemove, p, sacrifice);
     }
 
-    /// <summary>
-    /// Shifts the slots game object according to number of creatures.
-    /// </summary>
     void ShiftSlotsGameObjectAccordingToNumberOfCreatures()
     {
         float posX;
@@ -174,10 +146,6 @@ public class TableVisual : NetworkBehaviour
         slots.gameObject.transform.DOLocalMoveX(posX, 0.3f);  
     }
 
-    /// <summary>
-    /// After a new creature is added or an old creature dies, this method
-    /// shifts all the creatures and places the creatures on new slots.
-    /// </summary>
     void PlaceCreaturesOnNewSlots()
     {
         foreach (GameObject g in CreaturesOnTable)

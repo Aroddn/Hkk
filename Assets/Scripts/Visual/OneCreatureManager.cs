@@ -27,22 +27,6 @@ public class OneCreatureManager : NetworkBehaviour, IPointerClickHandler
             ReadCreatureFromAsset();
     }
 
-
-    [Command]
-    public void Death(int amount)
-    {
-        Debug.Log("Server received damage: " + amount);
-        // Server-side logic, then optionally notify clients
-        RpcDeath(amount);
-    }
-
-    [ClientRpc]
-    void RpcDeath(int amount)
-    {
-        Debug.Log("Client sees damage: " + amount);
-        // Show damage popup or effects
-    }
-
     private bool canAttackNow = false;
     public bool CanAttackNow
     {
@@ -63,7 +47,6 @@ public class OneCreatureManager : NetworkBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            // Toggle the right-click menu
             if (rightClickMenu != null)
             {
                 rightClickMenu.SetActive(!rightClickMenu.activeSelf);

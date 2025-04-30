@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "Feny\u0151\u0151r man\xF3"
+  m_EditorClassIdentifier: 
+  cardName: "Feny\u0151\u0151r man\xF3"
+  Rarity: 0
+  color: 6
+  setName: 2
+  releaseYear: 2017
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 0
+  Description: "Felt\xE1mad(vagyis kij\xE1tszhatod a gy\u0171jt\u0151b\xF6l is).
+    Nem \xE1ldozhatod fel."
+  Tags: 
+  FlavorText: 
+  CardImage: {fileID: 21300000, guid: ca8a2dae9edadf54aa2f18d7268b0729, type: 3}
+  ManaCost: 1
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
+  MaxHealth: 1
+  Attack: 3
+  AttacksForOneTurn: 1
+  Bone: 1
+  Flying: 1
+  Hand: 0
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 0
+  subType: 5
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 0
+  Targets: 0

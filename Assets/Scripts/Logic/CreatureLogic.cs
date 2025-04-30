@@ -154,12 +154,11 @@ public class CreatureLogic: ICharacter
     }
 
     public void Die(bool sacrifice)
-    {
-        
-        new CreatureDieCommand(UniqueCreatureID, owner, sacrifice).AddToQueue();
+    {   
+        new CreatureDeathCommand(UniqueCreatureID, owner, sacrifice).AddToQueue();
     }
 
-    public void GoFace()
+    public void AttackPlayer()
     {
         AttacksLeftThisTurn--;
         int targetHealthAfter = owner.otherPlayer.Health - Attack;

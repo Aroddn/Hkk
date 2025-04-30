@@ -12,6 +12,7 @@ public static class PrefabBreakMenuItems {
     // Breaks the link with the prefab for selected object
     [MenuItem("GameObject/Break Prefab Instance Definitive %&b", false, 29)]
     [MenuItem("CONTEXT/Object/Break Prefab Instance Definitive", false, 301)]
+    [System.Obsolete]
     static void MenuBreakInstanceDefinitive() {
         
         GameObject[] breakTargets = Selection.gameObjects;
@@ -29,16 +30,15 @@ public static class PrefabBreakMenuItems {
 
         return goSelection.Any(x => PrefabUtility.GetPrefabParent(x));
     }
-    #endif
+#endif
 
     #endregion
 
     #region LOGIC
 
-    #if UNITY_EDITOR
-    // Полностью удаляет связь у выбранных объектов 
-    // Записываем в "undo" для отката
+#if UNITY_EDITOR
     // Breaks prefab connection for multiple objects and writes info into Undo.
+    [System.Obsolete]
     public static void BreakInstancesDefinitive(GameObject[] targets) {
         Undo.RegisterCompleteObjectUndo(targets, "Breaking multiple prefab instances definitively");
 
@@ -52,10 +52,8 @@ public static class PrefabBreakMenuItems {
         Undo.RecordObjects(targets, "Breaking multiple prefab instances definitively");
     }
 
-
-    // Полностью удаляет связь у ОДНОГО выбранного объекта
-    // Записываем в "undo" для отката
     // Breaks prefab connection for one object and writes info into Undo. 
+    [System.Obsolete]
     public static void BreakInstanceDefinitive(GameObject target) {
         Undo.RegisterCompleteObjectUndo(target, "Breaking single prefab instance definitively");
 

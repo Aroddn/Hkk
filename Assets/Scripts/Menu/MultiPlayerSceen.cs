@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//not used but made for future development
+
 public class MultiPlayerSceen : MonoBehaviour
 {
     public GameObject ScreenContent;

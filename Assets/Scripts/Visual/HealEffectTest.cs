@@ -10,12 +10,4 @@ public class HealEffectTest : MonoBehaviour {
     {
         Instance = this;
     }
-
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.A))
-    //        HealEffect.CreateHealEffect(transform.position, Random.Range(1, 7));
-
-    //    Debug.Log("here");
-    //}
 }

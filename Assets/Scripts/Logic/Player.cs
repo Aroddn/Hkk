@@ -39,9 +39,9 @@ public class Player : NetworkBehaviour, ICharacter
 
 
      public static Player localPlayer;
-     public bool hasEnemy = false; // If we have set an enemy.
-     public PlayerInfo enemyInfo; // We can't pass a Player class through the Network, but we can pass structs. 
-    // We store all our enemy's info in a PlayerInfo struct so we can pass it through the network when needed.
+     public bool hasEnemy = false;
+     public PlayerInfo enemyInfo;
+
     public static GameManager gameManager;
     [SyncVar] public bool firstPlayer = false;
 
@@ -84,17 +84,13 @@ public class Player : NetworkBehaviour, ICharacter
     }
     void UpdatePlayerName(string oldUser, string newUser)
     {
-        // Update username
         username = newUser;
-
-        // Update game object's name in editor (only useful for debugging).
         gameObject.name = newUser;
     }
 
 
     public void Update()
     {
-        // Get EnemyInfo as soon as another player connects. Only start updating once our Player has been loaded in properly (username will be set if loaded in).
         if (!hasEnemy && username != "")
         {
             UpdateEnemyInfo();
@@ -103,24 +99,17 @@ public class Player : NetworkBehaviour, ICharacter
 
     public void UpdateEnemyInfo()
     {
-        // Find all Players and add them to the list.
         Player[] onlinePlayers = FindObjectsOfType<Player>();
 
-        // Loop through all online Players (should just be one other Player)
         foreach (Player player in onlinePlayers)
         {
-
-            // Make sure the players are loaded properly (we load the usernames first)
             if (player.username != "")
             {
-                // There should only be one other Player online, so if it's not us then it's the enemy.
                 if (player != this)
                 {
-                    // Get & Set PlayerInfo from our Enemy's gameObject
                     PlayerInfo currentPlayer = new PlayerInfo(player.gameObject);
                     enemyInfo = currentPlayer;
                     hasEnemy = true;
-                    //enemyInfo.data.casterType = Target.OPPONENT;
                     GlobalSettings.Instance.LowPlayer = localPlayer;
                     GlobalSettings.Instance.TopPlayer = localPlayer.otherPlayer;
                     GlobalSettings.Instance.Players.Clear();
@@ -147,7 +136,7 @@ public class Player : NetworkBehaviour, ICharacter
         set
         {
             maxMana = value;
-            new UpdateManaCrystalsCommand(this, maxMana, currentMana).AddToQueue();
+            new UpdateManaCommand(this, maxMana, currentMana).AddToQueue();
         }
     }
 
@@ -172,9 +161,10 @@ public class Player : NetworkBehaviour, ICharacter
         set
         {
             currentMana = value;
-            new UpdateManaCrystalsCommand(this, MaxMana, currentMana).AddToQueue();
-            if (TurnManager.Instance.WhoseTurn == this)
-                HighlightPlayableCards();
+            new UpdateManaCommand(this, MaxMana, currentMana).AddToQueue();
+
+
+            if (TurnManager.Instance.WhoseTurn == this) PlayableCardHighlighter();
         }
     }
 
@@ -425,28 +415,22 @@ public class Player : NetworkBehaviour, ICharacter
 
     public void Die()
     {
-        // game over
-        // block both players from taking new moves 
         PArea.ControlsON = false;
         otherPlayer.PArea.ControlsON = false;
         TurnManager.Instance.StopTheTimer();
         new GameOverCommand(this).AddToQueue();
     }
 
-    // METHODS TO SHOW GLOW HIGHLIGHTS
-    public void HighlightPlayableCards(bool removeAllHighlights = false)
+    public void PlayableCardHighlighter(bool removeAllHighlights = false)
     {
-        //TODO if enemies turn highlight those that can be used with your acition but on enemies turn
 
-        foreach (CardLogic cl in hand.CardsInHand)
-        {
+        foreach (CardLogic cl in hand.CardsInHand){
             GameObject g = IDHolder.GetGameObjectWithID(cl.UniqueCardID);
             if (g!=null)
                 g.GetComponent<OneCardManager>().CanBePlayedNow = (cl.CurrentManaCost <= CurrentMana) && !removeAllHighlights;
         }
 
-        foreach (CreatureLogic crl in table.CreaturesOnTable)
-        {
+        foreach (CreatureLogic crl in table.CreaturesOnTable){
             GameObject g = IDHolder.GetGameObjectWithID(crl.UniqueCreatureID);
             if(g!= null)
                 g.GetComponent<OneCreatureManager>().CanAttackNow = (crl.AttacksLeftThisTurn > 0) && !removeAllHighlights;
@@ -455,32 +439,19 @@ public class Player : NetworkBehaviour, ICharacter
 
     }
 
-    // START GAME METHODS
-    public void LoadCharacterInfoFromAsset()
-    {
+    public void LoadCharacterInfoFromAsset(){
         Health = charAsset.MaxHealth;
         MaxHealth = charAsset.MaxHealth;
         PArea.Portrait.charAsset = charAsset;
         PArea.Portrait.ApplyLookFromAsset();
     }
 
-    public void TransmitInfoAboutPlayerToVisual()
-    {
+    public void TransmitInfoAboutPlayerToVisual(){
         PArea.Portrait.gameObject.AddComponent<IDHolder>().UniqueID = PlayerID;
-        if (GetComponent<TurnMaker>() is AITurnMaker)
-        {
-            // turn off turn making for this character
-            PArea.AllowedToControlThisPlayer = false;
-        }
-        else
-        {
-            // allow turn making for this character
-            PArea.AllowedToControlThisPlayer = true;
-        }
+        PArea.AllowedToControlThisPlayer = true;
     }
 
-    public void Die(bool sacrifice)
-    {
+    public void Die(bool sacrifice){
         throw new System.NotImplementedException();
     }
 

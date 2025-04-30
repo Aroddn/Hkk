@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "Var\xE1zsenergia"
+  m_EditorClassIdentifier: 
+  cardName: "Var\xE1zsenergia"
+  Rarity: 0
+  color: 1
+  setName: 3
+  releaseYear: 2017
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 0
+  Description: "Gy\xF3gyulsz 6-ot, vagy kapsz \"4 VP\"-t, vagy c\xE9lpont lap  a
+    gy\u0171jt\u0151be ker\xFCl."
+  Tags: 
+  FlavorText: "\xDAgy alak\xEDtom, ahogy kedvem tartja. - Maedin"
+  CardImage: {fileID: 21300000, guid: a80afdbd1111b58408a93762748701b1, type: 3}
+  ManaCost: 2
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 1
+  MaxHealth: 0
+  Attack: 0
+  AttacksForOneTurn: 1
+  Bone: 0
+  Flying: 0
+  Hand: 0
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 0
+  subType: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 0
+  Targets: 0

@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class HandVisual : MonoBehaviour
 {
-    // PUBLIC FIELDS
     public AreaPosition owner;
     public bool TakeCardsOpenly = true;
     public SameDistanceChildren slots;
@@ -16,7 +15,6 @@ public class HandVisual : MonoBehaviour
     public Transform OtherCardDrawSourceTransform;
     public Transform PlayPreviewSpot;
 
-    // PRIVATE : a list of all card visual representations as GameObjects
     private List<GameObject> CardsInHand = new List<GameObject>();
 
     public void PlayASpellFromHand(int CardID)
@@ -39,7 +37,6 @@ public class HandVisual : MonoBehaviour
         s.AppendInterval(2f);
         s.OnComplete(()=>
             {
-                //Command.CommandExecutionComplete();
                 Destroy(CardVisual);
             });
     }
@@ -47,9 +44,7 @@ public class HandVisual : MonoBehaviour
     public void AddCard(GameObject card)
     {
         CardsInHand.Insert(0, card);
-        // set parent for this card
         card.transform.SetParent(slots.transform);
-        // re-calculate the position of the hand
         PlaceCardsOnNewSlots();
         UpdatePlacementOfSlots();
     }
@@ -57,7 +52,6 @@ public class HandVisual : MonoBehaviour
     public void RemoveCard(GameObject card)
     {
         CardsInHand.Remove(card);
-        // re-calculate the position of the hand
         PlaceCardsOnNewSlots();
         UpdatePlacementOfSlots();
     }
@@ -70,7 +64,6 @@ public class HandVisual : MonoBehaviour
     public void RemoveCardAtIndex(int index)
     {
         CardsInHand.RemoveAt(index);
-        // re-calculate the position of the hand
         PlaceCardsOnNewSlots();
         UpdatePlacementOfSlots();
     }
@@ -82,8 +75,6 @@ public class HandVisual : MonoBehaviour
             posX = (slots.Children[0].transform.localPosition.x - slots.Children[CardsInHand.Count - 1].transform.localPosition.x) / 2f;
         else
             posX = 0f;
-
-        // tween Slots GameObject to new position in 0.3 seconds
         slots.gameObject.transform.DOLocalMoveX(posX, 0.3f);
     }
 
@@ -92,14 +83,12 @@ public class HandVisual : MonoBehaviour
         foreach (GameObject g in CardsInHand)
         {
             g.transform.DOLocalMoveX(slots.Children[CardsInHand.IndexOf(g)].transform.localPosition.x, 0.3f);
-            // apply correct sorting order and HandSlot value for later 
             WhereIsTheCardOrCreature w = g.GetComponent<WhereIsTheCardOrCreature>();
             w.Slot = CardsInHand.IndexOf(g);
             w.SetHandSortingOrder();
         }
     }
 
-    // CARD DRAW METHODS
     public void GivePlayerACard(CardAsset c, int UniqueID, bool fast = false, bool fromDeck = true)
     {
         GameObject card;
@@ -108,23 +97,16 @@ public class HandVisual : MonoBehaviour
         else
             card = CreateACardAtPosition(c, OtherCardDrawSourceTransform.position, new Vector3(0f, -179f, 0f));
 
-        // Set a tag to reflect where this card is
         foreach (Transform t in card.GetComponentsInChildren<Transform>())
             t.tag = owner.ToString() + "Card";
-        // pass this card to HandVisual class
         AddCard(card);
 
-        // Bring card to front while it travels from draw spot to hand
         WhereIsTheCardOrCreature w = card.GetComponent<WhereIsTheCardOrCreature>();
         w.BringToFront();
         w.Slot = 0;
         w.VisualState = VisualStates.Transition;
-
-        // pass a unique ID to this card.
         IDHolder id = card.AddComponent<IDHolder>();
         id.UniqueID = UniqueID;
-
-        // move card to the hand;
         Sequence s = DOTween.Sequence();
         if (!fast)
         {         
@@ -134,12 +116,10 @@ public class HandVisual : MonoBehaviour
                 s.Insert(0.5f, card.transform.DORotate(Vector3.zero, GlobalSettings.Instance.CardTransitionTime));
             
             s.AppendInterval(GlobalSettings.Instance.CardPreviewTime);
-            // displace the card so that we can select it in the scene easier.
             s.Append(card.transform.DOLocalMove(slots.Children[0].transform.localPosition, GlobalSettings.Instance.CardTransitionTime));
         }
         else
         {
-            // displace the card so that we can select it in the scene easier.
             s.Append(card.transform.DOLocalMove(slots.Children[0].transform.localPosition, GlobalSettings.Instance.CardTransitionTimeFast));
             if (TakeCardsOpenly)
                 s.Insert(0f, card.transform.DORotate(Vector3.zero, GlobalSettings.Instance.CardTransitionTimeFast));
@@ -151,7 +131,6 @@ public class HandVisual : MonoBehaviour
 
     void ChangeLastCardStatusToInHand(GameObject card, WhereIsTheCardOrCreature w)
     {
-        //Debug.Log("Changing state to Hand for card: " + card.gameObject.name);
         if (owner == AreaPosition.Low)
             w.VisualState = VisualStates.LowHand;
         else
@@ -163,37 +142,28 @@ public class HandVisual : MonoBehaviour
 
     GameObject CreateACardAtPosition(CardAsset c, Vector3 position, Vector3 eulerAngles)
     {
-        // Instantiate a card depending on its type
         GameObject card;
         if (c.MaxHealth > 0)
         {
-            // this card is a creature card
             card = GameObject.Instantiate(GlobalSettings.Instance.CreatureCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
         }
         else
         {
-            // this is a spell: checking for targeted or non-targeted spell
             if (c.Targets == TargetingOptions.NoTarget)
                 card = GameObject.Instantiate(GlobalSettings.Instance.NoTargetSpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
             else
             {
                 card = GameObject.Instantiate(GlobalSettings.Instance.TargetedSpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-                // pass targeting options to DraggingActions
                 DragSpellOnTarget dragSpell = card.GetComponentInChildren<DragSpellOnTarget>();
                 dragSpell.Targets = c.Targets;
             }
 
         }
-
-        // apply the look of the card based on the info from CardAsset
         OneCardManager manager = card.GetComponent<OneCardManager>();
         manager.cardAsset = c;
         manager.ReadCardFromAsset();
 
         return card;
     }
-
-    // PLAYING SPELLS
-
 
 }

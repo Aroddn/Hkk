@@ -3,6 +3,8 @@ using System.Collections;
 
 public enum AreaPosition{Top, Low}
 
+//Containts everything a player has and belongs to them on the screen
+
 public class PlayerArea : MonoBehaviour 
 {
     public AreaPosition owner;
@@ -16,7 +18,6 @@ public class PlayerArea : MonoBehaviour
     public GraveYardVisual graveYardVisual;
     public VoidVisual voidVisual;
 
-    //portrait
     public PlayerPortraitVisual Portrait;
     public Transform PortraitPosition;
     public Transform InitialPortraitPosition;

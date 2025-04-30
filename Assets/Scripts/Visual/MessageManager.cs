@@ -16,34 +16,19 @@ public class MessageManager : MonoBehaviour
         MessagePanel.SetActive(false);
     }
 
-    public void ShowMessage(string Message, float Duration)//,Command com
+    public void ShowMessage(string Message, float Duration)
     {
-        StartCoroutine(ShowMessageCoroutine(Message, Duration));//, com
+        StartCoroutine(ShowMessageCoroutine(Message, Duration));
     }
 
-    IEnumerator ShowMessageCoroutine(string Message, float Duration)//, Command com
+    IEnumerator ShowMessageCoroutine(string Message, float Duration)
     {
-        //Debug.Log("Showing some message. Duration: " + Duration);
         MessageText.text = Message;
         MessagePanel.SetActive(true);
 
         yield return new WaitForSeconds(Duration);
 
         MessagePanel.SetActive(false);
-        //TODO
         Command.CommandExecutionComplete();
-    }
-
-    //for test
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Y))
-        {
-            ShowMessage("Your Turn", 3f);
-        }
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            ShowMessage("Enemy Turn", 3f);
-        }
     }
 }

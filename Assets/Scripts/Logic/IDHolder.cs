@@ -16,6 +16,7 @@ public class IDHolder : MonoBehaviour {
     {
         foreach (IDHolder i in allIDHolders)
         {
+            if (i == null) continue;
             if (i.UniqueID == ID)
                 return i.gameObject;
         }

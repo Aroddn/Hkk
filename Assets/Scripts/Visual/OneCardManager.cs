@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
+//attached to Creature prefab to manage it
+
 public class OneCardManager : MonoBehaviour {
 
     public CardAsset cardAsset;
@@ -44,7 +46,6 @@ public class OneCardManager : MonoBehaviour {
 
         if (cardAsset.MaxHealth != 0)
         {
-            // this is a creature
             AttackText.text = cardAsset.Attack.ToString();
             HealthText.text = cardAsset.MaxHealth.ToString();
         }

@@ -31,7 +31,6 @@ public class GlobalSettings: MonoBehaviour
 
     public Dictionary<AreaPosition, Player> Players = new Dictionary<AreaPosition, Player>();
 
-    // SINGLETON
     public static GlobalSettings Instance;
 
     void Awake()
@@ -39,7 +38,7 @@ public class GlobalSettings: MonoBehaviour
         Instance = this;
     }
 
-    //not used anymore
+    //not used anymore in main project to keep it for future development
     public void AssignDeckAndCharacter(Player player, DeckInfo deckInfo)
     {
         if (deckInfo != null)
@@ -64,9 +63,9 @@ public class GlobalSettings: MonoBehaviour
         List<CardAsset> deck2 = new List<CardAsset>();
         List<CardAsset> deck3 = new List<CardAsset>();
 
-        deck1 = Resources.LoadAll<CardAsset>("SO Assets/Decks/Angels").ToList();
-        deck2 = Resources.LoadAll<CardAsset>("SO Assets/Decks/FireMagic").ToList();
-        deck3 = Resources.LoadAll<CardAsset>("SO Assets/Decks/Beasts").ToList();
+        deck1 = Resources.LoadAll<CardAsset>("MyAssests/CardAssets/Decks/Angels").ToList();
+        deck2 = Resources.LoadAll<CardAsset>("MyAssests/CardAssets/Decks/FireMagic").ToList();
+        deck3 = Resources.LoadAll<CardAsset>("MyAssests/CardAssets/Decks/Beasts").ToList();
   
         deck1.Shuffle();
         deck2.Shuffle();
@@ -87,16 +86,13 @@ public class GlobalSettings: MonoBehaviour
 
     public bool CanControlThisPlayer(AreaPosition owner)
     {
-        //bool PlayersTurn = (TurnManager.Instance.whoseTurn == Players[owner]);
         bool PlayersTurn = (TurnManager.Instance.WhoseAction == Players[owner]);
-        //Debug.Log(TurnManager.Instance.WhoseAction);
         bool NotDrawingAnyCards = !Command.CardDrawPending();
         return Players[owner].PArea.AllowedToControlThisPlayer && Players[owner].PArea.ControlsON && PlayersTurn && NotDrawingAnyCards;
     }
 
     public bool CanControlThisPlayer(Player ownerPlayer)
     {
-        //bool PlayersTurn = (TurnManager.Instance.whoseTurn == ownerPlayer);
         bool PlayersTurn = (TurnManager.Instance.WhoseAction == ownerPlayer);
         bool NotDrawingAnyCards = !Command.CardDrawPending();
         return ownerPlayer.PArea.AllowedToControlThisPlayer && ownerPlayer.PArea.ControlsON && PlayersTurn && NotDrawingAnyCards;

@@ -1,9 +1,9 @@
-﻿// ArrayPrefs2 v 1.4
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
+//safes player preferences after closing the game
 public class PlayerPrefsX
 {
     static private int endianDiff1;

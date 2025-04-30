@@ -40,7 +40,6 @@ public class ManaPoolVisual : MonoBehaviour {
 
     public TMP_Text ProgressText;
 
-    //for testing
     void Update()
     {
         if (Application.isEditor && !Application.isPlaying)
