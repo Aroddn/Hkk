@@ -61,7 +61,6 @@ public class DecksStorage : MonoBehaviour {
     void LoadDecksFromPlayerPrefs()
     {
         List<DeckInfo> DecksFound = new List<DeckInfo>();
-        // load the information about decks from PlayerPrefsX
         for(int i=0; i < 9; i++)
         {
             string deckListKey = "Deck" + i.ToString();
@@ -74,7 +73,6 @@ public class DecksStorage : MonoBehaviour {
                 string characterName = PlayerPrefs.GetString(characterKey);
                 string deckName = PlayerPrefs.GetString(deckNameKey);
 
-                // make a CardAsset list from an array of strings:
                 List <CardAsset> deckList = new List<CardAsset>();
                 foreach(string name in DeckAsCardNames)
                 {
@@ -90,7 +88,6 @@ public class DecksStorage : MonoBehaviour {
 
     public void SaveDecksIntoPlayerPrefs()
     {
-        // clear all the keys of characters and deck names
         for(int i=0; i < 9; i++)
         {
             string characterKey = "DeckHero" + i.ToString();

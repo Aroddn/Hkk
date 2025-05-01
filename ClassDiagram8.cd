@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DraggingActionsTest" Collapsed="true">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAQAAAAAAECAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DraggingScripts\DraggingActionsTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DraggingActionsTestReturn" Collapsed="true">
+    <Position X="3.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAQAAAAAAECAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\DraggingScripts\DraggingActionsTestReturn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DragOnTargetTest" Collapsed="true">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAQAAAAAAESAAABAAAgAEAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\DraggingScripts\DragOnTargetTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DragCreatureAttack" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAFAAAAQAAAAAAESAECBAAAgAEAAAAABAAAEA=</HashCode>
+      <FileName>Assets\Scripts\DraggingScripts\DragCreatureAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DragCreatureOnTable" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIABAAAAQAAAAAAECAECAAAEAAAAAAAABAAAGA=</HashCode>
+      <FileName>Assets\Scripts\DraggingScripts\DragCreatureOnTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Draggable" Collapsed="true">
+    <Position X="1" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAACAAgCEAIAAAAAAAAAEAAgAAAIAAAEgACAEA=</HashCode>
+      <FileName>Assets\Scripts\DraggingScripts\Draggable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

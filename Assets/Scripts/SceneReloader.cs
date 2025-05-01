@@ -22,6 +22,7 @@ public class SceneReloader: MonoBehaviour {
 
     public void LoadSceneMultiPlayer(string SceneName)
     {
+        //for further development
         SceneManager.LoadScene(SceneName);
     }
 
