@@ -1,11 +1,9 @@
-﻿//using Mirror.Examples.CharacterSelection;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
-//using static Mirror.Examples.CharacterSelection.NetworkManagerCharacterSelection;
-using static NetworkManagerHKK;
+
 
 public class HeroInfoPanel : MonoBehaviour {
 
@@ -61,10 +59,7 @@ public class HeroInfoPanel : MonoBehaviour {
             portrait.ApplyLookFromAsset();
             portrait.gameObject.SetActive(true);
             selectedDeck = deck;
-            // instantly load this information to our BattleStartInfo.
             BattleStartInfo.SelectedDeck = selectedDeck.DeckInformation;
-
-
             StaticVariables.deckName = BattleStartInfo.SelectedDeck.DeckName;
             StaticVariables.charAssetName = BattleStartInfo.SelectedDeck.Character.ClassName;
 
@@ -78,8 +73,6 @@ public class HeroInfoPanel : MonoBehaviour {
         }
     }
 
-    // this method is called when we are on the character selection screen
-    // it opens the deck bulder for the character that we have selected
     public void GoToDeckbuilding()
     {
         if (selectedPortrait == null)

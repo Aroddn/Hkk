@@ -14,9 +14,6 @@ public class CardNameRibbon : MonoBehaviour {
 
     public void ApplyAsset(CardAsset ca, int quantity)
     {
-        //if (ca.CharacterAsset != null)
-        //    RibbonImage.color = ca.CharacterAsset.ClassCardTint;
-
         Asset = ca;
 
         NameText.text = ca.name;

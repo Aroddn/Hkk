@@ -15,38 +15,22 @@ public enum PlayerAction
     TurnChange
 }
 
-// this class will take care of switching turns and counting down time until the turn expires
 public class TurnManager : NetworkBehaviour {
 
     private RopeTimer timer;
-
-    // for Singleton Pattern
     public static TurnManager Instance;
-
     public static List<PlayerAction> playerAction = new List<PlayerAction>();
-
-
     private Player _whoseAction;
 
-    public Player WhoseAction
-    {
-        get
-        {
-            return _whoseAction;
-        }
-        set {
-            _whoseAction = value;
-        }
+    public Player WhoseAction{
+        get {return _whoseAction;}
+        set {_whoseAction = value;}
     }
 
     private Player _whoseTurn;
 
-    public Player WhoseTurn
-    {
-        get
-        {
-            return _whoseTurn;
-        }
+    public Player WhoseTurn{
+        get{return _whoseTurn;}
 
         set
         {
@@ -61,7 +45,6 @@ public class TurnManager : NetworkBehaviour {
             {
                 WhoseTurn.PlayableCardHighlighter();
             }
-            // remove highlights for opponent.
             WhoseTurn.otherPlayer.PlayableCardHighlighter(true);
         }
     }
@@ -72,11 +55,6 @@ public class TurnManager : NetworkBehaviour {
     {
         Instance = this;
         timer = GetComponent<RopeTimer>();
-    }
-
-    void Start()
-    {
-        //OnGameStart();
     }
 
     public void OnGameStart()
@@ -99,22 +77,16 @@ public class TurnManager : NetworkBehaviour {
             p.TotalBones = 0;
             p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
             p.TransmitInfoAboutPlayerToVisual();
-
-            //portrait things
             p.LoadCharacterInfoFromAsset();
-            // move both portraits to the center
             p.PArea.Portrait.transform.position = p.PArea.InitialPortraitPosition.transform.position;
         }
 
-        //DOTween
         Sequence s = DOTween.Sequence();
         s.Append(Player.Players[0].PArea.Portrait.transform.DOMove(Player.Players[0].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
         s.Insert(0f, Player.Players[1].PArea.Portrait.transform.DOMove(Player.Players[1].PArea.PortraitPosition.position, 1f).SetEase(Ease.InQuad));
         s.PrependInterval(3f);
         s.OnComplete(() =>
         {
-            // determine who starts the game.
-
             Player whoGoesFirst = Player.Players[playerIndex];
             Player whoGoesSecond = whoGoesFirst.otherPlayer;
 
@@ -130,10 +102,10 @@ public class TurnManager : NetworkBehaviour {
         });
     }
 
-    // TEST COMMANDS
+    //Commands for testing
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isServer)
             OnGameStart();
 
         //if (Input.GetKeyDown(KeyCode.Space))

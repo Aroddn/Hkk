@@ -6,7 +6,6 @@ public class PlayerTurnMaker : TurnMaker
     public override void OnTurnStart()
     {
         base.OnTurnStart();
-        // dispay a message that it is player`s turn
         if (p.PArea.owner == AreaPosition.Low)
         {
             new ShowMessageCommand("Your Turn!", 2.0f).AddToQueue();

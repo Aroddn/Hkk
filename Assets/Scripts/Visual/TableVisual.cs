@@ -125,7 +125,6 @@ public class TableVisual : NetworkBehaviour
         }
         else
         {
-            // Try removing by ID instead (fallback)
             CreaturesOnTable.RemoveAll(go => go == null || go.GetComponent<IDHolder>()?.UniqueID == IDToRemove);
         }
 

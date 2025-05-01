@@ -5,7 +5,6 @@ using System.Collections.Generic;
 [System.Serializable]
 public class CreatureLogic: ICharacter
 {
-    // PUBLIC FIELDS
     public Player owner;
     public CardAsset ca;
     public CreatureEffect effect;
@@ -16,12 +15,9 @@ public class CreatureLogic: ICharacter
     }
     public bool Frozen = false;
 
-    //current
     private int health;
 
-    //max
     private int baseHealth;
-
     public int MaxHealth
     {
         get{ return baseHealth;}
@@ -127,8 +123,6 @@ public class CreatureLogic: ICharacter
         get;
         set;
     }
-
-    // CONSTRUCTOR
     public CreatureLogic(Player owner, CardAsset ca)
     {
         this.ca = ca;
@@ -175,8 +169,6 @@ public class CreatureLogic: ICharacter
 
         target.Health -= Attack;
         Health -= target.Attack;
-        //target.ChangeHealth(-Attack,false);
-        //ChangeHealth(-target.Attack,false);
     }
 
     public void AttackCreatureWithID(int uniqueCreatureID)
@@ -185,7 +177,7 @@ public class CreatureLogic: ICharacter
         AttackCreature(target);
     }
 
-    // STATIC For managing IDs
+    //static dictionary to manage IDs
     public static Dictionary<int, CreatureLogic> CreaturesCreatedThisGame = new Dictionary<int, CreatureLogic>();
 
 }

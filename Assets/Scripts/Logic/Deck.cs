@@ -5,6 +5,8 @@ using UnityEditor;
 using System;
 using Mirror;
 
+//player's deck
+
 [System.Serializable]
 public class Deck : NetworkBehaviour
 {

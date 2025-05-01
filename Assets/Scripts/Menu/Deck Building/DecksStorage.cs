@@ -11,7 +11,6 @@ public class DeckInfo
 
     public DeckInfo(List<CardAsset> cards, string deckName, CharacterAsset charAsset)
     {
-        // copy a list, not just use the cards list
         Cards = new List<CardAsset>(cards);
         Character = charAsset;
         DeckName = deckName;

@@ -17,8 +17,6 @@ public class DeckSelectionScreen : MonoBehaviour {
         HideScreen();
     }
 
-
-
     public void ShowDecks()
     {
         if (DecksStorage.Instance.AllDecks.Count == 0)

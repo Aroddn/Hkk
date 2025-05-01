@@ -13,7 +13,7 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
     public GameObject VisualRepresentation;
     public SpellEffect effect;
 
-    // STATIC (for managing IDs)
+    //static dictionary to manage IDs
     public static Dictionary<int, CardLogic> CardsCreatedThisGame = new Dictionary<int, CardLogic>();
 
     public int ID
@@ -28,31 +28,22 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
         get
         {
             bool ownersTurn = (TurnManager.Instance.WhoseTurn == owner);
-            // for spells the amount of characters on the field does not matter
             bool fieldNotFull = true;
-            // but if this is a creature, we have to check if there is room on board (table)
             if (ca.MaxHealth > 0)
                 fieldNotFull = (owner.table.CreaturesOnTable.Count < 7);
-            //Debug.Log("Card: " + ca.name + " has params: ownersTurn=" + ownersTurn + "fieldNotFull=" + fieldNotFull + " hasMana=" + (CurrentManaCost <= owner.ManaLeft));
             return ownersTurn && fieldNotFull && (CurrentManaCost <= owner.CurrentMana);
         }
     }
 
     public CardLogic(CardAsset ca)
     {
-        // set the CardAsset reference
         this.ca = ca;
-        // get unique int ID
         UniqueCardID = IDFactory.GetUniqueID();
-        //UniqueCardID = IDFactory.GetUniqueID();
         ResetManaCost();
-        // create an instance of SpellEffect with a name from our CardAsset
-        // and attach it to 
         if (ca.SpellScriptName != null && ca.SpellScriptName != "")
         {
             effect = System.Activator.CreateInstance(System.Type.GetType(ca.SpellScriptName)) as SpellEffect;
         }
-        // add this card to a dictionary with its ID as a key
         CardsCreatedThisGame.Add(UniqueCardID, this);
     }
 

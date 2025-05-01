@@ -36,11 +36,7 @@ public class NetworkManagerHUDHKK : MonoBehaviour
     void Awake()
     {
         manager = GetComponent<NetworkManager>();
-
-        // Set last username used (if any) in the username's input field
         if (PlayerPrefs.GetString("Name") != null) username = PlayerPrefs.GetString("Name");
-
-        
     }
 
     void OnGUI()
@@ -58,15 +54,15 @@ public class NetworkManagerHUDHKK : MonoBehaviour
             StatusLabels();
         }
 
-        // client ready
+        //client ready
         if (NetworkClient.isConnected && !NetworkClient.ready)
         {
             if (GUILayout.Button("Client Ready"))
             {
-                // Mark the client as ready
+                //Mark the client as ready
                 NetworkClient.Ready();
 
-                // Add the player if not already added
+                //Add the player if not already added
                 if (NetworkClient.localPlayer == null)
                 {
                     NetworkClient.AddPlayer();
@@ -97,10 +93,6 @@ public class NetworkManagerHUDHKK : MonoBehaviour
                     showGUI = false;
                 }
             }
-
-            
-            
-            
 
             // Client + IP
             GUILayout.BeginHorizontal();

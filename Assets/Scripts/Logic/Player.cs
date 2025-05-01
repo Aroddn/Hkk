@@ -5,7 +5,8 @@ using Mirror;
 using DG.Tweening.Core.Easing;
 using System;
 using System.Reflection;
-//using Mirror.Examples.MultipleMatch;
+
+//MOST IMPORTANT AND COMPLICATED SCRIPT
 
 public enum PlayerType { PLAYER, ENEMY };
 
@@ -14,7 +15,6 @@ public class Player : NetworkBehaviour, ICharacter
     [Header("Player Info")]
     [SyncVar(hook = nameof(UpdatePlayerName))] public string username;
 
-    // PUBLIC FIELDS
     public int PlayerID;
     public CharacterAsset charAsset;
     public PlayerArea PArea;
@@ -55,7 +55,6 @@ public class Player : NetworkBehaviour, ICharacter
     [Command(requiresAuthority = false)]
     public void CmdSetPlayerData(string newDeckName, List<string> newCardNames)
     {
-        // Update SyncVars (automatically syncs with clients)
         deckName = newDeckName;
     }
 
@@ -120,8 +119,6 @@ public class Player : NetworkBehaviour, ICharacter
                 }
             }
         }
-
-
     }
 
     public int ID
@@ -246,7 +243,6 @@ public class Player : NetworkBehaviour, ICharacter
     {
         Players = GameObject.FindObjectsOfType<Player>();
         PlayerID = IDFactory.GetUniqueID();
-        //PArea = GameObject.Find("LowerPlayerArea").GetComponent<PlayerArea>();
     }
 
     public virtual void OnTurnStart()
@@ -311,21 +307,6 @@ public class Player : NetworkBehaviour, ICharacter
         }
     }
 
-
-    //public void GetACardNotFromDeck(CardAsset cardAsset)
-    //{
-    //    if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length)
-    //    {
-    //        // 1) logic: add card to hand
-    //        CardLogic newCard = new CardLogic(cardAsset);
-    //        newCard.owner = this;
-    //        hand.CardsInHand.Insert(0, newCard);
-    //        // 2) send message to the visual Deck
-    //        new DrawACardCommand(hand.CardsInHand[0], this, fast: true, fromDeck: false).AddToQueue();
-    //    }
-    //    // no removal from deck because the card was not in the deck
-    //}
-
     public void PlayASpellFromHand(int SpellCardUniqueID, int TargetUniqueID)
     {
         if (TargetUniqueID < 0)
@@ -340,7 +321,6 @@ public class Player : NetworkBehaviour, ICharacter
         }
         else
         {
-            // target is a creature
             PlayASpellFromHand(CardLogic.CardsCreatedThisGame[SpellCardUniqueID], CreatureLogic.CreaturesCreatedThisGame[TargetUniqueID]);
         }
           
@@ -355,12 +335,10 @@ public class Player : NetworkBehaviour, ICharacter
         {
             Debug.LogWarning("No effect found on card " + playedCard.ca.name);
         }
-        // no matter what happens, move this card to PlayACardSpot
         new PlayASpellCardCommand(this, playedCard).AddToQueue();
-        // remove this card from hand
         hand.CardsInHand.Remove(playedCard);
 
-        if (PArea.owner == AreaPosition.Low)//ID == 2
+        if (PArea.owner == AreaPosition.Low)
         {
             TurnManager.playerAction.Add(PlayerAction.PlayerLowAction);
         }
@@ -368,8 +346,6 @@ public class Player : NetworkBehaviour, ICharacter
         {
             TurnManager.playerAction.Add(PlayerAction.PlayerTopAction);
         }
-
-        //Debug.Log("A spell has been played");
 
         TurnManager.Instance.GiveControlToOtherPlayer();
     }
@@ -398,13 +374,9 @@ public class Player : NetworkBehaviour, ICharacter
         hand.CardsInHand.Remove(playedCard);
 
         if (PArea.owner == AreaPosition.Low)
-        {
             TurnManager.playerAction.Add(PlayerAction.PlayerLowAction);
-        }
         else
-        {
             TurnManager.playerAction.Add(PlayerAction.PlayerTopAction);
-        }
 
         if (newCreature.effect != null)
             newCreature.effect.WhenACreatureIsPlayed();
@@ -423,7 +395,6 @@ public class Player : NetworkBehaviour, ICharacter
 
     public void PlayableCardHighlighter(bool removeAllHighlights = false)
     {
-
         foreach (CardLogic cl in hand.CardsInHand){
             GameObject g = IDHolder.GetGameObjectWithID(cl.UniqueCardID);
             if (g!=null)
@@ -434,9 +405,7 @@ public class Player : NetworkBehaviour, ICharacter
             GameObject g = IDHolder.GetGameObjectWithID(crl.UniqueCreatureID);
             if(g!= null)
                 g.GetComponent<OneCreatureManager>().CanAttackNow = (crl.AttacksLeftThisTurn > 0) && !removeAllHighlights;
-        }
-            
-
+        }          
     }
 
     public void LoadCharacterInfoFromAsset(){
@@ -451,8 +420,8 @@ public class Player : NetworkBehaviour, ICharacter
         PArea.AllowedToControlThisPlayer = true;
     }
 
-    public void Die(bool sacrifice){
-        throw new System.NotImplementedException();
-    }
+    //Not implemented yet
+    public void Die(bool sacrifice){throw new System.NotImplementedException();}
+    public void GetCardOutsideOfGame(CardAsset cardAsset) { }
 
 }

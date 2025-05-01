@@ -2,6 +2,4 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class CircleOutline : ModifiedShadow
-{
-}
+public class ModifiedShadow : Shadow{ }

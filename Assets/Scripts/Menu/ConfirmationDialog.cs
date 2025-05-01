@@ -29,8 +29,6 @@ public class ConfirmationDialog : MonoBehaviour
     {
         instance.gameObject.SetActive(true);
         instance.messageText.text = message;
-
-        // Clear previous listeners
         instance.yesButton.onClick.RemoveAllListeners();
         instance.noButton.onClick.RemoveAllListeners();
 

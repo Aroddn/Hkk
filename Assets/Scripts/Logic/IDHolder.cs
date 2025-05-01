@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+//used to savely manage card IDs so we always refer to them
 public class IDHolder : MonoBehaviour {
 
     public int UniqueID;

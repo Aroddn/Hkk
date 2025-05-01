@@ -5,13 +5,12 @@ using UnityEditor;
 using System;
 using Mirror;
 
+//player's graveyard or "Gyűjtő"
+
 public class GraveYard : NetworkBehaviour
 {
     public List<CardAsset> cards;
 
-    void Awake()
-    {    
-        
-    }
+    void Awake(){    }
 	
 }
