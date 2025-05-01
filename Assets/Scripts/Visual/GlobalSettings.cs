@@ -37,7 +37,7 @@ public class GlobalSettings: MonoBehaviour
     {
         Instance = this;
     }
-
+    
     //not used anymore in main project to keep it for future development
     public void AssignDeckAndCharacter(Player player, DeckInfo deckInfo)
     {

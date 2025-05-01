@@ -5604,8 +5604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tabs:
-  - {fileID: 1589360971}
   - {fileID: 2033821201}
+  - {fileID: 1589360971}
   - {fileID: 191336288}
   - {fileID: 1617588599}
   - {fileID: 1334580139}
@@ -7849,7 +7849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &943040159
 RectTransform:
   m_ObjectHideFlags: 0

@@ -114,13 +114,11 @@ public class DeckBuilder : MonoBehaviour
             RemoveCard(deckList[0]);
         }
 
-        // apply character class and activate tab.
         DeckBuildingScreen.Instance.TabsScript.SetClassOnClassTab(asset);
         DeckBuildingScreen.Instance.CollectionBrowserScript.ShowCollectionForDeckBuilding(asset);
 
         CheckDeckCompleteFrame();
 
-        // reset the InputField text to be empty
         DeckName.text = "";
     }
 
@@ -153,7 +151,6 @@ public class DeckBuilder : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        // if we exit the app while editing a deck, we want to save it anyway
         DoneButtonHandler();
     }
 }
