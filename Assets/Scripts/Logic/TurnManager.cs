@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 using Mirror;
+using Telepathy;
 
 //enum to help store the last action in the game
 public enum PlayerAction
@@ -105,8 +106,18 @@ public class TurnManager : NetworkBehaviour {
     //Commands for testing
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isServer)
-            OnGameStart();
+        if (Input.GetKeyDown(KeyCode.Space) && NetworkServer.active && isServer)
+        {
+            // Only start if exactly 2 players are connected
+            if (NetworkServer.connections.Count == 2)
+            {
+                OnGameStart();
+            }
+            else
+            {
+                Debug.Log("Waiting for 2 players. Current: " + NetworkServer.connections.Count);
+            }
+        }
 
         //if (Input.GetKeyDown(KeyCode.Space))
         //    EndTurn();

@@ -9,19 +9,6 @@ public class GameManager : NetworkBehaviour
     public PlayerArea TopPlayerArea;
     public TurnManager TurnManager;
 
-    [ClientRpc]
-    public void RpcDieCreature(GameObject creatureObj, bool sacrifice)
-    {
-        if (creatureObj == null) return;
-
-        CreatureLogic creature = creatureObj.GetComponent<CreatureLogic>();
-        if (creature != null)
-        {
-            creature.Die(sacrifice);
-        }
-    }
-
-
     public override void OnStartClient()
     {
         base.OnStartClient();
