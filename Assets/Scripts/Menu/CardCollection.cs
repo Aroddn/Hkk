@@ -43,12 +43,13 @@ public class CardCollection : MonoBehaviour
     {
         foreach (CardAsset ca in allCardsArray)
         {
-            if(ca.Rarity == RarityOptions.Basic)
-                QuantityOfEachCard.Add(ca, DefaultNumberOfBasicCards);            
-            else if (PlayerPrefs.HasKey("NumberOf" + ca.name))
-                QuantityOfEachCard.Add(ca, PlayerPrefs.GetInt("NumberOf" + ca.name));
-            else
-                QuantityOfEachCard.Add(ca, 0);
+            QuantityOfEachCard.Add(ca, DefaultNumberOfBasicCards);
+            //if (ca.Rarity == RarityOptions.ALL)
+            //    QuantityOfEachCard.Add(ca, DefaultNumberOfBasicCards);            
+            //else if (PlayerPrefs.HasKey("NumberOf" + ca.name))
+            //    QuantityOfEachCard.Add(ca, PlayerPrefs.GetInt("NumberOf" + ca.name));
+            //else
+            //    QuantityOfEachCard.Add(ca, 0);
         }
     }
 
@@ -56,10 +57,11 @@ public class CardCollection : MonoBehaviour
     {
         foreach (CardAsset ca in allCardsArray)
         {
-            if (ca.Rarity == RarityOptions.Basic)
-                PlayerPrefs.SetInt("NumberOf" + ca.name, DefaultNumberOfBasicCards);
-            else
-                PlayerPrefs.SetInt("NumberOf" + ca.name, QuantityOfEachCard[ca]);
+            PlayerPrefs.SetInt("NumberOf" + ca.name, DefaultNumberOfBasicCards);
+            //if (ca.Rarity == RarityOptions.ALL)
+            //    PlayerPrefs.SetInt("NumberOf" + ca.name, DefaultNumberOfBasicCards);
+            //else
+            //    PlayerPrefs.SetInt("NumberOf" + ca.name, QuantityOfEachCard[ca]);
         }
     }
 
@@ -86,7 +88,7 @@ public class CardCollection : MonoBehaviour
 
     public List<CardAsset> GetCardsOfCharacter(CharacterAsset asset)
     {   
-        return GetCards(true, true, false, RarityOptions.Basic, asset);
+        return GetCards(true, true, false, RarityOptions.ALL, asset);
     }
 
     public List<CardAsset> GetCardsWithRarity(RarityOptions rarity)
@@ -94,7 +96,7 @@ public class CardCollection : MonoBehaviour
         return GetCards(true, false, true, rarity);
     }
 
-    public List<CardAsset> GetCards(bool showingCardsPlayerDoesNotOwn = false, bool includeAllRarities = true, bool includeAllCharacters = true, RarityOptions rarity = RarityOptions.Basic,
+    public List<CardAsset> GetCards(bool showingCardsPlayerDoesNotOwn = false, bool includeAllRarities = true, bool includeAllCharacters = true, RarityOptions rarity = RarityOptions.ALL,
                 CharacterAsset asset = null, Set set = Set.All,string keyword = "", int manaCost = -1, bool includeTokenCards = false)
     {
         var cards = from card in allCardsArray select card;

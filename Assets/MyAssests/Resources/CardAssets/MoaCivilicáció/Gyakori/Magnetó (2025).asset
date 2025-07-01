@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "Magnet\xF3 (2025)"
+  m_EditorClassIdentifier: 
+  cardName: "Magnet\xF3 (2025)"
+  Rarity: 2
+  color: 0
+  secondColor: 9
+  setName: 5
+  releaseYear: 0
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 0
+  ancientMagic: 0
+  protection: 0
+  reactionIncrease: 0
+  undead: 0
+  Description: 
+  Tags: 
+  FlavorText: 
+  CardImage: {fileID: 21300000, guid: 62c2f7982d9034d48a133e528ddb9cbc, type: 3}
+  ManaCost: 0
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
+  Attack: 0
+  MaxHealth: 0
+  Bone: 0
+  Flying: 0
+  Hand: 0
+  AttacksForOneTurn: 1
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 0
+  subType: 0
+  secondSubType: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 0
+  Targets: 0

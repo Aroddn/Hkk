@@ -10,12 +10,18 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
     public string cardName;
     public RarityOptions Rarity;
     public ColorType color;
+    public ColorType secondColor = ColorType.NONE;
     public Set setName;
     public int releaseYear;
     public bool mental;
     public bool defense;
     public bool fire;
     public bool anchor;
+    public bool ancientMagic;
+    public bool protection;
+    public bool reactionIncrease;
+    public bool undead;
+    //public int protectionLevel;
 
     [TextArea(2, 3)]
     public string Description;
@@ -31,16 +37,17 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
     public TypesOfCards TypeOfCard;
 
     [Header("Creature Info")]
-    public int MaxHealth;
     public int Attack;
-    public int AttacksForOneTurn = 1;
+    public int MaxHealth;
     public int Bone;
     public bool Flying;
     public bool Hand;
+    public int AttacksForOneTurn = 1;
     public string CreatureScriptName;
     public int specialCreatureAmount;
     public MainType type;
     public SubType subType;
+    public SubType secondSubType;
 
 
     [Header("SpellInfo")]
@@ -97,7 +104,10 @@ public enum TypesOfCards
 {
     Creature,
     Spell,
-    Follower
+    Follower,
+    Object,
+    Building,
+    Ship
 }
 public enum TargetingOptions
 {
@@ -112,6 +122,7 @@ public enum TargetingOptions
 
 public enum RarityOptions
 {
+    ALL,
     Basic,
     COMMON,
     UNCOMMON,
@@ -130,7 +141,9 @@ public enum ColorType
     SHERAN,
     THARR,
     ELEINOS,
-    NONE
+    NONE,
+    BUFA,
+    COLORLESS
 }
 
 public enum PlaySpeed
@@ -145,7 +158,8 @@ public enum PlaySpeed
 public enum MainType
 {
     MONSTER,
-    ADVENTURER
+    ADVENTURER,
+    AVATAR
 }
 
 public enum SubType
@@ -162,7 +176,34 @@ public enum SubType
     ELF,
     MUTANT,
     REACTION,
-    VISION
+    VISION,
+    DRAKOLDER,
+    XENÓ,
+    NIGHTSPAWN,
+    SKELETON,
+    SIREN,
+    GOLEM,
+    SHAPE_CHANGER,
+    SHADOWGNOME,
+    BURÁSTYA,
+    DINO,
+    GANÜID,
+    PIRATE,
+    SPIDER,
+    GIANT,
+    QUWARG,
+    TERMIK,
+    THARGODAN,
+    VAMPIRE,
+    WOMATH,
+    YETI,
+    ELEMENTAL,
+    GOBLIN,
+    MINOTAUR,
+    MOTYOGÓ,
+    ANGEL,
+    OCTOPUS,
+    HUMAN
 }
 
 public enum Special
@@ -172,7 +213,9 @@ public enum Special
     HAND,
     MONSTER_COMPONENT,
     ANCHOR,
-    MENTAL
+    MENTAL,
+    ACID,
+    ICE
 }
 
 public enum Set
@@ -181,4 +224,6 @@ public enum Set
     AlfaAngels,
     AlfaBeasts,
     AlfaFireMagic,
+    Gigászok,
+    Moa_civilizáció
 }

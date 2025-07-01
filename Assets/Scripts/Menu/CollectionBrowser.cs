@@ -68,7 +68,7 @@ public class CollectionBrowser : MonoBehaviour {
         }
     }
 
-    private RarityOptions _rarity = RarityOptions.Basic; 
+    private RarityOptions _rarity = RarityOptions.ALL; 
     public RarityOptions Rarity 
     {
         get{ return _rarity; }
@@ -144,7 +144,7 @@ public class CollectionBrowser : MonoBehaviour {
         CardsThatYouDoNotHaveToggleScript.SetValue(false);
         ManaFilterSctipt.RemoveAllFilters();
 
-        ShowCards(false, 0, true, false, RarityOptions.Basic, null, Set.All,"", -1, false);
+        ShowCards(false, 0, true, false, RarityOptions.ALL, null, Set.All,"", -1, false);
 
         DeckBuildingScreen.Instance.TabsScript.NeutralTabWhenCollectionBrowsing.Select(instant: true);   
         DeckBuildingScreen.Instance.TabsScript.SelectTab(DeckBuildingScreen.Instance.TabsScript.NeutralTabWhenCollectionBrowsing, instant: true);
@@ -158,7 +158,7 @@ public class CollectionBrowser : MonoBehaviour {
 
         _character = buildingForThisCharacter;
 
-        ShowCards(false, 0, true, false, RarityOptions.Basic, _character, _set, "", -1, false);
+        ShowCards(false, 0, true, false, RarityOptions.ALL, _character, _set, "", -1, false);
         DeckBuildingScreen.Instance.TabsScript.ClassTab.Select(instant: true);
         DeckBuildingScreen.Instance.TabsScript.SelectTab(DeckBuildingScreen.Instance.TabsScript.ClassTab, instant: true);
     }
@@ -188,7 +188,7 @@ public class CollectionBrowser : MonoBehaviour {
     }
 
     private void ShowCards(bool showingCardsPlayerDoesNotOwn = false, int pageIndex = 0, bool includeAllRarities = true, bool includeAllCharacters = true, 
-        RarityOptions rarity = RarityOptions.Basic, CharacterAsset asset = null, Set set = Set.All, string keyword = "", int manaCost = -1, bool includeTokenCards = false)
+        RarityOptions rarity = RarityOptions.ALL, CharacterAsset asset = null, Set set = Set.All, string keyword = "", int manaCost = -1, bool includeTokenCards = false)
     {
         _showingCardsPlayerDoesNotOwn = showingCardsPlayerDoesNotOwn;
         _pageIndex = pageIndex;
@@ -257,7 +257,7 @@ public class CollectionBrowser : MonoBehaviour {
     }
 
     private List<CardAsset> PageSelection(bool showingCardsPlayerDoesNotOwn = false, int pageIndex = 0, bool includeAllRarities = true, bool includeAllCharacters = true, 
-        RarityOptions rarity = RarityOptions.Basic, CharacterAsset asset = null, Set set = Set.All ,string keyword = "", int manaCost = -1, bool includeTokenCards = false)
+        RarityOptions rarity = RarityOptions.ALL, CharacterAsset asset = null, Set set = Set.All ,string keyword = "", int manaCost = -1, bool includeTokenCards = false)
     {
         List<CardAsset> returnList = new List<CardAsset>();
 

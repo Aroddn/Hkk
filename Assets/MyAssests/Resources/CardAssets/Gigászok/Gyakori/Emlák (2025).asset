@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
+  m_Name: "Eml\xE1k (2025)"
+  m_EditorClassIdentifier: 
+  cardName: "Eml\xE1k (2025)"
+  Rarity: 1
+  color: 8
+  secondColor: 9
+  setName: 4
+  releaseYear: 2025
+  mental: 0
+  defense: 0
+  fire: 0
+  anchor: 1
+  ancientMagic: 0
+  protection: 0
+  reactionIncrease: 0
+  undead: 0
+  Description: "Anti-m\xE1gia: 1 vagy anti-semleges\xEDt\xE9s: 1. Kij\xE1tsz\xE1sakor
+    egy c\xE9lpont lap vagy k\xE9t c\xE9lpont l\xE9ny visszaker\xFCl tulajdonosa
+    kez\xE9be"
+  Tags: 
+  FlavorText: "Soha nem \xE9rtett semmihez, de azt nagyon j\xF3l csin\xE1lta.-Zoregblum
+    professzor"
+  CardImage: {fileID: 21300000, guid: 4b17a96ffb32c024ca2b5bc83a0589ff, type: 3}
+  ManaCost: 2
+  TokenCard: 0
+  OverrideLimitOfThisCardInDeck: -1
+  TypeOfCard: 0
+  Attack: 1
+  MaxHealth: 1
+  Bone: 0
+  Flying: 0
+  Hand: 1
+  AttacksForOneTurn: 1
+  CreatureScriptName: 
+  specialCreatureAmount: 0
+  type: 0
+  subType: 9
+  secondSubType: 0
+  SpellScriptName: 
+  specialSpellAmount: 0
+  specialSpellAmount2: 0
+  playSpeed: 0
+  spellSubType: 0
+  Targets: 0
