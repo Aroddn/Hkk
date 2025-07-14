@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: "A drakolderek \u0151rj\xF6ng\xE9se"
   m_EditorClassIdentifier: 
   cardName: "A drakolderek \u0151rj\xF6ng\xE9se"
-  Rarity: 1
+  Rarity: 2
   color: 2
+  secondColor: 9
   setName: 4
   releaseYear: 2025
   mental: 0
@@ -23,6 +24,8 @@ MonoBehaviour:
   anchor: 0
   ancientMagic: 0
   protection: 0
+  reactionIncrease: 0
+  undead: 0
   Description: "Ha [k\xF6tel\xE9k], k\xF6lts\xE9ge 2 VP. Max. 2 c\xE9lpont lap a
     gy\u0171jt\u0151be ker\xFCl, vagy egy l\xE9nyre rakj 2 izomjelz\u0151t"
   Tags: 
@@ -33,16 +36,19 @@ MonoBehaviour:
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 1
-  MaxHealth: 0
   Attack: 0
-  AttacksForOneTurn: 1
+  magicAttack: 0
+  MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0
+  AttacksForOneTurn: 1
   CreatureScriptName: 
   specialCreatureAmount: 0
   type: 0
   subType: 0
+  secondSubType: 0
   SpellScriptName: 
   specialSpellAmount: 0
   specialSpellAmount2: 0

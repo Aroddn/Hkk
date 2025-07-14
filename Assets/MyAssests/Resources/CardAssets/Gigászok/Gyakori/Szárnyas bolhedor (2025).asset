@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Sz\xE1rnyas bolhedor (2025)"
   m_EditorClassIdentifier: 
   cardName: "Sz\xE1rnyas bolhedor (2025)"
-  Rarity: 1
+  Rarity: 2
   color: 4
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 3
+  magicAttack: 0
   MaxHealth: 4
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938f184cf95464bb89edac291f0eb5, type: 3}
   m_Name: "Alattomos man\xF3 (2025)"
   m_EditorClassIdentifier: 
-  cardName: 
-  Rarity: 1
+  cardName: "Alattomos man\xF3 (2025)"
+  Rarity: 2
   color: 1
   secondColor: 6
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

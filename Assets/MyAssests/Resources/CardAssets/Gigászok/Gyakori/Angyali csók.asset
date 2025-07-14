@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Angyali cs\xF3k"
   m_EditorClassIdentifier: 
   cardName: "Angyali cs\xF3k"
-  Rarity: 1
+  Rarity: 2
   color: 4
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 1
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

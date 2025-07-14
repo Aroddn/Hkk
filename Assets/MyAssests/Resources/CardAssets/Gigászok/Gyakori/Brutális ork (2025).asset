@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Brut\xE1lis ork (2025)"
   m_EditorClassIdentifier: 
   cardName: "Brut\xE1lis ork (2025)"
-  Rarity: 1
+  Rarity: 2
   color: 1
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 3
+  magicAttack: 0
   MaxHealth: 1
+  magicDefense: 0
   Bone: 1
   Flying: 1
   Hand: 1

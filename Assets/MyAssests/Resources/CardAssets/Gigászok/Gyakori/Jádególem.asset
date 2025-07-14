@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "J\xE1deg\xF3lem"
   m_EditorClassIdentifier: 
   cardName: "J\xE1deg\xF3lem"
-  Rarity: 1
+  Rarity: 2
   color: 2
   secondColor: 9
   setName: 4
@@ -37,7 +37,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 3
+  magicAttack: 0
   MaxHealth: 3
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

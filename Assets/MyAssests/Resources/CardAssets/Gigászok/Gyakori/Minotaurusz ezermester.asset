@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Minotaurusz ezermester
   m_EditorClassIdentifier: 
   cardName: Minotaurusz ezermester
-  Rarity: 1
+  Rarity: 2
   color: 7
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 2
+  magicAttack: 0
   MaxHealth: 2
+  magicDefense: 0
   Bone: 1
   Flying: 1
   Hand: 1

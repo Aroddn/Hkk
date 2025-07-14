@@ -13,29 +13,36 @@ MonoBehaviour:
   m_Name: "\xD6ngyullad\xE1s (2025)"
   m_EditorClassIdentifier: 
   cardName: "\xD6ngyullad\xE1s (2025)"
-  Rarity: 0
+  Rarity: 2
   color: 1
   secondColor: 9
   setName: 4
-  releaseYear: 0
+  releaseYear: 2025
   mental: 0
   defense: 0
-  fire: 0
+  fire: 1
+  acid: 0
+  lightning: 0
   anchor: 0
   ancientMagic: 0
   protection: 0
   reactionIncrease: 0
   undead: 0
-  Description: 
+  Description: "Egy c\xE9lpont l\xE9nyed a gy\u0171jt\u0151be ker\xFCl, \xE9s egy
+    c\xE9lpont sebz\u0151dik 2-vel t\xF6bbet, mint amennyi a l\xE9ny k\xF6lts\xE9ge
+    volt."
   Tags: 
-  FlavorText: 
+  FlavorText: "Ocsm\xE1ny egy var\xE1zslat, az \xE1ldozatot saj\xE1t bels\u0151 energi\xE1ja
+    seg\xEDts\xE9g\xE9vel \xE9geti el. - Eml\xE1k"
   CardImage: {fileID: 21300000, guid: 5b05f06f406c6e449b2f30f4408bb442, type: 3}
-  ManaCost: 0
+  ManaCost: 1
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
-  TypeOfCard: 0
+  TypeOfCard: 1
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0
@@ -49,5 +56,5 @@ MonoBehaviour:
   specialSpellAmount: 0
   specialSpellAmount2: 0
   playSpeed: 0
-  spellSubType: 0
+  spellSubType: 12
   Targets: 0

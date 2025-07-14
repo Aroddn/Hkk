@@ -13,31 +13,38 @@ MonoBehaviour:
   m_Name: "\u0150sbolhedor (2025)"
   m_EditorClassIdentifier: 
   cardName: "\u0150sbolhedor (2025)"
-  Rarity: 1
-  color: 0
+  Rarity: 2
+  color: 4
   secondColor: 9
   setName: 4
   releaseYear: 2025
   mental: 0
   defense: 0
   fire: 0
+  acid: 0
+  lightning: 0
   anchor: 0
   ancientMagic: 0
   protection: 0
   reactionIncrease: 0
   undead: 0
-  Description: 
+  Description: "Kij\xE1tsz\xE1sakor kap 1 izomjelz\u0151t, \xC9S ha \xC9P-d kevesebb,
+    mint 13, akkor c\xE9lpont lap gy\u0171jt\u0151be ker\xFCl vagy gy\xF3gyulsz 7-et.
+    \xC1raml\xE1s: egy c\xE9lpont sebz\u0151dik 4-et."
   Tags: 
-  FlavorText: 
+  FlavorText: "Az \u0151sbelhedor a legv\xE1logat\xF3sabb mind k\xF6z\xFCl; csak
+    a hatalmukban teljesen biztosak oldal\xE1n jelenik meg."
   CardImage: {fileID: 21300000, guid: 0bbb39c36d61b3a4c980bd89d3a9336b, type: 3}
   ManaCost: 3
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 4
+  magicAttack: 1
   MaxHealth: 5
-  Bone: 0
-  Flying: 0
+  magicDefense: 0
+  Bone: 1
+  Flying: 1
   Hand: 0
   AttacksForOneTurn: 1
   CreatureScriptName: 

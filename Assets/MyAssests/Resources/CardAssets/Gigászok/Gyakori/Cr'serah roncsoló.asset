@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Cr'serah roncsol\xF3"
   m_EditorClassIdentifier: 
   cardName: "Cr'serah roncsol\xF3"
-  Rarity: 1
+  Rarity: 2
   color: 0
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 4
+  magicAttack: 0
   MaxHealth: 4
+  magicDefense: 0
   Bone: 1
   Flying: 1
   Hand: 0

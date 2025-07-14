@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Visszat\xE9r\u0151 eml\xE9kek"
   m_EditorClassIdentifier: 
   cardName: "Visszat\xE9r\u0151 eml\xE9kek"
-  Rarity: 1
+  Rarity: 2
   color: 3
   secondColor: 9
   setName: 4
@@ -21,21 +21,26 @@ MonoBehaviour:
   mental: 0
   defense: 0
   fire: 0
+  acid: 0
+  lightning: 0
   anchor: 0
   ancientMagic: 0
   protection: 0
   reactionIncrease: 0
   undead: 0
-  Description: 
+  Description: "Anti-blokkol\xE1s: 2. Visszaveheted egy lapodat az asztalr\xF3l a
+    kezedbe. Jelen\xE9s: max. VP-d n\u0151 3-mal."
   Tags: 
-  FlavorText: 
+  FlavorText: '- Mintha csak tegnap lett volna... - Tegnap volt.'
   CardImage: {fileID: 21300000, guid: 05294e819af55dc4ebeeabafcaca255d, type: 3}
-  ManaCost: 0
+  ManaCost: 1
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
-  TypeOfCard: 0
+  TypeOfCard: 1
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0
@@ -48,6 +53,6 @@ MonoBehaviour:
   SpellScriptName: 
   specialSpellAmount: 0
   specialSpellAmount2: 0
-  playSpeed: 0
-  spellSubType: 0
+  playSpeed: 1
+  spellSubType: 12
   Targets: 0

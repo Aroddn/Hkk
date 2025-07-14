@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Ong\xF3liant l\xE9gi\xF3s (2025)"
   m_EditorClassIdentifier: 
   cardName: "Ong\xF3liant l\xE9gi\xF3s (2025)"
-  Rarity: 1
+  Rarity: 2
   color: 7
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 1
+  magicAttack: 0
   MaxHealth: 1
+  magicDefense: 0
   Bone: 1
   Flying: 0
   Hand: 1

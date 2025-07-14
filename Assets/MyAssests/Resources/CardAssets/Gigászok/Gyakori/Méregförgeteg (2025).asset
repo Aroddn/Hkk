@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "M\xE9regf\xF6rgeteg (2025)"
   m_EditorClassIdentifier: 
   cardName: "M\xE9regf\xF6rgeteg (2025)"
-  Rarity: 1
+  Rarity: 2
   color: 6
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

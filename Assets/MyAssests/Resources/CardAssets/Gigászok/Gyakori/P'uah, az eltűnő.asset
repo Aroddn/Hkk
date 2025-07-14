@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "P'uah, az elt\u0171n\u0151"
   m_EditorClassIdentifier: 
   cardName: "P'uah, az elt\u0171n\u0151"
-  Rarity: 1
+  Rarity: 2
   color: 3
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 2
+  magicAttack: 0
   MaxHealth: 3
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

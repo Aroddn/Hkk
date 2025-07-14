@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Fantoms\xE1rk\xE1ny"
   m_EditorClassIdentifier: 
   cardName: "Fantoms\xE1rk\xE1ny"
-  Rarity: 1
+  Rarity: 2
   color: 0
   secondColor: 9
   setName: 4
@@ -35,7 +35,9 @@ MonoBehaviour:
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 1
   Flying: 0
   Hand: 0

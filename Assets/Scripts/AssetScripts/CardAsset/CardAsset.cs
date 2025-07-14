@@ -16,10 +16,12 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
     public bool mental;
     public bool defense;
     public bool fire;
+    public bool acid;
+    public bool lightning;
     public bool anchor;
     public bool ancientMagic;
     public bool protection;
-    public bool reactionIncrease;
+    public int reactionIncrease;
     public bool undead;
     //public int protectionLevel;
 
@@ -31,6 +33,13 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
     public string FlavorText;
     public Sprite CardImage;
     public int ManaCost;
+    //todo figure out a way to represent other costs
+
+    //public int ZanShardCost;
+    //public int NekronCost;
+    //public int BoneCost;
+    //public int BuilderCost;
+
     public bool TokenCard = false;
     public int OverrideLimitOfThisCardInDeck = -1;
 
@@ -38,7 +47,9 @@ public class CardAsset : ScriptableObject, IComparable<CardAsset>
 
     [Header("Creature Info")]
     public int Attack;
+    public bool magicAttack;
     public int MaxHealth;
+    public bool magicDefense;
     public int Bone;
     public bool Flying;
     public bool Hand;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Yaurri savtalizm\xE1n"
   m_EditorClassIdentifier: 
   cardName: "Yaurri savtalizm\xE1n"
-  Rarity: 1
+  Rarity: 2
   color: 6
   secondColor: 9
   setName: 4
@@ -21,21 +21,27 @@ MonoBehaviour:
   mental: 0
   defense: 0
   fire: 0
+  acid: 1
+  lightning: 0
   anchor: 0
   ancientMagic: 0
   protection: 0
   reactionIncrease: 1
   undead: 0
-  Description: 
+  Description: "K, ha sikeresen kij\xE1tszol egy [sav] lapot, vagy sikeresen haszn\xE1lsz
+    egy [sav] forr\xE1st, h\xFAzz 1 lapot. Hal\xE1lsikoly: ellenfeled sebz\u0151dik
+    3-at."
   Tags: 
-  FlavorText: 
+  FlavorText: "Hal\xE1lig marta azt, ki meg\xE9rintette."
   CardImage: {fileID: 21300000, guid: b1d8434e784ad3740b874526c0e1249b, type: 3}
   ManaCost: 0
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 3
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0

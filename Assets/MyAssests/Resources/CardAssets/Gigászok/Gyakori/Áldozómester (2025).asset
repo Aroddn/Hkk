@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\xC1ldoz\xF3mester (2025)"
   m_EditorClassIdentifier: 
   cardName: "\xC1ldoz\xF3mester (2025)"
-  Rarity: 1
+  Rarity: 2
   color: 3
   secondColor: 9
   setName: 4
@@ -21,29 +21,34 @@ MonoBehaviour:
   mental: 0
   defense: 0
   fire: 0
+  acid: 0
+  lightning: 0
   anchor: 0
   ancientMagic: 1
   protection: 0
   reactionIncrease: 0
   undead: 0
-  Description: 
+  Description: "Anti-semleges\xEDt\xE9s: 1. \xC1ldozd fel egy l\xE9nyed: c\xE9lpont
+    lap a gy\u0171jt\u0151be ker\xFCl."
   Tags: 
-  FlavorText: 
+  FlavorText: "Az isteneknek bemutatott \xE1ldozati ritu\xE1l\xE9 tette hatalmass\xE1."
   CardImage: {fileID: 21300000, guid: 279a1642510d7ea4f815f01294f25448, type: 3}
-  ManaCost: 0
+  ManaCost: 2
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
-  Attack: 0
-  MaxHealth: 0
+  Attack: 2
+  magicAttack: 0
+  MaxHealth: 4
+  magicDefense: 0
   Bone: 0
-  Flying: 0
-  Hand: 0
+  Flying: 1
+  Hand: 1
   AttacksForOneTurn: 1
   CreatureScriptName: 
   specialCreatureAmount: 0
-  type: 0
-  subType: 0
+  type: 1
+  subType: 39
   secondSubType: 0
   SpellScriptName: 
   specialSpellAmount: 0

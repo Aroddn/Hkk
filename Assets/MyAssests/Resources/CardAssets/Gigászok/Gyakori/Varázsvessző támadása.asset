@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Var\xE1zsvessz\u0151 t\xE1mad\xE1sa"
   m_EditorClassIdentifier: 
   cardName: "Var\xE1zsvessz\u0151 t\xE1mad\xE1sa"
-  Rarity: 1
+  Rarity: 2
   color: 8
   secondColor: 9
   setName: 4
@@ -21,21 +21,27 @@ MonoBehaviour:
   mental: 0
   defense: 0
   fire: 0
+  acid: 0
+  lightning: 0
   anchor: 0
   ancientMagic: 0
   protection: 0
   reactionIncrease: 0
   undead: 0
-  Description: 
+  Description: "C\xE9lpont l\xE9ny t\xE1mad\xE1sa \xE9s v\xE9dekez\xE9se k\xF6r v\xE9g\xE9ig
+    m\xE1gikus lesz, k\xF6r v\xE9g\xE9ig kap +3 \xC9P-t, \xE9s a k\xF6r v\xE9g\xE9n
+    h\xFAzz 1 lapot!"
   Tags: 
-  FlavorText: 
+  FlavorText: "Ak\xE1rhogy is, de megmentj\xFCk."
   CardImage: {fileID: 21300000, guid: 013a1b0337a04aa4f90a457c08f1b087, type: 3}
   ManaCost: 0
   TokenCard: 0
   OverrideLimitOfThisCardInDeck: -1
-  TypeOfCard: 0
+  TypeOfCard: 1
   Attack: 0
+  magicAttack: 0
   MaxHealth: 0
+  magicDefense: 0
   Bone: 0
   Flying: 0
   Hand: 0
